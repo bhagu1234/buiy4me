@@ -15,7 +15,8 @@
                     <div class="col-lg-8 mx-auto">
 						<div class="card">
 							<div class="card-body p-4">
-								<h5 class="mb-4">Horizontal Form</h5>
+								<h5 class="mb-4">Add User</h5>
+								<form action="{{route('admin.store_country')}}" method="post">
 									<div class="row mb-3">
 										<label for="input35" class="col-sm-3 col-form-label">Enter Your Name</label>
 										<div class="col-sm-9">
