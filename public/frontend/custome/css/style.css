@@ -1,0 +1,370 @@
+/*homepage why buy4me section css */
+
+.why-me-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/*setting page custom css*/
+
+.setting-page-container > *{
+    font-family:"Roboto", sans-serif !important;
+}
+.setting-page-container h3{
+    font-family:"Roboto", sans-serif !important;
+}
+
+.setting-page-container .col-sm-8 input[type=text],.setting-page-container .col-sm-8 input[type=email], .setting-page-container .col-sm-8 input[type=telephone]{
+    background-color: white !important;
+	padding: 20px 15px !important;
+	font-size: 17px !important;
+	/*border: solid 2px rgba(0,0,0,0.2);*/
+	border-radius:5px;
+}
+
+.setting-page-container .col-sm-8 textarea{
+	background-color: white !important;
+	padding: 20px 15px !important;
+	font-size: 17px !important;
+	border: solid 2px rgba(0,0,0,0.2);
+	border-radius:5px;
+
+}
+.setting-page-container .col-sm-8 textarea:focus{
+	border: 2px solid #4FC1F0;
+}
+
+/*all button settings starts here*/
+
+.setting-page-container .col-sm-8 button{
+    padding:1rem;
+    background-color:#f7b235;
+    border:solid 1px #cc9127;
+    color:white;
+    transition: all ease 0.2s;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+}
+.setting-page-container .col-sm-8 button:hover{
+    background-color: #faa814;
+    border:solid 1px #946106;
+    box-shadow:0 0 10px rgba(194, 194, 194);
+}
+.setting-page-container .col-sm-8 button:focus{
+    /*box-shadow:0 0 5px #de9718;*/
+    /*border: solid 1px #de9718;*/
+    background-color: #faa814;
+    border:solid 1px #946106;
+    box-shadow:0 0 10px rgba(194, 194, 194);
+}
+/*all button settings ends here*/
+
+
+.content-container{
+    display:none;
+    border: solid 1px #b5b5b5;
+    border-radius:1.5rem;
+    margin-bottom:1rem;
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+.content-container-heading{
+    color:black !important;
+}
+
+
+.menu-list.settings-list{
+    cursor:pointer;
+}
+.menu-list.settings-list.active {
+      background-color: rgba(239, 144, 14,0.4);
+      font-weight: bold;
+      border:solid 2px rgba(239, 144, 14,0.9) ;
+    }
+
+.settings-list{
+    cursor:pointer;
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:35px;
+    padding-right:16px;
+    font-size:20px;
+    transition:all ease 0.3s;
+}
+
+.settings-list:hover{
+    background-color:rgba(239, 144, 14,0.2);
+}
+
+.profile-image-container-main{
+ display:flex;   
+ flex-direction:row;
+ align-items:center;
+ justify-content:space-between;
+ border-bottom:solid 1px #d4d4d4;
+ padding-bottom:2rem;
+ padding-left:16px;
+ padding-right:16px;
+}
+
+.profile-image-container{
+    width:150px;
+    height:150px;
+}
+
+.profile-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.upload-container{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:center;
+}
+.upload-container small em{
+    color:rgba(0,0,0,0.5);
+}
+.upload-container #upload-btn{
+	padding: 1.5rem 8rem;
+	
+}
+.upload-container #upload-btn:hover{
+    box-shadow:0 0 10px rgba(194, 194, 194);
+    
+}
+
+
+.profile-info-input-container #fname,.profile-info-input-container #lname {
+    display:block;
+    width:100%;
+}
+
+.change-password-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.change-email-container button.email-update-button,
+.phone-number-container-main button.phone-update-button {
+    padding:1.2rem 4rem;
+}
+
+.account-del-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.account-del-container .account-del-text{
+    padding:1rem 0;
+    padding-bottom:5px;
+    border-top:solid 1px #d4d4d4;
+    cursor:pointer;
+    transition: all ease 0.5s;
+    width:100%;
+}
+.account-del-container .account-del-text a{
+width: fit-content;
+    border-bottom: solid 1px white;
+}
+.account-del-container .account-del-text a:hover{
+    border-bottom: solid 1px #dc3545;
+}
+
+
+.notification-switch-container .form-check.form-switch{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.change-password-container button.send-button{
+    padding:1.5rem 4rem;
+}
+
+
+.change-email-container #emailinput{
+    width:100%;
+    margin-top:15px;
+    margin-bottom:1rem;
+    
+}
+.phone-number-container #phoneinput{
+    /*width:100%;*/
+    margin-top:15px;
+    margin-bottom:1rem;
+    
+}
+
+#wallet .wallet-balance-container{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+}
+
+#wallet .wallet-balance-container #top-up{
+    padding: 1.3rem 4rem !important;
+}
+
+/*notification section css starts*/
+#notification .notification-title{
+    font-weight: bold;
+    padding-bottom:0.8rem;
+    border-bottom: solid 1px #cfcfcf;
+    margin-bottom:1.5rem;
+}
+#notification .notification-container .notification-description{
+    font-size:17px;
+}
+
+#notification .notification-switch-container .tips-title{
+    padding-top:1.5rem;
+    padding-bottom:0.5rem;
+}
+
+
+/*notification section css ends*/
+
+/*profile page section starts here */
+
+/*.profile-page{*/
+/*    border:solid 2px red;*/
+/*}*/
+.profile-page > *{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.profile-page .product-description-review .description-review-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	border-bottom:solid 1px #d4d4d4;
+}
+.profile-page .product-description-review .description-review-title a{
+    font-size:2.7rem;
+    text-transform:capitalize;
+    color:#000;
+}
+
+.profile-page .product-description-review  {
+	border-radius: 25px;
+	padding: 5px 15px !important;
+	padding-left: 10rem !important;
+	padding-right: 10rem !important;
+}
+
+.profile-page .stars-container-main{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:2rem;
+}
+.profile-page .stars-container-main{
+    margin-bottom:1rem;
+}
+
+.profile-page .stars-container-main .stars-container{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    gap:2rem;
+}
+.profile-page .stars-container-main .stars-container .stars i.fa-regular.fa-star{
+    cursor:pointer;
+}
+.profile-page .stars-container-main .stars-container .stars i.fa-regular.fa-star:hover{
+    color:#ffcd3c;
+}
+.profile-page .product-description-review .cancelation-line{
+    margin:2rem 0;
+}
+
+.profile-page .product-description-review .cancelation-line .status-btn{
+    border-radius:10px;
+    margin-left:1rem;
+    position:relative;
+}
+.profile-page .product-description-review .cancelation-line .status-btn:hover .profile-page .product-description-review .pending-hover{
+    display:block;
+}
+
+.profile-page .product-description-review .pending-hover{
+    display:none;
+    position:absolute;
+    width:250px;
+    height:200px;
+    background-color:#363535;
+    padding:10px;
+    border-radius:20px;
+    /*top:0px;*/
+    /*left:0px;*/
+}
+.profile-page .product-description-review .pending-hover .pending-hover-text{
+    color:white;
+}
+
+.profile-page .product-description-review .verified-phone-line{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    padding:1rem 0.8rem;
+    background-color: #ededed;
+    border-radius:10px;
+    margin:2rem  0;
+}
+
+
+.profile-page .product-description-review .verified-phone-line .verified-info{
+    margin-right:2rem;
+    padding-right:2rem;
+    border-right:solid 1px #b5b5b5;
+    
+}
+
+.profile-page .product-description-review .verified-phone-line .check-icon-main{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin:0 1rem;
+}
+.profile-page .product-description-review .verified-phone-line .check-icon{
+    font-size:1.3rem;
+    margin-right:0.5rem;
+    margin-left:0.5rem;
+}
+
+.profile-page .product-description-review .tab-pane .edit-profile-btn{
+    display:flex;
+    align-items:center;
+    padding:1.5rem 3rem;
+    border-radius:10px;
+    background-color:transparent;
+    transition:all ease 0.3s;
+    
+}
+.profile-page .product-description-review .tab-pane .edit-profile-btn:hover{
+    background-color:#357EBD;
+}
+.profile-page .product-description-review .tab-pane .edit-profile-btn a{
+    color:#357EBD;
+    padding:32px 40px;
+    background-color:transparent !important;
+    transition:all ease 0.3s;
+}
+
+.profile-page .product-description-review .tab-pane .edit-profile-btn a:hover{
+    color:white;
+}
+/*profile page section starts end */
