@@ -5,3 +5,19 @@ function allowNumbersOnly(e) {
         e.preventDefault();
     }
 }
+// data table ===========================================================
+// $(document).ready(function() {
+//     $('#country_table').dataTable();
+// });
+$(document).ready(function() {
+    $('#country_table').DataTable();
+  } );
+// $(document).ready(function() {
+//     var table = $('#example').DataTable( {
+//         lengthChange: false,
+//         buttons: [ 'copy', 'excel', 'pdf', 'print']
+//     } );
+ 
+//     table.buttons().container()
+//         .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+// } );

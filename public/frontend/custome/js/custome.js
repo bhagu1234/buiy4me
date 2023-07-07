@@ -1,4 +1,49 @@
- const tabs = document.querySelectorAll('[data-tab-value]')
+var base_path = $("#url").val();
+// fatch country =============================
+
+// $(document).ready(function() {
+//     $("#browsers_country").html("");
+//     $.ajax({
+//         type:'get',
+//         url: base_path+"/admin-fatch_country",
+//         success:function(res){
+//             alert(res);
+//                 $("#browsers_country").append(res);
+//         }
+//     })
+// })
+function fatch_country(res,from)
+{
+    $("#browsers_country").html("");
+    $("#browsers_country_to").html("");
+    $("#editOrderFrom").html("");
+    $("#editOrderTo").html("");
+    $.ajax({
+        type:'get',
+        url: base_path+"/admin-fatch_country",
+        data:{'value':res},
+        success:function(res){
+            if(from=='travel_from')
+            {
+                $("#browsers_country").append(res);
+            }
+            else if(from=='travel_to')
+            {
+                $("#browsers_country_to").append(res);
+            }
+            else if(from=='editOrderFrom')
+            {
+                $("#editOrderFrom").append(res);
+            }
+            else if(from=='editOrderTo')
+            {
+                $("#editOrderTo").append(res);
+            }
+           
+        }
+    })
+}
+const tabs = document.querySelectorAll('[data-tab-value]')
 const tabInfos = document.querySelectorAll('[data-tab-info]')
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -103,35 +148,3 @@ statusBtn.addEventListener("click", function(){
 
 // profile page pending hover ends
 
-// fatch country =============================
-function fatch_country(res,from)
-{
-    $("#browsers_country").html("");
-    $("#browsers_country_to").html("");
-    $("#editOrderFrom").html("");
-    $("#editOrderTo").html("");
-    $.ajax({
-        type:'get',
-        url: base_path+"/admin-fatch_country",
-        data:{'value':res},
-        success:function(res){
-            if(from=='travel_from')
-            {
-                $("#browsers_country").append(res);
-            }
-            else if(from=='travel_to')
-            {
-                $("#browsers_country_to").append(res);
-            }
-            else if(from=='editOrderFrom')
-            {
-                $("#editOrderFrom").append(res);
-            }
-            else if(from=='editOrderTo')
-            {
-                $("#editOrderTo").append(res);
-            }
-           
-        }
-    })
-}

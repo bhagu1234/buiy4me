@@ -12,6 +12,7 @@
        <div class="page-wrapper">
 			<div class="page-content">
             <h6 class="mb-0 text-uppercase">All Users </h6>
+			 <a href="{{route('admin.user_Create')}}">Add user</a>
 				<hr/>
 				<div class="card">
 					<div class="card-body">
@@ -34,8 +35,8 @@
                                             <td>{{$row->email}}</td>
                                             <td>{{$row->mobile}}</td>
                                             <td>
-                                                <a href="">edit</a>
-                                                <a href="">delete</a>
+                                                <a href="{{route('admin.user_edit',['id'=>$row->id])}}">edit</a>
+                                                <a href="{{route('admin.user_delete',['id'=>$row->id])}}" onclick="return confirm('Are you sure you want to delete this ?');">delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

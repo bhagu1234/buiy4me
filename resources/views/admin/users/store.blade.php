@@ -2,12 +2,12 @@
 <body>
 	<!--wrapper-->
 	<div class="wrapper">
-	 <!--start header wrapper-->	
-	  <div class="header-wrapper">
-		<!--start header -->
-		@include('admin.includes.nav')
-		<!--end navigation-->
-	   </div>
+		<!--start header wrapper-->	
+	  	<div class="header-wrapper">
+			<!--start header -->
+			@include('admin.includes.nav')
+			<!--end navigation-->
+	   	</div>
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
@@ -16,79 +16,46 @@
 						<div class="card">
 							<div class="card-body p-4">
 								<h5 class="mb-4">Add User</h5>
-								<form action="{{route('admin.store_country')}}" method="post">
+								<a href="{{route('admin.user_index')}}">Go back</a>
+								<form action="{{route('admin.user_Store')}}" method="post">
+									@csrf
 									<div class="row mb-3">
-										<label for="input35" class="col-sm-3 col-form-label">Enter Your Name</label>
+										<label for="input35" class="col-sm-3 col-form-label">First Name</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="input35" placeholder="Enter Your Name">
+											<input type="text" class="form-control" name="first_name" placeholder="Enter first Name">
 										</div>
 									</div>
 									<div class="row mb-3">
-										<label for="input36" class="col-sm-3 col-form-label">Phone No</label>
+										<label for="input35" class="col-sm-3 col-form-label">Last Name</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="input36" placeholder="Phone No">
+											<input type="text" class="form-control" name="last_name" placeholder="Enter last Name">
 										</div>
 									</div>
 									<div class="row mb-3">
-										<label for="input37" class="col-sm-3 col-form-label">Email Address</label>
+										<label for="input36" class="col-sm-3 col-form-label">Email</label>
 										<div class="col-sm-9">
-											<input type="email" class="form-control" id="input37" placeholder="Email Address">
-										</div>
-									</div>
-									<div class="row mb-3">
-										<label for="input38" class="col-sm-3 col-form-label">Choose Password</label>
-										<div class="col-sm-9">
-											<input type="email" class="form-control" id="input38" placeholder="Choose Password">
-										</div>
-									</div>
-									<div class="row mb-3">
-										<label for="input39" class="col-sm-3 col-form-label">Select Country</label>
-										<div class="col-sm-9">
-											<select class="form-select" id="input39">
-												<option selected="">Open this select menu</option>
-												<option value="1">One</option>
-												<option value="2">Two</option>
-												<option value="3">Three</option>
-											  </select>
-										</div>
-									</div>
-									<div class="row mb-3">
-										<label for="input40" class="col-sm-3 col-form-label">Address</label>
-										<div class="col-sm-9">
-											<textarea class="form-control" id="input40" rows="3" placeholder="Address"></textarea>
-										</div>
-									</div>
-									<div class="row mb-3">
-										<label class="col-sm-3 col-form-label"></label>
-										<div class="col-sm-9">
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox" id="input41">
-												<label class="form-check-label" for="input41">Check me out</label>
-											</div>
+											<input type="email" class="form-control"  name="email" placeholder="Email">
 										</div>
 									</div>
 									<div class="row">
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
 											<div class="d-md-flex d-grid align-items-center gap-3">
-												<button type="button" class="btn btn-primary px-4">Submit</button>
-												<button type="button" class="btn btn-light px-4">Reset</button>
+												<button type="submit" class="btn btn-primary px-4">Submit</button>
 											</div>
 										</div>
 									</div>
 								</from>
 							</div>
 						</div>
-				</div><!--end row-->
-</div>
-</div>
-		@include('admin.includes.footer')
+					</div><!--end row-->
+				</div>
+			</div>
+			@include('admin.includes.footer')
+		</div>
 	</div>
 	<!--end wrapper-->
 	@include('admin.includes.footer_script')
-
-	
-
 </body>
 
 </html>

@@ -11,6 +11,8 @@
 	<link href="{{URL::to('/')}}/public/admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="{{URL::to('/')}}/public/admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="{{URL::to('/')}}/public/admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="{{URL::to('/')}}/public/admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="{{URL::to('/')}}/public/admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{URL::to('/')}}/public/admin/assets/css/pace.min.css" rel="stylesheet" />
 	<script src="{{URL::to('/')}}/public/admin/assets/js/pace.min.js"></script>
@@ -24,5 +26,7 @@
 	<link rel="stylesheet" href="{{URL::to('/')}}/public/admin/assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="{{URL::to('/')}}/public/admin/assets/css/semi-dark.css" />
 	<link rel="stylesheet" href="{{URL::to('/')}}/public/admin/assets/css/header-colors.css" />
+	<!-- datatable  -->
+
 	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
 </head>

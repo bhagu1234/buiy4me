@@ -404,4 +404,9 @@ class UserProfileController extends Controller
         $from="from_order";
         return view('frontend.user.matched_trips',compact('data','from')); 
     }
+    public function treveller_store(Request $request)
+    {
+        $data= Country::all();
+        return view('frontend.user.create_trip',compact('data'));
+    }
 }

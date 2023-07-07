@@ -30,7 +30,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // UserProfileController
 Route::get('create_order',[UserProfileController::class,'create_order'])->name('user.create_order');
-Route::view('treveller','frontend.user.create_trip')->name('user.treveller');
+Route::get('treveller',[UserProfileController::class,'treveller_store'])->name('user.treveller');
 
 
 // UserProfileController

@@ -661,8 +661,13 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link  -toggle-nocaret" href="{{route('admin.create_country')}}">
+                    <a class="nav-link  -toggle-nocaret" href="{{route('admin.index_country')}}">
                         <div class="menu-title d-flex align-items-center">Country</div>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link  -toggle-nocaret" href="{{route('admin.index_country')}}">
+                        <div class="menu-title d-flex align-items-center">States</div>
                     </a>
                 </li>
             </ul>

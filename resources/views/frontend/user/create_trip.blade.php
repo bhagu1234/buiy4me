@@ -10,9 +10,21 @@
                      <div class="tab-pane  show fade tabs__tab active " id="on_way"  role="tabpanel" data-tab-info>
                         <form action="{{route('user.create_trip')}}" method="post">
                             @csrf
-                            <input type="text" name="from_location" class="form-control from_location" placeholder="from *" list="browsers_country" onkeyup="fatch_country(this.value,'travel_from')" required>
+                                <div class="mb-4">
+                                  <label for="single-select-field" class="form-label">from *</label>
+                                  <!-- <div id="browsers_country"> </div> -->
+                                  <select class="form-select single-select-field" data-placeholder="Choose one thing" name="from_location">
+                                    <option></option>
+                                    <option>Reactive</option>
+                                    <option>Solution</option>
+                                    <option>Conglomeration</option>
+                                    <option>Algoritm</option>
+                                    <option>Holistic</option>
+                                  </select>
+                                </div>
+                            <!-- <input type="text" name="from_location" class="form-control from_location" placeholder="from *" list="browsers_country" onkeyup="fatch_country(this.value,'travel_from')" required>
                             <datalist id="browsers_country"></datalist>
-                            <input type="text" name="to_location"  class="form-control to_location" placeholder="to*" list="browsers_country_to" onkeyup="fatch_country(this.value,'travel_to')" required>
+                            <input type="text" name="to_location"  class="form-control to_location" placeholder="to*" list="browsers_country_to" onkeyup="fatch_country(this.value,'travel_to')" required> -->
                             <datalist id="browsers_country_to"></datalist>
                             <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" required><br>
                             <button type="submit">Add trip</button>

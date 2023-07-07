@@ -37,3 +37,5 @@ Route::get('/admin-order',[OrderController::class,"index"])->name('admin.order_i
 Route::get('/admin-create_country',[CountryController::class,"create"])->name('admin.create_country');
 Route::post('/admin-store_country',[CountryController::class,"store"])->name('admin.store_country');
 Route::get('/admin-fatch_country',[CountryController::class,"fatch_country"])->name('admin.fatch_country');
+Route::get('/admin-delete_country/{id}',[CountryController::class,"delete_country"])->name('admin.delete_country');
+Route::get('/admin-index_country',[CountryController::class,"index"])->name('admin.index_country');
