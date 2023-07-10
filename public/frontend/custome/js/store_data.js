@@ -97,6 +97,18 @@ $(function()
         imagesPreview(this, 'div.gallery');
     });
 });
+$("#deliver_to_ord").change(function(){
+    var s=$(this).attr('data-name');
+    // alert(s);
+    var lblValue = document.getElementById("summery_Deliverto");
+    lblValue.innerText =  s;
+});
+$("#delivery_from_ord").change(function(){
+    var s=$(this).attr('data-name');
+    // alert(s);
+    var lblValue = document.getElementById("summery_Deliverfrom");
+    lblValue.innerText =  s;
+});
 function summery_vali(res)
 {
     if(res=='product_name')
@@ -109,12 +121,19 @@ function summery_vali(res)
     if(res=='product_price')
     {
         var edValue = document.getElementById("order_product_price");
-        var a = Number(edValue.value);
-        var b=Number(30);
-        var c= a+b;
-        var lblValue = document.getElementById("summery_pro_price");
-        lblValue.innerText =  a;
-        document.getElementById("summery_estimated_total").innerText =  c;
+        var productPric= Number(edValue.value);
+        var travller_re=productPric*Number(30)/Number(100);
+        var salseTax=productPric*Number(10)/Number(100);
+        var buy4mefee=productPric*Number(10)/Number(100);
+        var paymentproccessing=productPric*Number(5)/Number(100);
+        // var b=Number(30);
+        var total= productPric+travller_re+salseTax+buy4mefee+paymentproccessing;
+        var lblValue = $("#summery_pro_price").text("$"+edValue.value) 
+        document.getElementById("summery_estimated_total").value ="$"+total;
+        document.getElementById("summery_traveler_reward").value ="$"+travller_re;
+        document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
+        document.getElementById("summery_salesTax").value ="$"+salseTax;
+        document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
         
     }
     if(res=='product_qty')
@@ -131,20 +150,20 @@ function summery_vali(res)
         var lblValue = document.getElementById("sum_pro_description");
         lblValue.innerText =  s;
     }
-    if(res=='delivery_from')
-    {
-        var edValue = document.getElementById("delivery_from_ord");
-        var s = edValue.value;
-        var lblValue = document.getElementById("summery_Deliverfrom");
-        lblValue.innerText =  s;
-    }
-    if(res=='delivery_to')
-    {
-        var edValue = document.getElementById("deliver_to_ord");
-        var s = edValue.value;
-        var lblValue = document.getElementById("summery_Deliverto");
-        lblValue.innerText =  s;
-    }
+    // if(res=='delivery_from')
+    // {
+    //     var edValue = document.getElementById("delivery_from_ord");
+    //     var s = edValue.value;
+    //     var lblValue = document.getElementById("summery_Deliverfrom");
+    //     lblValue.innerText =  s;
+    // }
+    // if(res=='delivery_to')
+    // {
+    //     var edValue = document.getElementById("deliver_to_ord");
+    //     var s = edValue.value;
+    //     var lblValue = document.getElementById("summery_Deliverto");
+    //     lblValue.innerText =  s;
+    // }
 }
 
 $("#store_orderwith_details").click(function(){
@@ -159,6 +178,11 @@ $("#store_orderwith_details").click(function(){
     var devliver_to = $("input[name=devliver_to]").val();
     // var product_img = $("#product_images").prop('files')[0];   
     var during_time = $(".during_time").val();
+    var summery_traveler_reward = $("#summery_traveler_reward").val();
+    var summery_buy4me_fee = $("#summery_buy4me_fee").val();
+    var summery_salesTax = $("#summery_salesTax").val();
+    var summery_payment_processing = $("#summery_payment_processing").val();
+    var summery_estimated_total = $("#summery_estimated_total").val();
     if(product_link =="")
     {
         Swal.fire('Please Enter Product Link');
@@ -202,6 +226,11 @@ $("#store_orderwith_details").click(function(){
     formData.append("product_details", product_details);
     formData.append("devliver_to", devliver_to);
     formData.append("during_time", during_time);
+    formData.append("summery_traveler_reward", summery_traveler_reward);
+    formData.append("summery_buy4me_fee", summery_buy4me_fee);
+    formData.append("summery_salesTax", summery_salesTax);
+    formData.append("summery_payment_processing", summery_payment_processing);
+    formData.append("summery_estimated_total", summery_estimated_total);
     formData.append("_token", _token);
     $.ajax({
         enctype: 'multipart/form-data',

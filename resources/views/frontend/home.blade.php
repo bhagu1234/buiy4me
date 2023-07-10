@@ -15,6 +15,7 @@
          <!-- popular product area start -->
          <div class="popular-product-area wrapper-padding-6 pt-115 pb-70 bg-img" style="background-image: url(assets/img/bg/13.jpg)">
             <div class="container-fluid">
+            @include('admin.includes.validation')
                 <div class="section-title-10 text-center mb-85">
                     <h2>Most Popular for this month</h2>
                     <p>Buy4me shoppers and travelers who help each other access the world.</p>

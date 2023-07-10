@@ -11,6 +11,7 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
+			@include('admin.includes.validation')
             <h6 class="mb-0 text-uppercase">States </h6>
 				<hr/>
 				<div class="card">

@@ -34,14 +34,15 @@ class CountryController extends Controller
     {
         // $value=$request->value;
         // $data=Country::where('name','LIKE', '%'.$value.'%')->get();
-        // $data=Country::all();
+        $data=Country::all();
         // $opt="<select class='form-select browsers_country vodiapicker'  data-placeholder='Choose one thing' name='from_location'>";
-        // foreach($data as $row)
-        // {
-        //     $opt.="<option data-value=".$row->id." value=".$row->id." data-thumbnail='https://b4m.veravalonline.com/b4m/public/upload/country_flag/168864031131.flag-of-Andorra.png'>".$row->name." , <img src='https://b4m.veravalonline.com/b4m/public/upload/country_flag/168864031131.flag-of-Andorra.png'></option>";
-        //     // dd($opt);
+        foreach($data as $row)
+        {
+            $opt="<option data-name=".$row->name." value=".$row->id." >".$row->name."</option>";
+            echo $opt;
+            // dd($opt);
            
-        // }
+        }
         // $opt.="</select>";
         // echo $opt;
     }

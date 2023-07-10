@@ -16,6 +16,7 @@
         <!-- login-area start -->
         <div class="register-area ptb-100">
             <div class="container-fluid">
+                @include('admin.includes.validation')
                 <div class="row">
                     <div class="col-md-12 col-12 col-lg-6 col-xl-6 ms-auto me-auto">
                         <div class="login">

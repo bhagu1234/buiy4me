@@ -11,23 +11,24 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Requests;
 class AuthController extends Controller
 {
+  
     public function Registrion(Request $request)
     {
         return view('frontend.Auth.registrion');
     }
     public function userRegistration(Request $request)
     {
-       if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) 
-       {
-
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) 
+        {
             if(User::where('email', $request->email)->first() != null)
             {
-
-                // flash(translate('Email or Phone already exists.'));
+                Session::put('error','Email already exits!!');
                 return back();
-
             }
 
         }
@@ -49,8 +50,9 @@ class AuthController extends Controller
                 $userModel->first_name = $user_data->first_name;
                 Auth::login($userModel); 
         }
-        return redirect()->route("home")->withSuccess('Great! You have Successfully loggedin');
-   }
+        // Session::put('success','You are logged in successfully!!');
+        return redirect()->route("home");
+    }
    public function login(Request $request)
    {
     //   dd(Auth::User());
@@ -66,31 +68,40 @@ class AuthController extends Controller
         $email = $request->email;
         $password = $request->password;
         $user = User::where('email',$email)->first();
-        $pas_check= Hash::check($password, $user->password);
-        if($pas_check==true)
+        if($user !=null)
         {
-            if ($user) 
+            $pas_check= Hash::check($password, $user->password);
+            if($pas_check==true)
             {
-                $userModel = new User();
-                $userModel->id = $user->id;
-                $userModel->email = $user->email;
-                $userModel->password = $user->password;
-                $userModel->first_name = $user->first_name;
-                Auth::login($userModel);
+                if ($user) 
+                {
+                    $userModel = new User();
+                    $userModel->id = $user->id;
+                    $userModel->email = $user->email;
+                    $userModel->password = $user->password;
+                    $userModel->first_name = $user->first_name;
+                    Auth::login($userModel); 
+                }
+                // Session::flush();
+                // Session::put('success','You are logout successfully!!');
+                return redirect('/')->withSuccess('You have Successfully loggedin');
             }
-            // return redirect('/');
-            flash('The post was updated!', 'success');
-            return redirect('/')->withSuccess('You have Successfully loggedin');
+                
+            else
+            {
+                Session::put('error','Something Went wrong!!');
+                return back();
+            }
         }
-        else
-        {
-            return back();
-        }
+        Session::put('error','Something Went wrong!!');
+                return back();
+       
        
    }
    public function logout(Request $request)
    {
-        Session::flush();
+        flash('logged in !', 'success');
+        Session::put('success','You are logout successfully!!');
         Auth::logout();
    
         return Redirect('login');

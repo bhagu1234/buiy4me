@@ -22,6 +22,7 @@
                     </nav>
                 </div>
                 <div class="header-cart">
+                    
                      @if(!empty(Auth::User()))
                         <a class="icon-cart-furniture" href="#">
                           Welcome {{Auth::User()->first_name}}

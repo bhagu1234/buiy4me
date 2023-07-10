@@ -12,14 +12,12 @@
                             @csrf
                                 <div class="mb-4">
                                   <label for="single-select-field" class="form-label">from *</label>
-                                  <!-- <div id="browsers_country"> </div> -->
-                                  <select class="form-select single-select-field" data-placeholder="Choose one thing" name="from_location">
-                                    <option></option>
-                                    <option>Reactive</option>
-                                    <option>Solution</option>
-                                    <option>Conglomeration</option>
-                                    <option>Algoritm</option>
-                                    <option>Holistic</option>
+                                  <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location">
+                                  </select>
+                                </div>
+                                <div class="mb-4">
+                                  <label for="single-select-field" class="form-label">To *</label>
+                                  <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location">
                                   </select>
                                 </div>
                             <!-- <input type="text" name="from_location" class="form-control from_location" placeholder="from *" list="browsers_country" onkeyup="fatch_country(this.value,'travel_from')" required>

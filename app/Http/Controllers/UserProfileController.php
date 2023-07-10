@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Trip;
 use App\Models\OrderDetail;
 use App\Models\MatchedTripOrder;
+use App\Models\Country;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
@@ -87,7 +88,7 @@ class UserProfileController extends Controller
     }
     public function order_product(Request $request)
     {	
-        // dd($request);
+        dd($request);
         $curDate=strtotime(date('y-m-d'));
         $during_d=$request->during_time;
         // dd($during_d);

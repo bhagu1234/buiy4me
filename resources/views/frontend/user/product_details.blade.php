@@ -53,7 +53,7 @@ $userMobile=Auth::User()->mobile;
                     <div class="col-md-6">
                       <div class="contact-input-style mb-30">
                         <label>Price</label>
-                        <input name="product_price" required="" type="text" placeholder="enter Price" onkeyup="summery_vali('product_price')" id="order_product_price" >
+                        <input name="product_price" required="" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price')" id="order_product_price" >
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -92,13 +92,17 @@ $userMobile=Auth::User()->mobile;
                       <div class="col-md-6">
                         <div class="contact-input-style mb-30">
                           <label>Delivery From</label>
-                          <input name="devliver_from" placeholder="Enter devliver from" required="" type="text" onkeyup="summery_vali('delivery_from')" id="delivery_from_ord">
+                          <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" id="delivery_from_ord">
+                          </select>
+                          <!-- <input name="devliver_from" placeholder="Enter devliver from" required="" type="text" onkeyup="summery_vali('delivery_from')" id="delivery_from_ord"> -->
                         </div>
                       </div>
                       <div class="col-md-6">
                           <div class="contact-input-style mb-30">
                               <label>Deliver To</label>
-                              <input name="devliver_to" required="" type="text" placeholder="Enter devliver to" onkeyup="summery_vali('delivery_to')" id="deliver_to_ord">
+                              <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord">
+                              </select>
+                              <!-- <input name="devliver_to" required="" type="text" placeholder="Enter devliver to" onkeyup="summery_vali('delivery_to')" id="deliver_to_ord"> -->
                           </div>
                       </div>
                       <div class="col-md-6">
@@ -201,7 +205,7 @@ $userMobile=Auth::User()->mobile;
                                       <span>Deliver to </span> :- <span id="summery_Deliverto"></span>
                                   </div>
                                   <div class="">
-                                      <span>Deliver before </span> :- <span id="summery_Deliverbefore"></span>
+                                      <span>Deliver before </span> :- <span id="summery_Deliverbefore"> Up to 1 Month</span>
                                   </div>
                                   <div class="">
                                       <span>Quantity</span> :- <span id="summery_Quantity">0</span>
@@ -211,19 +215,32 @@ $userMobile=Auth::User()->mobile;
                                   </div>
                                   <p id="sum_pro_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmol tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
                                   <div class="details-price">
-                                      <span>Product price</span> :-<span id="summery_pro_price">$120.00</span>
+                                      <span>Product price</span> :-<span id="summery_pro_price"></span>
                                   </div>
                                   <div class="">
-                                      <span>Traveler reward </span> :-<span id="summery_traveler_reward">$10.00</span>
+                                      <span>Traveler reward </span> :-
+                                      <input type="text" id="summery_traveler_reward" readonly /> 
+                                      <!-- <span id="summery_traveler_reward">30%</span> -->
                                   </div>
                                   <div class="">
-                                      <span>Grabr fee </span>:-<span id="summery_grabr_fee">$10.00</span>
+                                      <span>Buy4me fee </span>:-
+                                      <input type="text" id="summery_buy4me_fee" readonly />
+                                      <!-- <span id="summery_buy4me_fee">10%</span> -->
                                   </div>
                                   <div class="">
-                                      <span>Payment processing </span>:-<span id="summery_payment_processing">$10.00</span>
+                                      <span>Sales Tax</span>:-
+                                      <input type="text" id="summery_salesTax" readonly />
+                                      <!-- <span id="summery_salesTax">10%</span> -->
                                   </div>
                                   <div class="">
-                                      <span>Estimated total </span>:-<span id="summery_estimated_total">$160.00</span>
+                                      <span>Payment processing </span>:-
+                                      <input type="text" id="summery_payment_processing" readonly />
+                                      <!-- <span id="summery_payment_processing">5%</span> -->
+                                  </div>
+                                  <div class="">
+                                      <span>Estimated total </span>:-
+                                      <input type="text" id="summery_estimated_total" readonly />
+                                      <!-- <span id="summery_estimated_total">$160.00</span> -->
                                   </div>
                                   <!-- <div class="quick-view-select">
                                       <div class="select-option-part">

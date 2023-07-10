@@ -4390,14 +4390,12 @@ input::placeholder {
 
 
 .user-box {
-
-
 	display: flex;
     align-items: center;
     height: 60px;
     border-left: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
-
+	margin-left: auto;
 
 }
 
