@@ -1,9 +1,3 @@
-<form action="{{route('admin.store_country')}}" method="post" enctype="multipart/form-data">
-    @csrf
-    <input type="text" name="name">
-    <input type="file" name="flag">
-    <input type="submit">
-</from>
 @include('admin.includes.header')
 <body>
 	<!--wrapper-->
@@ -22,19 +16,24 @@
                     <div class="col-lg-8 mx-auto">
 						<div class="card">
 							<div class="card-body p-4">
-								<h5 class="mb-4">Create Country</h5>
-                                <form action="{{route('admin.store_country')}}" method="post" enctype="multipart/form-data">
+								<h5 class="mb-4">Create State</h5>
+                                <form action="{{route('admin.update_state')}}" method="post" >
                                 @csrf
 									<div class="row mb-3">
                                         <label for="input35" class="col-sm-3 col-form-label">Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Country Name">
+											<input type="hidden" name="id" value="{{$data->id}}">
+                                            <input type="text" class="form-control" name="city_name" value="{{$data->city_name}}" placeholder="Enter City Name" required>
                                         </div>
 									</div>
 									<div class="row mb-3">
-										<label for="input36" class="col-sm-3 col-form-label">Flag Img</label>
+										<label for="input36" class="col-sm-3 col-form-label">Country</label>
 										<div class="col-sm-9">
-											<input type="file" class="form-control"  name ="flag">
+											<select class="form-select single-select-field" data-placeholder="Choose one thing" name="country" required>
+												@foreach($country as $row)
+													<option <?php if($data->country_id==$row->id) { echo 'selected'; } ?> value="{{$row->id}}">{{$row->name}}</option>
+												@endforeach
+											</select>
 										</div>
 									</div>
                                     <div class="row">

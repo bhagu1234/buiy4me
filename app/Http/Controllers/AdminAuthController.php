@@ -30,6 +30,7 @@ class AdminAuthController extends Controller
         $email = $request->email;
         $password = $request->password;
         $user = Admin::where('email',$email)->first();
+        // dd($user);
         $pas_check= Hash::check($password, $user->password);
         if($pas_check==true)
         {
@@ -41,11 +42,12 @@ class AdminAuthController extends Controller
                 $userModel->password = $user->password;
                 $user = auth()->guard('admin')->login($userModel);
             }
-                Session::flush();
-                Session::put('success','You are Login successfully!!');
-                return redirect('/admin')->withSuccess('You have Successfully loggedin');
-            }
-            else
+            // dd(auth()->guard('admin')->user());
+            //     Session::flush();
+            //     Session::put('success','You are Login successfully!!');
+            return redirect('/admin');
+        }
+        else
         {
             return back();
         }

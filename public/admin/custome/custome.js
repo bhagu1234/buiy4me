@@ -1,3 +1,4 @@
+var base_path = $("#url").val();
 // accept only number -==============================
 function allowNumbersOnly(e) {
     var code = (e.which) ? e.which : e.keyCode;
@@ -29,3 +30,16 @@ $(document).ready(function() {
         }, false)
       })
   })()
+
+  // fatch country =============================
+
+$(document).ready(function() {
+  $(".browsers_country").html("");
+  $.ajax({
+      type:'get',
+      url: base_path+"/admin-fatch_country",
+      success:function(res){
+          $(".browsers_country").append(res);
+      }
+  })
+})

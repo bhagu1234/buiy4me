@@ -30,12 +30,6 @@ $userMobile=Auth::User()->mobile;
                 <?php
                     $img=$data->product_imgs;
                     $img=explode(' , ', $img);
-                    // foreach($img as $i)
-                    // {
-                    //     $i=$i;
-                    // }
-                    // $i=str_replace([']','[']," " ,$i);
-                    // $i=trim($i);
                 ?>
                 <div class="tab-content">
                     <div class="tab-pane active show fade" id="order_Orderpublished" role="tabpanel">
@@ -93,10 +87,10 @@ $userMobile=Auth::User()->mobile;
                                                         </div>
                                                     </div>
                                                     <div class="">
-                                                        <span>Deliver from </span> :- {{$data->deliver_from}}<span ></span>
+                                                        <span>Deliver from </span> :- {{$data->fromCountry}},{{$data->fromCity}}<span ></span>
                                                     </div>
                                                     <div class="">
-                                                        <span>Deliver to </span> :-{{$data->deliver_to}} <span ></span>
+                                                        <span>Deliver to </span> :-{{$data->toCountry}},{{$data->toCIty}} <span ></span>
                                                     </div>
                                                     <div class="">
                                                         <span>Deliver before </span> :- <span>{{$data->during_time}}</span>
@@ -114,19 +108,22 @@ $userMobile=Auth::User()->mobile;
                                                     </div>
                                                     <p>{{$data->product_details}}</p>
                                                     <div class="details-price">
-                                                        <span>Product price</span> :-<span id="">${{$data->product_price}}</span>
+                                                        <span>Product price</span> :-<span id="">{{$data->product_price}}</span>
                                                     </div>
                                                     <div class="">
-                                                        <span>Traveler reward </span> :-<span id="">${{$data->traveller_reward}}</span>
+                                                        <span>Traveler reward </span> :-<span id="">{{$data->traveller_reward}}</span>
                                                     </div>
                                                     <div class="">
-                                                        <span>Grabr fee </span>:-<span id="">${{$data->us_sale_tax}}</span>
+                                                        <span>Sales Tax </span> :-<span id="">{{$data->us_sale_tax}}</span>
                                                     </div>
                                                     <div class="">
-                                                        <span>Payment processing </span>:-<span id="">${{$data->buy4me_fee}}</span>
+                                                        <span>Buy4me fee </span>:-<span id="">{{$data->buy4me_fee}}</span>
+                                                    </div>
+                                                    <div class="">
+                                                        <span>Payment processing </span>:-<span id="">{{$data->payment}}</span>
                                                     </div>
                                                     <div class="details-price">
-                                                        <span>Estimated total </span>:-<span id="">${{$data->estimated_total}}</span>
+                                                        <span>Estimated total </span>:-<span id="">{{$data->estimated_total}}</span>
                                                     </div>
                                                     <div class="quickview-btn-cart">
                                                         <a class="btn-hover-black" href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" >Cancle Order</a>

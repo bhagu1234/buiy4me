@@ -7,6 +7,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\StateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,15 @@ use App\Http\Controllers\AdminAuthController;
 
     // AdminAuthController
     Route::get('admin/logout', [AdminAuthController::class, 'adminLogout'])->name('adminLogout');
+
+    // StateController
+    Route::get('/admin-index_state',[StateController::class,"index"])->name('admin.index_state');
+    Route::get('/admin-create_state',[StateController::class,"create"])->name('admin.create_state');
+    Route::post('/admin-store_state',[StateController::class,"store"])->name('admin.store_state');
+    Route::get('/admin-edit_state/{id}',[StateController::class,"edit"])->name('admin.edit_state');
+    Route::post('/admin-update_state',[StateController::class,"update"])->name('admin.update_state');
+    Route::get('/admin-delete_state/{id}',[StateController::class,"delete"])->name('admin.delete_state');
+    Route::get('/admin-fatch_state',[StateController::class,"fatch_state"])->name('admin.fatch_state');
 // });
 Route::get('/admin-login', [AdminAuthController::class, 'getLogin'])->name('adminLogin');
 Route::post('/admin-LoginPost', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost');

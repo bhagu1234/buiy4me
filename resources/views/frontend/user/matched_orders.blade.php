@@ -54,7 +54,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -109,7 +109,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -157,7 +157,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -206,7 +206,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -255,7 +255,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else

@@ -58,23 +58,40 @@
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>Delivery route</label>
-                                <input name="deliver_from" required="" type="text" placeholder="deliver from" value="{{$data->deliver_from}}" list="editOrderFrom" onkeyup="fatch_country(this.value,'editOrderFrom')">
-                                <datalist id="editOrderFrom"></datalist>
+                                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_from" onchange="getState(this.value,'devliver_fromOrder')">
+                                    @foreach($country as $r)
+                                        <option <?php if($data->deliver_from_country==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="contact-input-style mb-30">
+                                <label>Delivery From City</label>
+                                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_fromOrderCity" id="deliver_fromOrderCity">
+                                    @foreach($state as $r)
+                                        <option <?php if($data->deliver_from_state==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->city_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>Delivery to</label>
-                                <input name="deliver_to" required="" type="text" placeholder="Deliver to" value="{{$data->deliver_to}}" list="editOrderTo" onkeyup="fatch_country(this.value,'editOrderTo')">
-                                <datalist id="editOrderTo"></datalist>
+                                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_to" onchange="getState(this.value,'devliver_ToOrder')">
+                                    @foreach($country as $r)
+                                        <option <?php if($data->deliver_to_country==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="contact-input-style mb-30">
+                                <label>Delivery To City</label>
+                                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_toOrderCity" id="deliver_toOrderCity">
+                                    @foreach($state_to as $r)
+                                        <option <?php if($data->deliver_to_state==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->city_name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>How long are you willing to wait?</label>
-                                <input name="during_date" required="" type="date" value="<?php echo date('Y-m-d',strtotime($data["during_time"])) ?>">
-                                <!-- <select name="during_time" >
-                                <option value="up_one_month">Up to 1 Month</option>
-                                    <option value="up_3_week">Up to 3 Week</option>
-                                    <option value="up_2_week"> Up to 2 week</option>
-                                    <option value="up_2_months">Up To 2 months</option>
-                                </select> -->
+                                <input name="during_date"  type="date"  min="<?php echo date('Y-m-d'); ?>"  value="<?php echo date('Y-m-d',strtotime($data["during_time"])) ?>" >
+                               
                                 <button type="submit">Update order</button>
                             </div>
                         </div>

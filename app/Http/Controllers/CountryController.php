@@ -35,16 +35,15 @@ class CountryController extends Controller
         // $value=$request->value;
         // $data=Country::where('name','LIKE', '%'.$value.'%')->get();
         $data=Country::all();
-        // $opt="<select class='form-select browsers_country vodiapicker'  data-placeholder='Choose one thing' name='from_location'>";
+        $opt="<option selected disabled>--select--</option>";
         foreach($data as $row)
         {
-            $opt="<option data-name=".$row->name." value=".$row->id." >".$row->name."</option>";
-            echo $opt;
+            $opt.="<option data-name=".$row->name." value=".$row->id." >".$row->name."</option>";
+            // echo $opt;
             // dd($opt);
            
         }
-        // $opt.="</select>";
-        // echo $opt;
+        echo $opt;
     }
     public function delete_country(Request $request)
     {

@@ -29,7 +29,6 @@ $userMobile=Auth::User()->mobile;
             <div class="tab-content">
               <div class="tab-pane active show fade" id="product_details_p" role="tabpanel">
                 <div class="custom-row">
-                  <!-- <form id="contact-form" class="contact-form" action="" method="post"> -->
                   <div class="row">
                     <div class="col-md-6">
                       <div class="contact-input-style mb-30">
@@ -81,52 +80,61 @@ $userMobile=Auth::User()->mobile;
                       </div>
                     </div>
                   </div>
-                  <!-- </form> -->
                 </div>
               </div>
               <div class="tab-pane fade" id="delivery_details_p" role="tabpanel">
-                <div class="custom-row">
+                <div class="custom-row">                  
+                  <div class="row">
                   <p><b>Confirm Delivery City and Date</b></p>
-                    <!-- <form id="contact-form" class="contact-form"  method="post"> -->
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="contact-input-style mb-30">
-                          <label>Delivery From</label>
-                          <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" id="delivery_from_ord">
-                          </select>
-                          <!-- <input name="devliver_from" placeholder="Enter devliver from" required="" type="text" onkeyup="summery_vali('delivery_from')" id="delivery_from_ord"> -->
-                        </div>
+                    <div class="col-md-6">
+                      <div class="contact-input-style mb-30">
+                        <label>Delivery From Country</label>
+                        <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" onchange="getState(this.value,'devliver_from')" id="delivery_from_ord">
+                        </select>
                       </div>
-                      <div class="col-md-6">
-                          <div class="contact-input-style mb-30">
-                              <label>Deliver To</label>
-                              <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord">
-                              </select>
-                              <!-- <input name="devliver_to" required="" type="text" placeholder="Enter devliver to" onkeyup="summery_vali('delivery_to')" id="deliver_to_ord"> -->
-                          </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="contact-input-style mb-30">
+                        <label>Delivery From City</label>
+                        <select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_from_city" id="deliveryFromCity">
+                        </select>
                       </div>
-                      <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
                         <div class="contact-input-style mb-30">
-                          <label>How long are you willing to wait? </label>
-                          <select name="select" class="during_time" name="during_time">
-                              <option value="up_one_month">Up to 1 Month</option>
-                              <option value="up_3_week">Up to 3 Week</option>
-                              <option value="up_2_week"> Up to 2 week</option>
-                              <option value="up_2_months">Up To 2 months</option>
+                          <label>Deliver To</label>
+                          <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord" onchange="getState(this.value,'deliver_to_ord')" >
                           </select>
                         </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
-                          <a href="#product_summery_p" data-bs-toggle="tab" role="tab">
-                            <h4>Next</h4>
-                          </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-input-style mb-30">
+                          <label>Deliver To City</label>
+                          <select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_to_city" id="deliver_to_ordCity" >
+                          </select>
                         </div>
-                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="contact-input-style mb-30">
+                        <label>How long are you willing to wait? </label>
+                        <select name="select" class="during_time" name="during_time">
+                            <option value="up_one_month">Up to 1 Month</option>
+                            <option value="up_3_week">Up to 3 Week</option>
+                            <option value="up_2_week"> Up to 2 week</option>
+                            <option value="up_2_months">Up To 2 months</option>
+                        </select>
                       </div>
-                      <!-- </form> -->
+                    </div>
+                    <div class="col-md-12">
+                      <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
+                        <a href="#product_summery_p" data-bs-toggle="tab" role="tab">
+                          <h4>Next</h4>
+                        </a>
+                      </div>
+                      </div>
                     </div>
                   </div>
+                </div>
                   <div class="tab-pane fade" id="product_summery_p" role="tabpanel">
                     <div class="custom-row">
                       <div class="product-details ptb-100 pb-90">

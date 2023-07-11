@@ -3,6 +3,7 @@
         <nav class="navbar navbar-expand gap-3">
             <div class="topbar-logo-header d-none d-lg-flex">
                 <div class="">
+                    <input type="hidden" id="url" value="{{URL::to('/')}}">
                     <img src="{{URL::to('/')}}/public/frontend/assets/img/logo/2.png" class="logo-icon" alt="logo icon">
                 </div>
             </div>
@@ -84,7 +85,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link  -toggle-nocaret" href="{{route('admin.index_country')}}">
+                        <a class="nav-link  -toggle-nocaret" href="{{route('admin.index_state')}}">
                             <div class="menu-title d-flex align-items-center">States</div>
                         </a>
                     </li>

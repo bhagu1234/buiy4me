@@ -32,35 +32,16 @@
                         <div class="stars-container first">
                             <span>Travel From :-</span>
                             <div class="stars">
-                                <!-- <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i> -->
                             </div>
-                            <span>{{$data->deliver_from}}</span>
+                            <span>{{$data->fromCountry}},{{$data->fromcity}}</span>
                         </div>
                         <div class="stars-container second">
                             <span>Travel to :-</span>
-                            <div class="stars">
-                                <!-- <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i> -->
-                            </div>
-                            <span>{{$data->deliver_to}}</span>
+                            <span>{{$data->toCountry}},{{$data->toCountry}}</span>
                         </div>
                         <div class="stars-container second">
                             <span>Develer On :-</span>
-                            <div class="stars">
-                                <!-- <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i>
-                                <i class="fa-regular fa-star" ></i> -->
-                            </div>
-                            <span>{{$data->during_time}}</span>
+                            <span>{{$data->toCity}}</span>
                         </div>
                     </div>
                     <!-- <p>Mobile Number :- <span >{{$data->mobile}}</span></p>

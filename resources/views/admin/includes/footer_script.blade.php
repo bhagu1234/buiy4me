@@ -14,4 +14,7 @@
 	<!--app JS-->
 	<script src="{{URL::to('/')}}/public/admin/assets/js/app.js"></script>
 	<!-- custome js  -->
-	<script src="{{URL::to('/')}}/public/admin/custome/custome.js"></script>
+	<script src="{{URL::to('/')}}/public/admin/custome/custome.js"></script>  
+	<!-- select two  -->
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="{{URL::to('/')}}/public/admin/assets/plugins/select2/js/select2-custom.js"></script>

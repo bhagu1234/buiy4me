@@ -8,7 +8,7 @@ $userMobile=Auth::User()->mobile;
 	    <div class="product-description-review-area pb-90">
             <div class="container">
                 <div class="product-description-review text-center">
-                     <h2> Trips  <button id="AddTripModal">Add Trip</button></h2> 
+                     <h5> Trips  &nbsp;&nbsp;<a href="{{route('user.treveller')}}">Add Trip</a></h5> 
                     
                     <div class="description-review-title nav tabs" role=tablist>
                       <span data-tab-value="#recent_tab" style="width:150px;">Recent <?php echo $cur+$upc; ?></span>
@@ -31,7 +31,7 @@ $userMobile=Auth::User()->mobile;
                                       <a href="#">check Offer</a>
                                     </div>
                                   </div>
-                                  <p>{{$row->from_location}} -> {{$row->to_location}}</p>
+                                  <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
                                   <p>{{$row->travel_date}}</p>
                                 </div>
                               </div>
@@ -57,7 +57,7 @@ $userMobile=Auth::User()->mobile;
                                           <a href="{{route('user.matched_trip',['id'=>$row->id,'from'=>'trip'])}}">check Offer</a>
                                         </div>
                                       </div>
-                                      <p>{{$row->from_location}} -> {{$row->to_location}}</p>
+                                      <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
                                       <p>{{$row->travel_date}}</p>
                                     </div>
                                   </div>
@@ -85,7 +85,7 @@ $userMobile=Auth::User()->mobile;
                                         <a href="#">check Offer</a>
                                       </div>
                                     </div>
-                                    <p>{{$row->from_location}} -> {{$row->to_location}}</p>
+                                    <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
                                     <p>{{$row->travel_date}}</p>
                                   </div>
                                 </div>
@@ -102,16 +102,14 @@ $userMobile=Auth::User()->mobile;
         
         <!--add trip modal -->
         <!-- Modal -->
-        <div class="modal fade" id="StoreTripDataMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <!-- <div class="modal fade" id="StoreTripDataMo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Add New Trip</h5>
-                  <!-- <span aria-hidden="true">&times;</span> -->
                 </button>
               </div>
               <div class="modal-body">
-                <!-- <p>With a trip added, you can make multiple offers and make more money.</p> -->
                 <div class="description-review-title nav tabs" role=tablist>
                     <span data-tab-value="#on_way" style="width:150px;">On Way</span>
                     <span  data-tab-value="#round_trip"style="width:150px;">Round Trip</span>
@@ -123,7 +121,7 @@ $userMobile=Auth::User()->mobile;
                       <input type="hidden" class="user_mobile" name="user_mobile"  value={{$userMobile}}>
                       <input type="text" name="from_location" class="form-control from_location" placeholder="from *" required>
                       <input type="text" name="to_location"  class="form-control to_location" placeholder="to*" required>
-                      <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" required><br>
+                      <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>"  required><br>
                       <button type="submit">Add trip</button>
                     </form>
                   </div>
@@ -143,30 +141,23 @@ $userMobile=Auth::User()->mobile;
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- verify mobile numbeer ======================= -->
-        <div class="modal fade" id="verifyMobileNumberModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <!-- <div class="modal fade" id="verifyMobileNumberModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h6 class="modal-title" id="exampleModalLongTitle">Verify Your Phone Number</h6>
-                  <!-- <span aria-hidden="true">&times;</span> -->
                 </button>
               </div>
               <div class="modal-body">
-                <!-- <p>This allows shoppers, travelers or Grabr to quickly reach you. Your number won’t be shared with any community member until an order is confirmed.</p> -->
-                <!-- <form class="VerifyMobileNumber" >
-                  @csrf -->
                   <form>
                     <label>Phone Number:</label>
                     <input type="text" id="mobile_number" class="form-control" placeholder="+91********" >
                     <div id="recaptcha-container"></div>
                     <button type="button" class="btn btn-success" onclick="phoneSendAuth();">SendCode</button>
                   </form>
-                  <!-- <input type="text" name="Phone" class="form-control verfiyMobile" placeholder="mobile *"  onkeypress="allowNumbersOnly(event)" required> -->
-                  <!-- <button type="submit">Send MSM</button>
-                </form> -->
                 <div class="card" style="margin-top: 10px">
               <div class="card-header">
                 Enter Verification code
@@ -189,7 +180,7 @@ $userMobile=Auth::User()->mobile;
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- menu area end -->
 	    @include('frontend.includes.footer');
 		<!-- all js here -->

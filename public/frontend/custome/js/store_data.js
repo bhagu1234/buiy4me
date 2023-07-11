@@ -97,18 +97,18 @@ $(function()
         imagesPreview(this, 'div.gallery');
     });
 });
-$("#deliver_to_ord").change(function(){
-    var s=$(this).attr('data-name');
-    // alert(s);
-    var lblValue = document.getElementById("summery_Deliverto");
-    lblValue.innerText =  s;
-});
-$("#delivery_from_ord").change(function(){
-    var s=$(this).attr('data-name');
-    // alert(s);
-    var lblValue = document.getElementById("summery_Deliverfrom");
-    lblValue.innerText =  s;
-});
+// $("#deliver_to_ord").change(function(){
+//     var s=$(this).attr('data-name');
+//     // alert(s);
+//     var lblValue = document.getElementById("summery_Deliverto");
+//     lblValue.innerText =  s;
+// });
+// $("#delivery_from_ord").change(function(){
+//     var s=$(this).attr('data-name');
+//     // alert(s);
+//     var lblValue = document.getElementById("summery_Deliverfrom");
+//     lblValue.innerText =  s;
+// });
 function summery_vali(res)
 {
     if(res=='product_name')
@@ -150,20 +150,6 @@ function summery_vali(res)
         var lblValue = document.getElementById("sum_pro_description");
         lblValue.innerText =  s;
     }
-    // if(res=='delivery_from')
-    // {
-    //     var edValue = document.getElementById("delivery_from_ord");
-    //     var s = edValue.value;
-    //     var lblValue = document.getElementById("summery_Deliverfrom");
-    //     lblValue.innerText =  s;
-    // }
-    // if(res=='delivery_to')
-    // {
-    //     var edValue = document.getElementById("deliver_to_ord");
-    //     var s = edValue.value;
-    //     var lblValue = document.getElementById("summery_Deliverto");
-    //     lblValue.innerText =  s;
-    // }
 }
 
 $("#store_orderwith_details").click(function(){
@@ -174,8 +160,10 @@ $("#store_orderwith_details").click(function(){
     var product_qty = $("input[name=product_qty]").val();
     var box = $("input[name=box]").val();
     var product_details = $(".product_details").val();
-    var devliver_from = $("input[name=devliver_from]").val();
-    var devliver_to = $("input[name=devliver_to]").val();
+    var devliver_from_country = $("#delivery_from_ord").val();
+    var devliver_to_country = $("#deliver_to_ord").val();
+    var devliver_from_city = $("#deliveryFromCity").val();
+    var devliver_to_city = $("#deliver_to_ordCity").val();
     // var product_img = $("#product_images").prop('files')[0];   
     var during_time = $(".during_time").val();
     var summery_traveler_reward = $("#summery_traveler_reward").val();
@@ -203,16 +191,6 @@ $("#store_orderwith_details").click(function(){
         Swal.fire('Please Enter Product qty');
         return false
     }
-    if(devliver_from =="")
-    {
-        Swal.fire('Please Enter Product Deliver from');
-        return false
-    }    
-    if(devliver_to =="")
-    {
-        Swal.fire('Please Enter Product Deliver To');
-        return false
-    }
     let formData = new FormData();
     $.each($("#product_images_pro")[0].files, function(i, file) {            
         formData.append('file[]', file);
@@ -222,9 +200,11 @@ $("#store_orderwith_details").click(function(){
     formData.append("product_price", product_price);
     formData.append("product_qty", product_qty);
     formData.append("box", box);
-    formData.append("devliver_from", devliver_from);
     formData.append("product_details", product_details);
-    formData.append("devliver_to", devliver_to);
+    formData.append("devliver_from_country", devliver_from_country);
+    formData.append("devliver_to_country", devliver_to_country);
+    formData.append("devliver_from_city", devliver_from_city);
+    formData.append("devliver_to_city", devliver_to_city);
     formData.append("during_time", during_time);
     formData.append("summery_traveler_reward", summery_traveler_reward);
     formData.append("summery_buy4me_fee", summery_buy4me_fee);

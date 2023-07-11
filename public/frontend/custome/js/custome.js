@@ -11,37 +11,6 @@ $(document).ready(function() {
         }
     })
 })
-function fatch_country(res,from)
-{
-    // $("#browsers_country").html("");
-    // $("#browsers_country_to").html("");
-    // $("#editOrderFrom").html("");
-    // $("#editOrderTo").html("");
-    // $.ajax({
-    //     type:'get',
-    //     url: base_path+"/admin-fatch_country",
-    //     data:{'value':res},
-    //     success:function(res){
-    //         if(from=='travel_from')
-    //         {
-    //             $("#browsers_country").append(res);
-    //         }
-    //         else if(from=='travel_to')
-    //         {
-    //             $("#browsers_country_to").append(res);
-    //         }
-    //         else if(from=='editOrderFrom')
-    //         {
-    //             $("#editOrderFrom").append(res);
-    //         }
-    //         else if(from=='editOrderTo')
-    //         {
-    //             $("#editOrderTo").append(res);
-    //         }
-           
-    //     }
-    // })
-}
 const tabs = document.querySelectorAll('[data-tab-value]')
 const tabInfos = document.querySelectorAll('[data-tab-info]')
 tabs.forEach(tab => {
@@ -146,4 +115,51 @@ statusBtn.addEventListener("click", function(){
 });
 
 // profile page pending hover ends
+
+// get city name 
+function getState(res,fun)
+{
+    $.ajax({
+        type:'get',
+        url: base_path+"/admin-fatch_state",
+        data:{id:res},
+        success:function(result){
+            if(fun=="from_travel")
+            {
+                $("#travel_from_state").html("");
+                $("#travel_from_state").append(result);
+            }
+            if(fun=="to_travel")
+            {
+                $("#travel_to_state").html("");
+                $("#travel_to_state").append(result);
+            }
+            if(fun=="devliver_from")
+            {
+                var abc = $('option:selected',"#delivery_from_ord").data("name");
+                document.getElementById("summery_Deliverfrom").innerText =  abc;
+                $("#deliveryFromCity").html("");
+                $("#deliveryFromCity").append(result);
+            }
+            if(fun=="deliver_to_ord")
+            {
+                var abc = $('option:selected',"#deliver_to_ord").data("name");
+                document.getElementById("summery_Deliverto").innerText =  abc;
+                $("#deliver_to_ordCity").html("");
+                $("#deliver_to_ordCity").append(result);
+            }
+            if(fun=="devliver_fromOrder")
+            {
+                $("#deliver_fromOrderCity").html("");
+                $("#deliver_fromOrderCity").append(result);
+            }
+            if(fun=="devliver_ToOrder")
+            {
+                $("#deliver_toOrderCity").html("");
+                $("#deliver_toOrderCity").append(result);
+            }
+            
+        }
+    })
+}
 

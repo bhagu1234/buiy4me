@@ -9,7 +9,7 @@ $userMobile=Auth::User()->mobile;
       <div class="pl-100 pr-100">
         <div class="container-fluid">
               <div class="section-title-3 text-center mb-40">
-                <h2>Orders  <button><a href="{{route('user.create_order')}}">Add Order</button></a></h2>
+                <h4>Orders  &nbsp;&nbsp;&nbsp; <a href="{{route('user.create_order')}}">Add Order</a></h4>
                
               </div>
               <div class="best-product-style">
@@ -51,7 +51,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -110,7 +110,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -164,7 +164,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -215,7 +215,7 @@ $userMobile=Auth::User()->mobile;
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->deliver_from}} :- {{$row->deliver_to}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
