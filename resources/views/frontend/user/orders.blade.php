@@ -9,7 +9,9 @@ $userMobile=Auth::User()->mobile;
       <div class="pl-100 pr-100">
         <div class="container-fluid">
               <div class="section-title-3 text-center mb-40">
-                <h4>Orders  &nbsp;&nbsp;&nbsp; <a href="{{route('user.create_order')}}">Add Order</a></h4>
+                <h4>Orders  &nbsp;&nbsp;&nbsp; 
+                    <a href="{{route('user.create_order')}}">Add Order</a>
+                </h4>
                
               </div>
               <div class="best-product-style">
