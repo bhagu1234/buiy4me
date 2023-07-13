@@ -24,7 +24,7 @@ $userMobile=Auth::User()->mobile;
                         <h4>Received ({{$receviedc}})</h4>
                     </a>
                     <a href="#order_inactive" data-bs-toggle="tab" role="tab">
-                        <h4> Inactive ({{$inaCount}})</h4>
+                        <h4> Canceled ({{$inaCount}})</h4>
                     </a>
                 </div>
                 <div class="tab-content">

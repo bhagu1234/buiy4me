@@ -274,3 +274,30 @@ $(".update_pro_setting").click(function(){
         }
     })
 })
+
+// create_order
+// header("Access-Control-Allow-Origin: *");
+$("#create_order").click(function(){
+    var url=$("#fromduct_from_url").val();
+    $.ajax({
+        url:url,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Access-Control-Allow-Methods' : 'POST',
+            'Access-Control-Allow-Origin':' *',
+            'Access-Control-Allow-Headers' : 'X-Requested-With, Content-Type, X-Auth-Token, Origin, Authorization'
+        },
+        type:"post" , 
+        // data:{'_token':$("input[name=_token]").val()},
+        // contentType: false,
+        // processData: false, 
+        dataType: "json",
+        cache: false,
+        crossDomain: false,
+        success:function(response)
+        {
+            console.log(response);
+        }
+    });
+})

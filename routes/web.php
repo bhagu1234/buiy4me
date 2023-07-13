@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,5 +57,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('check_trOffer/{id}', [UserProfileController::class, 'check_trOffer'])->name('user.check_trOffer');
     Route::get('travel_offer_reChange/{id}', [UserProfileController::class, 'travel_offer_reChange'])->name('user.travel_offer_reChange');
     Route::get('matched_order/{id}', [UserProfileController::class, 'matched_order'])->name('user.matched_order');
+
+    // ProductController
+    Route::get('fatch/product_detail', [ProductController::class, 'fatch_product_detail'])->name('product.fatch_product_detail');
 
 });

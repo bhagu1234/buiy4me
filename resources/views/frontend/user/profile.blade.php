@@ -2,7 +2,7 @@
     <body>
         @include('frontend.includes.nav')
         <!-- header end -->
-	    <div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{URL::to('/')}}/public/frontend/assets/img/bg/breadcrumb.jpg)">
+	    <!-- <div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{URL::to('/')}}/public/frontend/assets/img/bg/breadcrumb.jpg)">
             <div class="container">
                 <div class="breadcrumb-content text-center">
                     <h2>Profile details</h2>
@@ -12,7 +12,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="product-description-review-area pb-90 profile-page">
             <div class="container">
                 <div class="product-description-review">
@@ -27,9 +27,10 @@
                         @endif
                         <div>
                     </div>
-                    <p>Joined {{$data->created_at}}</p></div>
+                   </div>
                     <div class="stars-container-main">
                         <div class="stars-container first">
+                            <p>Joined {{$data->created_at}}</p>
                             <span>Shopper</span>
                             <div class="stars">
                                 <i class="fa-regular fa-star" ></i>
