@@ -4,16 +4,21 @@
     @include('frontend.includes.nav')
       <!-- header end -->
       <center>
-	  <h3>Shop products from USA and save up to 40%</h3>
-      <div class="form-control">
-        <input type="url" placeholder="paste the url of the Product"  class="from-group" name="product" id="fromduct_from_url"> 
-        <!-- <button id="create_order">create Order</button> -->
-        <button><a href="{{route('user.product_details')}}">Create Order</a></button>
+          <div class="header">
+	  <h1><b>Shop products from USA and save up to 40%</b></h1>
+	  </div> 
+      <div class="form-control1">
+        <input type="url" placeholder="Paste the URL of the Product"  class="from-group" name="product" id="fromduct_from_url"> 
       </div>
-      <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(public/frontend/assets/img/bg/breadcrumb.jpg)">
+      <div class="button1">
+       <!-- <button id="create_order">create Order</button> -->
+        <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
+      </div>
+      <br>
+      <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(public/frontend/assets/img/buy4mebanner-01.jpg)">
         <div class="container">
             <div class="breadcrumb-content text-center">
-                <h2>Order</h2>
+                
                 <ul>
                   <li><a href="{{route('home')}}">home</a></li>
                 </ul>
@@ -26,7 +31,7 @@
                 <div class="food-menu-product-style">
                     <div class="food-menu-list text-center mb-65 nav" role="tablist">
                         <a class="active" href="#menu1" data-bs-toggle="tab" role="tab">
-                            <h3>Treding Product On Buy4me  </h3>
+                            <h3>Trending Product On Buy4me  </h3>
                             <p>Get inspired by what people in your city are buying from abroad with the biggest savings</p>
                         </a>
                     </div>

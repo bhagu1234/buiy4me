@@ -99,7 +99,7 @@ a,
 button,
 input {
     outline: medium none;
-    color: #686868;
+    color: #fff;
 }
 .uppercase { 
     text-transform: uppercase

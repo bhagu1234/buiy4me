@@ -2,19 +2,9 @@
     <body>
         @include('frontend.includes.nav')
         <!-- header end -->
-		<div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{URL::to('/')}}/public/frontend/assets/img/bg/breadcrumb.jpg)">
-            <div class="container">
-                <div class="breadcrumb-content text-center">
-                    <h2>login</h2>
-                    <ul>
-                        <li><a href="#">home</a></li>
-                        <li> login </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+		
         <!-- login-area start -->
-        <div class="register-area ptb-100">
+        <div class="register-area " style="margin:50px">
             <div class="container-fluid">
                 @include('admin.includes.validation')
                 <div class="row">

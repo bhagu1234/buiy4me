@@ -9613,3 +9613,51 @@ input.cart-plus-minus-box {
 .menu-list.settings-list{
     cursor:pointer;
 }
+
+
+/*Hiral*/
+
+.header{
+    margin-top:50px;
+}
+
+.form-control1{
+    width:50%;
+    height:50px;
+    margin-left:-183px;
+    margin-top:72px;
+    border:1px solid gray;
+    border-radius: 1em;
+}
+
+.form-control1 input{
+    float: left;
+    border:none;
+    background-color: white;
+    color:darkgray;
+    font-size: 18;
+}
+
+.button1{
+    margin-left:628px;
+    margin-top: -47px;
+    height:40px;
+    color:white;
+    border-radius:4px;
+    width:100px;
+    margin-bottom:30px;
+    background-color:#469ebd;
+}
+.button1 input
+{
+    color:white;
+    text-align:center;
+}
+.home-banner
+{
+    width:1200x800px;
+    background-size: cover;
+    height:709px;
+    position:relative;
+    overflow:hidden;
+}

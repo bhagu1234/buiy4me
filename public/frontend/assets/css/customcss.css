@@ -1,0 +1,58 @@
+.home-banner
+{
+    padding-bottom: 260px;
+}
+.single-popular-product img
+{
+    width: -moz-available;
+    max-width: 90%;
+}
+.food-menu-list > a.active h4
+{
+    text-decoration: none !important;
+}
+.food-menu-list > a.active h4, .food-menu-list > a h4:hover
+{
+    text-decoration: none !important; 
+}
+.registerdiv
+{
+    margin: 50px !important;
+}
+ h4
+{
+    text-decoration: none !important; 
+}
+.product-tab-list2 a.active::before
+{
+    position: inherit;
+}
+body{
+    margin: 0px !important;
+}
+.headerclass
+{
+ padding: 5px;
+ background-color: #e6e6e6;
+}
+.best-product-area
+{
+    margin: 20px;
+border: 1px solid;
+border-radius: 10px;
+}
+.product-tab-list2
+{
+    padding-bottom: 20px !important;
+}
+.checkbox_create
+{
+    height: 17px !important;
+    width: 20px !important;
+padding: 10px !important;
+margin: 10px !important;
+}
+.form-control
+{
+    width:100% !important;
+}

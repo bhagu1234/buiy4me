@@ -32,7 +32,7 @@ $userMobile=Auth::User()->mobile;
                 <div class="tab-content">
                     <div class="tab-pane active show fade" id="order_requested" role="tabpanel">
                         <div class="custom-row">
-                            <div class="custom-col-5 custom-col-style mb-95">
+                            <div class="custom-col-12 custom-col-style mb-95">
                                 @foreach($data as $row)
                                     @if($row->order_status==1)
                                         <?php
@@ -45,39 +45,46 @@ $userMobile=Auth::User()->mobile;
                                         $i=str_replace([']','[']," " ,$i);
                                         $i=trim($i);
                                         ?>
-                                        <div class="product-wrapper">
-                                            <div class="product-img-2">
-                                                <a href="#">
-                                                    <img src="https://b4m.veravalonline.com/b4m/public/upload/product_img/{{$i}}" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="product-content-2 text-center">
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
-                                                @if($row->box==0)
-                                                    <p> Without Box</p>
-                                                @else
-                                                    <p> With Box</p>
-                                                @endif
-                                                <div class="product-rating">
-                                                    <i class="ti-star black"></i>
-                                                    <i class="ti-star black"></i>
-                                                    <i class="ti-star black"></i>
-                                                    <i class="ti-star"></i>
-                                                    <i class="ti-star"></i>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="product-img-2">
+                                                    <a href="#">
+                                                        <img src="https://b4m.veravalonline.com/b4m/public/upload/product_img/{{$i}}" alt="">
+                                                    </a>
                                                 </div>
-                                                <!-- <div>
-                                                    <span>Where To Buy</span> :-<span >{{$row->product_url}}</span>
-                                                </div> -->
-                                                <div class="details-price">
-                                                    <span>Product Price</span> :-<span >${{$row->product_price}}</span>
-                                                </div>
-                                                <button><a href="{{route('user.order_details',['id'=>$row->id])}}">Show Details</a></button>
-                                                @if($row->trip_id != null || $row->trip_id !="")
-                                                    <button><a href="{{route('user.check_trOffer',['id'=>$row->id])}}">Check Offer To trevel</a></button>
-                                                @endif
                                             </div>
+                                            <div class="col-md-8">
+                                                <div >
+                                                    <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                    <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                    @if($row->box==0)
+                                                        <p> Without Box</p>
+                                                    @else
+                                                        <p> With Box</p>
+                                                    @endif
+                                                    <div class="product-rating">
+                                                        <i class="ti-star black"></i>
+                                                        <i class="ti-star black"></i>
+                                                        <i class="ti-star black"></i>
+                                                        <i class="ti-star"></i>
+                                                        <i class="ti-star"></i>
+                                                    </div>
+                                                    <!-- <div>
+                                                        <span>Where To Buy</span> :-<span >{{$row->product_url}}</span>
+                                                    </div> -->
+                                                    <div class="details-price">
+                                                        <span>Product Price</span> :-<span >${{$row->product_price}}</span>
+                                                    </div>
+                                                    <a class="btn btn-outline-secondary px-4" href="{{route('user.order_details',['id'=>$row->id])}}">Show Details</a>
+                                                    @if($row->trip_id != null || $row->trip_id !="")
+                                                        <button><a href="{{route('user.check_trOffer',['id'=>$row->id])}}">Check Offer To trevel</a></button>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <hr style="border-bottom: 1px solid #000; padding-top:5px">
                                         </div>
+                                       
                                     @else
                                      <!-- <p>Orders awaiting delivery offers.</p> -->
                                     @endif

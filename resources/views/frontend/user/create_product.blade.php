@@ -11,190 +11,161 @@ $userMobile=Auth::User()->mobile;
         <div class="section-title-3 text-center mb-40">
           <h2>Products Details</h2>
         </div>
-        <div class="best-product-style">
-          <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
-            <a class="active" href="#product_details_p" data-bs-toggle="tab" role="tab">
-              <h4>Product Details </h4>
-            </a>
-            <a href="#delivery_details_p" data-bs-toggle="tab" role="tab">
-                <h4>Delivery Details</h4>
-            </a>
-            <a href="#product_summery_p" data-bs-toggle="tab" role="tab">
-                <h4>Summery</h4>
-            </a> 
-          </div>
-          <form id="contact-form" class="contact-form" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="name=_token" value="{{csrf_token()}}">
-            <div class="tab-content">
-              <div class="tab-pane active show fade" id="product_details_p" role="tabpanel">
-                <div class="custom-row">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Product Link </label>
-                        <input name="product_link" placeholder="Enter Product link" required="" type="text" onkeyup="summery_vali('product_link')" id="order_product_link">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Product Name</label>
-                        <input name="product_name" required="" type="text" placeholder="Enter Product Name" onkeyup="summery_vali('product_name')" id="order_productName">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Product Img</label>
-                        <input name="product_img[]" required="" id="product_images_pro" type="file"  multiple>
-                        <div></div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Price</label>
-                        <input name="product_price" required="" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price')" id="order_product_price" >
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>QTY</label>
-                        <input name="product_qty" required="" type="number" onkeyup="summery_vali('product_qty')" id="order_product_qty"  >
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>With Box</label>
-                        <input type="checkbox" name="box" id="product_with_box" value="0"  id="order_product_box"  >
-                        <p>Requiring the box may reduce the number of offers you receive. Travelers generally prefer to deliver orders without the box, to save space.</p>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="contact-textarea-style mb-30">
-                          <label>Product Details</label>
-                          <textarea class="form-control2 product_details" name="product_details" required="" onkeyup="summery_vali('product_details')" id="order_product_details" ></textarea>
-                      </div>
-                      <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
-                        <a href="#delivery_details_p" data-bs-toggle="tab" role="tab">
-                        <h4>Next</h4>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="delivery_details_p" role="tabpanel">
-                <div class="custom-row">                  
-                  <div class="row">
-                  <p><b>Confirm Delivery City and Date</b></p>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Delivery From Country</label>
-                        <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" onchange="getState(this.value,'devliver_from')" id="delivery_from_ord">
+        <div id="stepper1" class="bs-stepper linear" bis_skin_checked="1">
+				  <div class="card" bis_skin_checked="1">
+					
+					<div class="card-header" bis_skin_checked="1">
+						<div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist" bis_skin_checked="1">
+							<div class="step active" data-target="#test-l-1" bis_skin_checked="1">
+							  <div class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="test-l-1" aria-selected="true" bis_skin_checked="1">
+								<div class="bs-stepper-circle" bis_skin_checked="1">1</div>
+								<div class="" bis_skin_checked="1">
+									<h5 class="mb-0 steper-title">Product Details</h5>
+									<p class="mb-0 steper-sub-title">Enter Product Details</p>
+								</div>
+							  </div>
+							</div>
+							<div class="bs-stepper-line" bis_skin_checked="1"></div>
+							<div class="step" data-target="#test-l-2" bis_skin_checked="1">
+								<div class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="test-l-2" aria-selected="false" disabled="disabled" bis_skin_checked="1">
+								  <div class="bs-stepper-circle" bis_skin_checked="1">2</div>
+								  <div class="" bis_skin_checked="1">
+									  <h5 class="mb-0 steper-title">Delivery Details</h5>
+									  <p class="mb-0 steper-sub-title">Setup Delivery Details</p>
+								  </div>
+								</div>
+							  </div>
+							<div class="bs-stepper-line" bis_skin_checked="1"></div>
+							<div class="step" data-target="#test-l-3" bis_skin_checked="1">
+								<div class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3" aria-selected="false" disabled="disabled" bis_skin_checked="1">
+								  <div class="bs-stepper-circle" bis_skin_checked="1">3</div>
+								  <div class="" bis_skin_checked="1">
+									  <h5 class="mb-0 steper-title">Summery</h5>
+									  <p class="mb-0 steper-sub-title">Summery Details</p>
+								  </div>
+								</div>
+							  </div>
+							 
+						  </div>
+					</div>
+				    <div class="card-body" bis_skin_checked="1">
+					
+					  <div class="bs-stepper-content" bis_skin_checked="1">
+						<form class="contact-form" method="post" enctype="multipart/form-data" id="contact-form" >
+              @csrf
+              <input type="hidden" name="name=_token" value="{{csrf_token()}}">
+						  <div id="test-l-1" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="stepper1trigger1" bis_skin_checked="1">
+							
+
+							<div class="row g-3" bis_skin_checked="1">
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="FisrtName" class="form-label">Product Link</label>
+									<input type="text" class="form-control" id="order_product_link" name="product_link" required="" placeholder="Enter Product Link" onkeyup="summery_vali('product_link')">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="LastName" class="form-label">Product Name</label>
+									<input type="text" class="form-control" id="order_productName" name="product_name" required="" placeholder="Enter Product Name" onkeyup="summery_vali('product_name')">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="PhoneNumber" class="form-label">Product Image</label>
+									<input name="product_img[]" class="form-control" required="" id="product_images_pro" type="file" multiple="">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputEmail" class="form-label">Price</label>
+									<input name="product_price" required="" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price')" id="order_product_price">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">QTY</label>
+									<input name="product_qty" required="" class="form-control" type="number" onkeyup="summery_vali('product_qty')" id="order_product_qty">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputLanguage" class="form-label">With Box</label><br>
+                  <input type="checkbox" name="box"  id="product_with_box" class="checkbox_create" value="0">Requiring the box may reduce the number of offers you receive. Travelers generally prefer to deliver orders without the box, to save space. 
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="FisrtName" class="form-label">Product Details</label>
+									<textarea class="form-control product_details" name="product_details" required="" onkeyup="summery_vali('product_details')" id="order_product_details"></textarea>
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+								
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+								</div>
+                
+							</div><!---end row-->
+							
+						  </div>
+
+						  <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2" bis_skin_checked="1">
+
+							<h5 class="mb-1">Delivery Details</h5>
+							<p class="mb-4">Confirm Delivery City and Date</p>
+
+							<div class="row g-3" bis_skin_checked="1">
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="delivery" class="form-label">Delivery From Country</label>
+									<select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" onchange="getState(this.value,'devliver_from')" id="delivery_from_ord">
                         </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>Delivery From City</label>
-                        <select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_from_city" id="deliveryFromCity">
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputEmail2" class="form-label">Delivery From City</label>
+									<select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_from_city" id="deliveryFromCity">
                         </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="contact-input-style mb-30">
-                          <label>Deliver To</label>
-                          <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord" onchange="getState(this.value,'deliver_to_ord')" >
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputPassword" class="form-label">Deliver To</label>
+									<select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord" onchange="getState(this.value,'deliver_to_ord')" >
                           </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="contact-input-style mb-30">
-                          <label>Deliver To City</label>
-                          <select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_to_city" id="deliver_to_ordCity" >
+								</div>
+								<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputConfirmPassword" class="form-label">Deliver To City</label>
+									<select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_to_city" id="deliver_to_ordCity" >
                           </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="contact-input-style mb-30">
-                        <label>How long are you willing to wait? </label>
-                        <select name="select" class="during_time" name="during_time">
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputConfirmPassword" class="form-label">How long are you willing to wait? </label>
+									<select name="select" class="during_time" name="during_time">
                             <option value="up_one_month">Up to 1 Month</option>
                             <option value="up_3_week">Up to 3 Week</option>
                             <option value="up_2_week"> Up to 2 week</option>
                             <option value="up_2_months">Up To 2 months</option>
                         </select>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
-                        <a href="#product_summery_p" data-bs-toggle="tab" role="tab">
-                          <h4>Next</h4>
-                        </a>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                  <div class="tab-pane fade" id="product_summery_p" role="tabpanel">
-                    <div class="custom-row">
-                      <div class="product-details ptb-100 pb-90">
-                        <div class="container">
-                          <p>Your order summary</p>
-                          <div class="row">
-                            <div class="col-md-12 col-lg-7 col-12">
-                              <div class="product-details-img-content">
-                                <div class="product-details-tab mr-35 product-details-tab2">
-                                  <!-- <div class="product-details-large tab-content">
-                                    <div class="tab-pane active show fade" id="pro-details1" role="tabpanel">
-                                      <div class="easyzoom easyzoom--overlay  ">
-                                        <a href="{{URL::to('/')}}/public/frontend/assets/img/product-details/bl1.jpg">
-                                          <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/l5-details-2.jpg" alt="">
-                                        </a>
-                                      </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pro-details2" role="tabpanel">
-                                      <div class="easyzoom easyzoom--overlay">
-                                        <a href="{{URL::to('/')}}/public/frontend/assets/img/product-details/bl2.jpg">
-                                            <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/l6-details-2.jpg" alt="">
-                                        </a>
-                                      </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pro-details3" role="tabpanel">
-                                      <div class="easyzoom easyzoom--overlay">
-                                        <a href="{{URL::to('/')}}/public/frontend/assets/img/product-details/bl3.jpg">
-                                            <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/l7-details-2.jpg" alt="">
-                                        </a>
-                                      </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pro-details4" role="tabpanel">
-                                      <div class="easyzoom easyzoom--overlay">
-                                        <a href="{{URL::to('/')}}/public/frontend/assets/img/product-details/bl4.jpg">
-                                          <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/l8-details-2.jpg" alt="" id="blah">
-                                        </a>
-                                      </div>
-                                    </div>
-                                  </div> -->
-                                  <div class="product-details-small nav ml-10 product-details-2 gallery" role=tablist>
-                                    <!-- <a class="active mb-10" href="#pro-details1" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                      <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s5.jpg" alt="">
-                                    </a>
-                                    <a class="mb-10" href="#pro-details2" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                        <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s6.jpg" alt="">
-                                    </a>
-                                    <a class="mb-10" href="#pro-details3" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                      <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s7.jpg" alt="">
-                                    </a>
-                                    <a class="mb-10" href="#pro-details4" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                      <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s8.jpg" alt=""> -->
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-md-12 col-lg-5 col-12">
-                              <div class="product-details-content">
-                                <h3 id="summ_productName">Product Name</h3>
-                                  <div class="rating-number">
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+							
+								</div>
+								<div class="col-12" bis_skin_checked="1">
+									<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
+										<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
+										<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+									</div>
+								</div>
+							</div><!---end row-->
+							
+						  </div>
+
+						  <div id="test-l-3" role="tabpanel" id="product_summery_p" class="bs-stepper-pane" aria-labelledby="stepper1trigger3" bis_skin_checked="1">
+							<h5 class="mb-1">Your order summary</h5>
+							
+              <div class="product-details-small nav ml-10 product-details-2 gallery" role=tablist>
+                <!-- <a class="active mb-10" href="#pro-details1" data-bs-toggle="tab" role="tab" aria-selected="true">
+                  <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s5.jpg" alt="">
+                </a>
+                <a class="mb-10" href="#pro-details2" data-bs-toggle="tab" role="tab" aria-selected="true">
+                    <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s6.jpg" alt="">
+                </a>
+                <a class="mb-10" href="#pro-details3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                  <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s7.jpg" alt="">
+                </a>
+                <a class="mb-10" href="#pro-details4" data-bs-toggle="tab" role="tab" aria-selected="true">
+                  <img src="{{URL::to('/')}}/public/frontend/assets/img/product-details/s8.jpg" alt=""> -->
+                </a>
+              </div>
+							<div class="row g-3" bis_skin_checked="1">
+								<div class="col-12 col-lg-12" bis_skin_checked="1">
+									<h3 id="summ_productName">Product Name</h3>
+									<div class="rating-number">
                                     <div class="quick-view-rating">
                                       <i class="pe-7s-star red-star"></i>
                                       <i class="pe-7s-star red-star"></i>
@@ -206,76 +177,70 @@ $userMobile=Auth::User()->mobile;
                                         <span>2 Ratting (S)</span>
                                     </div>
                                   </div>
-                                  <div class="">
-                                      <span>Deliver from </span> :- <span id="summery_Deliverfrom"></span>
-                                  </div>
-                                  <div class="">
-                                      <span>Deliver to </span> :- <span id="summery_Deliverto"></span>
-                                  </div>
-                                  <div class="">
-                                      <span>Deliver before </span> :- <span id="summery_Deliverbefore"> Up to 1 Month</span>
-                                  </div>
-                                  <div class="">
-                                      <span>Quantity</span> :- <span id="summery_Quantity">0</span>
-                                  </div>
-                                  <div class="">
-                                      <span>Packaging </span> :- <span id="summery_Packaging">Without Box</span>
-                                  </div>
-                                  <p id="sum_pro_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmol tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
-                                  <div class="details-price">
-                                      <span>Product price</span> :-<span id="summery_pro_price"></span>
-                                  </div>
-                                  <div class="">
-                                      <span>Traveler reward </span> :-
-                                      <input type="text" id="summery_traveler_reward" readonly /> 
-                                      <!-- <span id="summery_traveler_reward">30%</span> -->
-                                  </div>
-                                  <div class="">
-                                      <span>Buy4me fee </span>:-
-                                      <input type="text" id="summery_buy4me_fee" readonly />
-                                      <!-- <span id="summery_buy4me_fee">10%</span> -->
-                                  </div>
-                                  <div class="">
-                                      <span>Sales Tax</span>:-
-                                      <input type="text" id="summery_salesTax" readonly />
-                                      <!-- <span id="summery_salesTax">10%</span> -->
-                                  </div>
-                                  <div class="">
-                                      <span>Payment processing </span>:-
-                                      <input type="text" id="summery_payment_processing" readonly />
-                                      <!-- <span id="summery_payment_processing">5%</span> -->
-                                  </div>
-                                  <div class="">
-                                      <span>Estimated total </span>:-
-                                      <input type="text" id="summery_estimated_total" readonly />
-                                      <!-- <span id="summery_estimated_total">$160.00</span> -->
-                                  </div>
-                                  <!-- <div class="quick-view-select">
-                                      <div class="select-option-part">
-                                          <label>Delivery From </label>
-                                          <p id="sum_delivery_from">Ahamdabad india</p>
-                                      </div>
-                                      <div class="select-option-part">
-                                          <label>Devlivery To </label>
-                                          <p id="sum_delivery_from"></p>
-                                      </div>
-                                  </div>
-                                  <div class="quickview-plus-minus">
-                                    <div class="cart-plus-minus">
-                                      
-                                        <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box" readonly>
-                                    </div> -->
-                                    <div class="quickview-btn-cart">
-                                        <a class="btn-hover-black" href="#" id="store_orderwith_details">Request delivery offers</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-              </div>
+								</div>
+								<div class="col-12 col-lg-12" bis_skin_checked="1">
+									<div class="">
+                    <span>Deliver from </span> :- <span id="summery_Deliverfrom"></span>
+                </div>
+                <div class="">
+                    <span>Deliver to </span> :- <span id="summery_Deliverto"></span>
+                </div>
+                <div class="">
+                    <span>Deliver before </span> :- <span id="summery_Deliverbefore"> Up to 1 Month</span>
+                </div>
+                <div class="">
+                    <span>Quantity</span> :- <span id="summery_Quantity">0</span>
+                </div>
+                <div class="">
+                    <span>Packaging </span> :- <span id="summery_Packaging">Without Box</span>
+                </div>
+                <p id="sum_pro_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmol tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
+								</div>
+							
+                
+               
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Product price</label>
+									<input class="form-control" id="summery_pro_price" placeholder="Product price" disabled>	
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Traveler reward</label>
+									<input class="form-control" id="summery_traveler_reward" placeholder="Traveler reward" disabled>	
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Buy4me fee</label>
+									<input class="form-control" id="summery_buy4me_fee" placeholder="Buy4me fee" disabled>	
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Sales Tax</label>
+									<input class="form-control" id="summery_salesTax" placeholder="Sales Tax" disabled>	
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Payment processing</label>
+									<input class="form-control" id="summery_payment_processing" placeholder="Payment processing" disabled>	
+								</div>
+                <div class="col-12 col-lg-6" bis_skin_checked="1">
+									<label for="InputCountry" class="form-label">Estimated total</label>
+									<input class="form-control" id="summery_estimated_total" placeholder="Estimated total" disabled>	
+								</div>
+								<div class="col-12" bis_skin_checked="1">
+									<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
+										<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
+										<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+									</div>
+								</div>
+							</div><!---end row-->
+							
+						  </div>
+
+						
+						</form>
+					  </div>
+					   
+					</div>
+				   </div>
+				 </div>
+   
             </div>
           </div>
         </div>

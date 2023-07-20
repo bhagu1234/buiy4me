@@ -31,134 +31,137 @@ $userMobile=Auth::User()->mobile;
                     $img=$data->product_imgs;
                     $img=explode(' , ', $img);
                 ?>
-                <div class="tab-content">
-                    <div class="tab-pane active show fade" id="order_Orderpublished" role="tabpanel">
-                        <div class="custom-row">
-                            <div class="product-details ptb-100 pb-90">
-                                <div class="container">
-                                    <p>Awaiting offers</p>
-                                    <div class="row">
-                                        <div class="col-md-12 col-lg-7 col-12">
-                                            <div    class="product-details-img-content">
-                                                <div class="product-details-tab mr-35 product-details-tab2">
-                                                    <div class="product-details-large tab-content">
-                                                        <div class="tab-pane active show fade" id="pro-details1" role="tabpanel">
-                                                            @foreach($img as $i)
-                                                                <?php 
-                                                                    $i=str_replace([']','[']," " ,$i);
-                                                                    $i=trim($i); 
-                                                                ?>
-                                                            @endforeach
-                                                            <div class="easyzoom easyzoom--overlay  ">
-                                                                <a href="{{URL::to('/')}}/public/upload/product_img/{{$i}}">
-                                                                    <img src="{{URL::to('/')}}/public/upload/product_img/{{$i}}" alt="" width="500px">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-details-small nav ml-10 product-details-2 " role=tablist>
-                                                        @foreach($img as $i)
-                                                            <?php 
-                                                                $i=str_replace([']','[']," " ,$i);
-                                                                $i=trim($i); 
-                                                            ?>
-                                                            <a class="active mb-10" href="#pro-details1" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                                                <img src="{{URL::to('/')}}/public/upload/product_img/{{$i}}" alt="">
-                                                            </a>
-                                                        @endforeach
-                                                       
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 col-lg-5 col-12">
-                                            <div class="product-details-content">
-                                                <h3 id="summ_productName">{{$data->product_name}}</h3>
-                                                    <div class="rating-number">
-                                                        <div class="quick-view-rating">
-                                                            <i class="pe-7s-star red-star"></i>
-                                                            <i class="pe-7s-star red-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                        </div>
-                                                        <div class="quick-view-number">
-                                                            <span>2 Ratting (S)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Deliver from </span> :- {{$data->fromCountry}},{{$data->fromCity}}<span ></span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Deliver to </span> :-{{$data->toCountry}},{{$data->toCIty}} <span ></span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Deliver before </span> :- <span>{{$data->during_time}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Quantity</span> :- <span>{{$data->product_qty}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Packaging </span> :- 
-                                                        @if($data->box==0)
-                                                            <span>Without Box</span>
-                                                        @else
-                                                            <span>With Box</span>
-                                                        @endif
-                                                    </div>
-                                                    <p>{{$data->product_details}}</p>
-                                                    <div class="details-price">
-                                                        <span>Product price</span> :-<span id="">{{$data->product_price}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Traveler reward </span> :-<span id="">{{$data->traveller_reward}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Sales Tax </span> :-<span id="">{{$data->us_sale_tax}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Buy4me fee </span>:-<span id="">{{$data->buy4me_fee}}</span>
-                                                    </div>
-                                                    <div class="">
-                                                        <span>Payment processing </span>:-<span id="">{{$data->payment}}</span>
-                                                    </div>
-                                                    <div class="details-price">
-                                                        <span>Estimated total </span>:-<span id="">{{$data->estimated_total}}</span>
-                                                    </div>
-                                                    <div class="quickview-btn-cart">
-                                                        <a class="btn-hover-black" href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" >Cancle Order</a>
-                                                    <a class="btn-hover-black" href="{{route('user.edit_order',['id'=>$data->id])}}" >Edit Order</a>
-                                                    <a class="btn-hover-black" href="{{route('user.matched_order',['id'=>$data->id,'status'=>$from])}}" >check matched trip</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="card">
+					<div class="row g-0">
+					  <div class="col-md-4 border-end">
+                        @foreach($img as $i)
+                        <?php 
+                            $i=str_replace([']','[']," " ,$i);
+                            $i=trim($i); 
+                        ?>
+                        @endforeach
+                        <a href="{{URL::to('/')}}/public/upload/product_img/{{$i}}">
+                            <img src="{{URL::to('/')}}/public/upload/product_img/{{$i}}" alt="" class="img-fluid">
+                        </a>
+						
+					  </div>
+					  <div class="col-md-8">
+						<div class="card-body">
+						  <h4 class="card-title" id="summ_productName">{{$data->product_name}}</h4>
+						  <div class="d-flex gap-3 py-3">
+                            <div class="rating-number">
+                                <div class="quick-view-rating">
+                                    <i class="pe-7s-star red-star"></i>
+                                    <i class="pe-7s-star red-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                </div>
+                                <div class="quick-view-number">
+                                    <span>2 Ratting (S)</span>
                                 </div>
                             </div>
+						  </div>
+						  <div class="mb-3"> 
+                            
+							<span class="price h4">{{$data->product_price}}</span> 
+							
+						</div>
+						  <p class="card-text fs-6">{{$data->product_details}}</p>
+						  <dl class="row">
+							<dt class="col-sm-3">Deliver from</dt>
+							<dd class="col-sm-9">{{$data->fromCountry}},{{$data->fromCity}}</dd>
+						  
+							<dt class="col-sm-3">Deliver to</dt>
+							<dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
+						  
+							<dt class="col-sm-3">Deliver before</dt>
+							<dd class="col-sm-9">{{$data->during_time}} </dd>
+						  </dl>
+
+                          <dl class="row">
+							<dt class="col-sm-3">Traveler reward</dt>
+							<dd class="col-sm-9">{{$data->traveller_reward}}</dd>
+						  
+							<dt class="col-sm-3">Sales Tax</dt>
+							<dd class="col-sm-9">{{$data->us_sale_tax}}</dd>
+						  
+							<dt class="col-sm-3">Buy4me fee</dt>
+							<dd class="col-sm-9">{{$data->buy4me_fee}} </dd>
+
+                            <dt class="col-sm-3">Payment processing</dt>
+							<dd class="col-sm-9">{{$data->payment}} </dd>
+						  </dl>
+                          <div class="details-price">
+                            <span>Estimated total </span>:-<span id="">{{$data->estimated_total}}</span>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="order_Offerreceived" role="tabpanel">
-                        <div class="custom-row">
-                            <div class="custom-col-5 custom-col-style mb-95">
-                                order_Offerreceived
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="order_Offerchosen" role="tabpanel">
-                        <div class="custom-row">
-                            <div class="custom-col-5 custom-col-style mb-95">
-                              
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="order_Deliverystarted" role="tabpanel">
-                        <div class="custom-row">
-                            <div class="custom-col-5 custom-col-style mb-95">
-                                order_Deliverystarted
-                            </div>
-                        </div>
-                    </div>
-                </div>
+						  <div class="row row-cols-auto row-cols-1 row-cols-md-3 align-items-center">
+							<div class="col">
+								<label class="form-label">Quantity</label>
+								<div class="input-group input-spinner">
+                                    <span>{{$data->product_qty}}</span>
+						
+								</div>
+							</div> 
+							 
+							
+						</div>
+						<div class="d-flex gap-3 mt-3">
+							<a href="{{route('user.matched_order',['id'=>$data->id,'status'=>$from])}}" class="btn btn-primary">Check matched trip</a>
+							<a href="{{route('user.edit_order',['id'=>$data->id])}}" class="btn btn-outline-primary"><span class="text">Edit Order</span> <i class='bx bxs-cart-alt'></i></a>
+                            <a href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" class="btn btn-outline-primary"><span class="text">Cancle Order</span> <i class='bx bxs-cart-alt'></i></a>
+						</div>
+						</div>
+					  </div>
+					</div>
+                    <hr/>
+					<div class="card-body">
+						<ul class="nav nav-tabs nav-primary mb-0" role="tablist">
+							<li class="nav-item" role="presentation">
+								<a class="nav-link active" data-bs-toggle="tab" href="#primaryhome" role="tab" aria-selected="true">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-comment-detail font-18 me-1'></i>
+										</div>
+										<div class="tab-title"> Product Description </div>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-bs-toggle="tab" href="#primaryprofile" role="tab" aria-selected="false">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-bookmark-alt font-18 me-1'></i>
+										</div>
+										<div class="tab-title">Tags</div>
+									</div>
+								</a>
+							</li>
+							<li class="nav-item" role="presentation">
+								<a class="nav-link" data-bs-toggle="tab" href="#primarycontact" role="tab" aria-selected="false">
+									<div class="d-flex align-items-center">
+										<div class="tab-icon"><i class='bx bx-star font-18 me-1'></i>
+										</div>
+										<div class="tab-title">Reviews</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+						<div class="tab-content pt-3">
+							<div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
+								<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
+								<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
+							</div>
+							<div class="tab-pane fade" id="primaryprofile" role="tabpanel">
+								<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+							</div>
+							<div class="tab-pane fade" id="primarycontact" role="tabpanel">
+								<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+							</div>
+						</div>
+					</div>
+
+				  </div>
+
+              
             </div>
         </div>
     </div>
