@@ -64,7 +64,7 @@ $userMobile=Auth::User()->mobile;
 						  </div>
 						  <div class="mb-3"> 
                             
-							<span class="price h4">{{$data->product_price}}</span> 
+							<span class="price h4">${{$data->product_price}}</span> 
 							
 						</div>
 						  <p class="card-text fs-6">{{$data->product_details}}</p>

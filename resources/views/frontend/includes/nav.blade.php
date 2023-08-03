@@ -6,7 +6,7 @@
                 <div class="logo-2 furniture-logo">
                     <a href="{{URL::to('/')}}">
                         <input type="hidden" id="url" value="{{URL::to('/')}}">
-                        <img src="{{URL::to('/')}}/public/frontend/assets/img/logo/2.png" width="70px" alt="" >
+                        <img src="{{URL::to('/')}}/public/frontend/assets/img/buy4me-02.png" width="110px" alt="" >
                     </a>
                 </div>
                 <div class="menu-style-2 furniture-menu menu-hover">

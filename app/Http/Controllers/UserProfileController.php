@@ -35,24 +35,24 @@ class UserProfileController extends Controller
             ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
             ->get();
         $current=Trip::where('travel_date' ,'=', $today)
-                        ->where('user_id',$user_id)
-                        ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
-                        ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
-                        ->leftJoin('states as states1','states1.id','trips.from_location_state')
-                        ->leftJoin('states as states2','states2.id','trips.to_location_state')
-                        ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
-                        ->get();
+                ->where('user_id',$user_id)
+                ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
+                ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
+                ->leftJoin('states as states1','states1.id','trips.from_location_state')
+                ->leftJoin('states as states2','states2.id','trips.to_location_state')
+                ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+                ->get();
         // dd($current);
         $cur=$current->count();
         $upcoming=Trip::where('travel_date' ,'>', $today)
-                    ->where('user_id',$user_id)
-                    ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
-                    ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
-                    ->leftJoin('states as states1','states1.id','trips.from_location_state')
-                    ->leftJoin('states as states2','states2.id','trips.to_location_state')
-                    ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
-                    ->get();
-                    // dd($upcoming);
+            ->where('user_id',$user_id)
+            ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
+            ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
+            ->leftJoin('states as states1','states1.id','trips.from_location_state')
+            ->leftJoin('states as states2','states2.id','trips.to_location_state')
+            ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+            ->get();
+            // dd($upcoming);
         $upc=$upcoming->count();
         $past=Trip::where('travel_date' ,'<', $today)->where('user_id',$user_id)->get();
         $pastCount=$past->count();
@@ -70,7 +70,7 @@ class UserProfileController extends Controller
             $trip->user_id=$user_id;
             $trip->from_location_country=$request->from_location;
             $trip->to_location_country=$request->to_location;
-            $trip->from_location_state=$request->from_city;
+            // $trip->from_location_state=$request->from_city;
             $trip->to_location_state=$request->to_city;
             $trip->travel_date=$request->travel_date;
             $trip->save();
@@ -193,7 +193,7 @@ class UserProfileController extends Controller
         $OrdersDetail->order_status=1;
         $OrdersDetail->deliver_from_country=$request->devliver_from_country;
         $OrdersDetail->deliver_to_country=$request->devliver_to_country;
-        $OrdersDetail->deliver_from_state=$request->devliver_from_city;
+        // $OrdersDetail->deliver_from_state=$request->devliver_from_city;
         $OrdersDetail->deliver_to_state=$request->devliver_to_city;
         $OrdersDetail->during_time=$d;
         // dd($OrdersDetail);
@@ -290,7 +290,7 @@ class UserProfileController extends Controller
         $OrderDetail->order_status=1;
         $OrderDetail->deliver_from_country=$request->deliver_from;
         $OrderDetail->deliver_to_country=$request->deliver_to;
-        $OrderDetail->deliver_from_state=$request->deliver_fromOrderCity;
+        // $OrderDetail->deliver_from_state=$request->deliver_fromOrderCity;
         $OrderDetail->deliver_to_state=$request->deliver_toOrderCity;
         $OrderDetail->during_time=$d;
         $OrderDetail->save();

@@ -118,24 +118,24 @@ function summery_vali(res)
         var lblValue = document.getElementById("summ_productName");
         lblValue.innerText =  s;
     }
-    if(res=='product_price')
-    {
+    // if(res=='product_price')
+    // {
         var edValue = document.getElementById("order_product_price");
-        var productPric= Number(edValue.value);
+        var qty = document.getElementById("order_product_qty");
+        var productPric= Number(edValue.value)*Number(qty.value);
         var travller_re=productPric*Number(30)/Number(100);
         var salseTax=productPric*Number(10)/Number(100);
         var buy4mefee=productPric*Number(10)/Number(100);
         var paymentproccessing=productPric*Number(5)/Number(100);
-        // var b=Number(30);
         var total= productPric+travller_re+salseTax+buy4mefee+paymentproccessing;
-        var lblValue = $("#summery_pro_price").text("$"+edValue.value) 
+        var lblValue = $("#summery_pro_price").val("$"+productPric) 
         document.getElementById("summery_estimated_total").value ="$"+total;
         document.getElementById("summery_traveler_reward").value ="$"+travller_re;
         document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
         document.getElementById("summery_salesTax").value ="$"+salseTax;
         document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
         
-    }
+    // }
     if(res=='product_qty')
     {
         var edValue = document.getElementById("order_product_qty");

@@ -14,11 +14,11 @@
                   <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
                   </select>
                 </div>
-                <div class="col-md-6 form-group"> 
+                <!-- <div class="col-md-6 form-group"> 
                   <label>from City*</label>
                   <select class="form-select single-select-field " data-placeholder="Choose one thing" id="travel_from_state" name="from_city" required>
                   </select>
-                </div>
+                </div> -->
                 <div class="col-md-6 form-group">
                   <label>To Country *</label>
                   <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
@@ -29,7 +29,7 @@
                   <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
                   </select>
                 </div>
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                   <label>Travel date</label>
                   <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required><br>
                   <button type="submit">Add trip</button>
@@ -120,8 +120,8 @@
         </div>
     </div>
     <!-- blog area end -->
-    @include('frontend.includes.footer');
+    @include('frontend.includes.footer')
 		<!-- all js here -->
-    @include('frontend.includes.footer_script');
+    @include('frontend.includes.footer_script')
   </body>
 </html>

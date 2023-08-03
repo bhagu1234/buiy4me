@@ -800,6 +800,7 @@ label{
     margin: 0;
     position: relative;
     text-transform: uppercase;
+    margin-top:50px;
 }
 .section-title > h2::before {
     background-color: #9b9b9b;
@@ -1226,7 +1227,7 @@ label{
     color: #999999;
     font-size: 12px;
     height: 45px;
-    padding-left: 30px;
+    padding-left: 15px;
     padding-right: 55px;
     position: relative;
 }
@@ -5935,7 +5936,6 @@ a.icon-cart-furniture.food-cart span {
 .food-menu-list > a h4 {
     color: #999999;
     display: inline-block;
-    font-family: "Roboto Slab", serif;
     font-weight: bold;
     margin: 0 23px;
     text-transform: uppercase;
@@ -9627,7 +9627,7 @@ input.cart-plus-minus-box {
     margin-left:-183px;
     margin-top:72px;
     border:1px solid gray;
-    border-radius: 1em;
+    border-radius: 4px;
 }
 
 .form-control1 input{
@@ -9639,25 +9639,92 @@ input.cart-plus-minus-box {
 }
 
 .button1{
-    margin-left:628px;
-    margin-top: -47px;
-    height:40px;
+    margin-left:619px;
+    margin-top: -48px;
+    height:42px;
     color:white;
     border-radius:4px;
-    width:100px;
-    margin-bottom:30px;
+    width:123px;
+    margin-bottom:32px;
     background-color:#469ebd;
+    padding-top:9px;
 }
 .button1 input
 {
     color:white;
     text-align:center;
 }
+
+.button1 a{
+    color:#fff;
+}
+
+.button1 a:hover{
+    color:black;
+}
 .home-banner
 {
-    width:1200x800px;
+   width:100%;
     background-size: cover;
-    height:709px;
+    height:560px;
     position:relative;
     overflow:hidden;
+}
+
+.fadeinup-animated p{
+    margin-left:376px;
+    margin-bottom:32px;
+    width:61%;
+    margin-top: 116px;
+}
+.food-slider-btn
+{
+    margin-bottom:252px;
+    margin-top:-278px;
+    margin-right:-295px;
+}
+.food-slider-btn:hover
+{
+    color:black;
+}
+
+.single-food-services img
+{
+    width:488px;
+    height:auto;
+    margin-right:-41px;
+    margin-left:-56px;
+    
+}
+
+.product-area pt-115
+{
+    margin-top: 56px;
+}
+
+.custom-row-2 
+{
+    margin-bottom: 50px;
+}
+
+.food-menu-area{
+    padding-top: 30px;
+}
+
+.col-lg-4
+{
+    width:28.3%;
+}
+
+.section-title-10 > h2
+{
+    font-size:50px;
+    font-family:'Poppins', sans-serif;
+}
+
+.section-title-10 p{
+    font-size:16px;
+}
+*{
+    font-family:'Poppins', sans-serif;
 }

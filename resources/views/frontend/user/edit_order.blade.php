@@ -64,14 +64,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="contact-input-style mb-30">
+                            <!-- <div class="contact-input-style mb-30">
                                 <label>Delivery From City</label>
                                 <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_fromOrderCity" id="deliver_fromOrderCity">
                                     @foreach($state as $r)
-                                        <option <?php if($data->deliver_from_state==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->city_name}}</option>
+                                        <option </?php if($data->deliver_from_state==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->city_name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="contact-input-style mb-30">
                                 <label>Delivery to</label>
                                 <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_to" onchange="getState(this.value,'devliver_ToOrder')">
