@@ -23,6 +23,7 @@ class AdminAuthController extends Controller
     }
    public function postLogin(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
@@ -31,26 +32,34 @@ class AdminAuthController extends Controller
         $password = $request->password;
         $user = Admin::where('email',$email)->first();
         // dd($user);
-        $pas_check= Hash::check($password, $user->password);
-        if($pas_check==true)
+        if($user !=null)
         {
-            if ($user) 
+            $pas_check= Hash::check($password, $user->password);
+            if($pas_check==true)
             {
-                $userModel = new Admin();
-                $userModel->id = $user->id;
-                $userModel->email = $user->email;
-                $userModel->password = $user->password;
-                $user = auth()->guard('admin')->login($userModel);
+                if ($user) 
+                {
+                    $userModel = new Admin();
+                    $userModel->id = $user->id;
+                    $userModel->email = $user->email;
+                    $userModel->password = $user->password;
+                    $user = auth()->guard('admin')->login($userModel);
+                }
+                // dd(auth()->guard('admin')->user());
+                //     Session::flush();
+                //     Session::put('success','You are Login successfully!!');
+                return redirect('/admin');
             }
-            // dd(auth()->guard('admin')->user());
-            //     Session::flush();
-            //     Session::put('success','You are Login successfully!!');
-            return redirect('/admin');
+            else
+            {
+                return back()->withError('Something went wrong');
+            }
         }
         else
         {
-            return back();
+            return back()->withError('Something went wrong');
         }
+       
     }
      /**
      * Show the application logout.

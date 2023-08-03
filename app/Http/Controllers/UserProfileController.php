@@ -313,7 +313,8 @@ class UserProfileController extends Controller
     }
     public function create_order(Request $request)
     {
-        return view('frontend.user.create_order');  
+        $latestProduct=OrderDetail::orderBy('id','Desc')->take(8)->where('status','1')->get();
+        return view('frontend.user.create_order',compact('latestProduct'));  
     }
     public function product_details(Request $request)
     {
