@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/assets/css/bundle.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/assets/css/style.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/custome/css/style.css">
+    <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/custom/css/style.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/assets/css/customcss.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/public/frontend/assets/css/responsive.css">
     <script src="{{URL::to('/')}}/public/frontend/assets/js/vendor/modernizr-3.11.7.min.js"></script>
@@ -52,7 +52,20 @@
     <!--app JS-->
 	<script src="{{URL::to('/')}}/public/admin/assets/js/app.js"></script>
 </head>
-<?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: *');
-header('Access-Control-Allow-Headers: *');
+@if(\Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert-body">
+            {{ \Session::get('success') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+{{ \Session::forget('success') }}
+@if(\Session::get('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert-body">
+            {{ \Session::get('error') }}
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif

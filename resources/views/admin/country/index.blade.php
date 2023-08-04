@@ -15,6 +15,7 @@
 			 <a href="{{route('admin.create_country')}}">Add new</a>
 				<hr/>
 				<div class="card">
+					@include('admin.includes.validation')	
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="country_table" class="table table-striped table-bordered dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">

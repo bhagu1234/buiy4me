@@ -11,11 +11,11 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
-			@include('admin.includes.validation')
             <h6 class="mb-0 text-uppercase">States </h6>
 			<h6 class="mb-0 text-uppercase"><a href="{{route('admin.create_state')}}">Add new </a></h6>
 				<hr/>
 				<div class="card">
+					@include('admin.includes.validation')	
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">

@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\paymentController;
+use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,4 +63,9 @@ Route::group(['middleware' => ['auth']], function() {
     // ProductController
     Route::get('fatch/product_detail', [ProductController::class, 'fatch_product_detail'])->name('product.fatch_product_detail');
 
+    Route::get('stripe', [paymentController::class, 'stripe'])->name('stripe.index');
+    Route::post('stripePost', [paymentController::class, 'stripePost'])->name('stripe.post');
+
+    // VerificationController
+    Route::get('build', [VerificationController::class, 'build'])->name('build.index');
 });

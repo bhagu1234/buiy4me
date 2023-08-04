@@ -6,8 +6,8 @@
     <div class="row">
       <div class="col-sm-4 mb-5">
         <ul class="list-group">
-          <li class="list-group-item menu-list settings-list active" data-target="profile">Profile Settings</li>
-          <li class="list-group-item menu-list settings-list" data-target="account">Account Details</li>
+          <li class="list-group-item menu-list settings-list profile active" data-target="profile">Profile Settings</li>
+          <li class="list-group-item menu-list settings-list account" data-target="account">Account Details</li>
           <li class="list-group-item menu-list settings-list" data-target="payout">Payout Method</li>
           <li class="list-group-item menu-list settings-list" data-target="history">Payout History</li>
           <li class="list-group-item menu-list settings-list" data-target="wallet">Wallet</li>

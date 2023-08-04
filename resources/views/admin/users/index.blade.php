@@ -11,12 +11,12 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
-			@include('admin.includes.validation')
             <h6 class="mb-0 text-uppercase">All Users </h6>
 			 <a href="{{route('admin.user_Create')}}">Add user</a>
 				<hr/>
 				<div class="card">
 					<div class="card-body">
+						@include('admin.includes.validation')	
 						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
 								<thead>

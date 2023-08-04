@@ -45,10 +45,7 @@ class AdminAuthController extends Controller
                     $userModel->password = $user->password;
                     $user = auth()->guard('admin')->login($userModel);
                 }
-                // dd(auth()->guard('admin')->user());
-                //     Session::flush();
-                //     Session::put('success','You are Login successfully!!');
-                return redirect('/admin');
+                return redirect('/admin')->withSuccess("you are logged in successfully !");
             }
             else
             {

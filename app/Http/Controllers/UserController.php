@@ -34,6 +34,7 @@ class UserController extends Controller
        {
             return redirect()->route('admin.user_index')->withSuccess('User Created Successfully');
        }
+       return back()->withError('Something went wrong');
        
     }
     public function edit(Request $request)
@@ -47,7 +48,6 @@ class UserController extends Controller
     public function update(Request $request)
     {
        $id=$request->id;
-    //   dd($id);
        $user=User::findOrFail($id);
        $user->first_name=$request->first_name;
        $user->last_name=$request->last_name;
@@ -60,6 +60,6 @@ class UserController extends Controller
     {
         $id=$request->id;
         $user=User::find($id)->delete();
-        return back();
+        return back()->withSuccess('User Deleted Successfully');
     }
 }

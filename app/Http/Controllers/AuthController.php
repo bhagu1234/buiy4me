@@ -106,6 +106,38 @@ class AuthController extends Controller
    
         return Redirect('login');
    }
-   
+    // public function sendNotification()
+    // {
+
+    //     $random = $this->generateVerificationCode(6);
+
+    //     $details = [
+    //         'title' => 'Mail from https://b4m.veravalonline.com/b4m',
+    //         'body' =>$random,
+    //     ];
+
+    //     Mail::to('bhagwati@veravalonline.com')->send(new VerifyMail($details));
+
+    //     return response()->json([
+    //         'message'=>'your email verification code sent to your email'
+    //     ] , 201);
+    // }
+    // public function generateVerificationCode($length = 6) {
+    //     $characters = '0123456789';
+    //     $charactersLength = strlen($characters);
+    //     $code = '';
+    //     for ($i = 0; $i < $length; $i++) {
+    //         $code .= $characters[rand(0, $charactersLength - 1)];
+    //     }
+
+    //         $token = new Token();
+    //         $token->user_id = JWTAuth::user()->id;
+    //         $token->code = $code;
+    //         $token->status = 0;
+    //         $token->save();
+
+    //     return $code;
+    // }
+
 
 }

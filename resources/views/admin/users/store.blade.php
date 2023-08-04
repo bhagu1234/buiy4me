@@ -11,10 +11,10 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
-			@include('admin.includes.validation')
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
 						<div class="card">
+							@include('admin.includes.validation')	
 							<div class="card-body p-4">
 								<h5 class="mb-4">Add User</h5>
 								<a href="{{route('admin.user_index')}}">Go back</a>
