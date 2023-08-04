@@ -1,10 +1,35 @@
 @include('frontend.includes.header')
     <body>
         @include('frontend.includes.nav')
+        
+        <!-- New Slider 
+        <div class="slider-area">
+            <div class="slider-active owl-carousel">
+                <div class="food-slider bg-img slider-height-5" style="background-image: url(/sliderimage/slider1.png)">
+                    <div class="container">
+                        <div class="food-slider-content text-center fadeinup-animated">
+                            <img class="animated" src="/sliderimage/slider1.png" alt="">
+                            <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
+                            <a class="food-slider-btn animated" href="#">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-slider bg-img slider-height-5" style="background-image: url(assets/img/slider/18.jpg)">
+                    <div class="container">
+                        <div class="food-slider-content text-center fadeinup-animated">
+                            <img class="animated" src="assets/img/slider/6.png" alt="">
+                            <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
+                            <a class="food-slider-btn animated" href="#">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        
         <!-- header end -->        
         <div class="slider-area">
             <div class="slider-active owl-carousel owl-loaded owl-drag">
-                <div class="breadcrumb-area pt-205 home-banner" style="background-image: url(public/frontend/assets/img/buy4mebanner-03.png)">
+                <div class="breadcrumb-area pt-205 home-banner" style="background-image: url(public/frontend/assets/img/slider/21.jpg)">
                     <div class="owl-stage-outer">
                         <div class="owl-stage" style="transform: translate3d(-2654px, 0px, 0px); transition: all 0s ease 0s; width: 7962px;">
                             <div class="owl-item cloned" style="width: 1327px;">
@@ -15,7 +40,7 @@
                                                 <div class="container">
                                                     <div class="food-slider-content text-center fadeinup-animated">
                                                         <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
-                                                        <a class="food-slider-btn animated" href="#">Shop Now</a>
+                                                        <a class="food-slider-btn animated" href="#">Now</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -25,7 +50,7 @@
                                                 <div class="container">
                                                     <div class="food-slider-content text-center fadeinup-animated">
                                                         <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
-                                                        <a class="food-slider-btn animated" href="#">Shop Now</a>
+                                                        <a class="food-slider-btn animated" href="#">Now</a>
                                                     </div>
                                                 </div>
                                             </div>
