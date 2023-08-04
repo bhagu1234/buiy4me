@@ -3,17 +3,20 @@
         <nav class="navbar navbar-expand gap-3">
             <div class="topbar-logo-header d-none d-lg-flex">
                 <div class="">
+                    <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <input type="hidden" id="url" value="{{URL::to('/')}}">
                     <img src="{{URL::to('/')}}/public/frontend/assets/img/logo/2.png" class="logo-icon" alt="logo icon">
                 </div>
             </div>
             @if(Auth::guard('admin')->user() !=null)
+                <?php
+                    $user=Auth::guard('admin')->user()->username;
+                ?>
                 <div class="user-box dropdown px-3" >
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{URL::to('/')}}/public/admin/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
                         <div class="user-info">
-                            <p class="user-name mb-0">Pauline Seitz</p>
-                            <p class="designattion mb-0">Web Designer</p>
+                            <p class="user-name mb-0">{{$user}}</p>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
@@ -23,10 +26,10 @@
                         </li>
                         <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#" onclick="UpdateTax()"><i class="bx bx-dollar-circle fs-5"></i><span>Taxes</span></a>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
-                        </li>
+                        <!-- <li><a class="dropdown-item d-flex align-items-center" href="#"><i class="bx bx-download fs-5"></i><span>Downloads</span></a>
+                        </li> -->
                         <li>
                             <div class="dropdown-divider mb-0"></div>
                         </li>
@@ -95,3 +98,4 @@
         </div>
     </nav>
 </div>
+@include('admin.tax.update_tax')

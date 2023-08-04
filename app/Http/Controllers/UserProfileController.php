@@ -9,6 +9,7 @@ use App\Models\OrderDetail;
 use App\Models\MatchedTripOrder;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Tax;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
@@ -91,12 +92,11 @@ class UserProfileController extends Controller
                 }
             
             }
-            return redirect()->route('user.trip')->withSuccess('User Created Successfully');
+            return redirect()->route('user.trip')->withSuccess('Trip Created Successfully');
         }
         else
         {
-            flash("error","you can select same city !!");
-            return back();
+            return back()->withError('Something went Wrong');
         }
         
     }
@@ -111,6 +111,7 @@ class UserProfileController extends Controller
                     ->leftJoin('countries as coun2','coun2.id','order_details.deliver_to_country')
                     ->leftJoin('states as states1','states1.id','order_details.deliver_from_state')
                     ->leftJoin('states as states2','states2.id','order_details.deliver_to_state')
+                    ->orderBy('order_details.id','desc')
                     ->select('order_details.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty');
         $orderData=$data;
         $orderData=$orderData->get();
@@ -184,7 +185,7 @@ class UserProfileController extends Controller
         $OrdersDetail->product_qty=$request->product_qty;
         $OrdersDetail->product_details=$request->product_details;
         $OrdersDetail->box=$request->box;
-        $OrdersDetail->us_sale_tax=$request->summery_salesTax;
+        // $OrdersDetail->us_sale_tax=$request->summery_salesTax;
         $OrdersDetail->traveller_reward=$request->summery_traveler_reward;
         $OrdersDetail->buy4me_fee=$request->summery_buy4me_fee;
         $OrdersDetail->payment=$request->summery_payment_processing;
@@ -215,7 +216,8 @@ class UserProfileController extends Controller
             }
            
         }
-        echo "data stored succesfully";
+        $response=array("status"=>200,"msg"=>"data stored succesfully");
+        return $response;
     }
     public function order_cancle(Request $request)
     {
@@ -239,7 +241,7 @@ class UserProfileController extends Controller
             $data->save();
         }
        
-        return redirect()->route('user.orders')->with("success");
+        return redirect()->route('user.orders')->withSuccess("Product status changed successfully");
     }
     public function edit_order(Request $request)
     {
@@ -309,7 +311,7 @@ class UserProfileController extends Controller
             }
            
         }
-        return redirect()->route('user.orders')->with("success");
+        return redirect()->route('user.orders')->withSuccess("Data updated successfully");
     }
     public function create_order(Request $request)
     {
@@ -318,7 +320,9 @@ class UserProfileController extends Controller
     }
     public function product_details(Request $request)
     {
-        return view('frontend.user.create_product');  
+        $all_tax=Tax::first();
+        // dd($all_tax);
+        return view('frontend.user.create_product',compact('all_tax'));  
     }
     public function setting(Request $request)
     {
@@ -348,13 +352,11 @@ class UserProfileController extends Controller
             $profile_data->profile=$name;
         }
         $profile_data->save();
-        echo "Profile updated successfully";
+        $response=array("status"=>200,"msg"=>"Profile updated successfully");
+       return $response;
     }
     public function help_desk(Request $request)
     {
-        // flash('success', 'Success!', 'Successfully created new list!');
-        // flash(translate('Email or Phone already exists.'));
-        $request->session()->flash('status', 'Task was successful!');
         return view('frontend.user.help_center'); 
     }
     public function matched_trip(Request $request)
@@ -373,11 +375,8 @@ class UserProfileController extends Controller
     }
     public function send_tripRequest(Request $request)
     {
-        // dd($request->from);
         $id=$request->id;
-        // dd($id);
         $status=$request->status;
-        // dd($status);
         $data=MatchedTripOrder::findOrFail($id);
         $orId=$data->order_id;
         $trId=$data->trip_id;
@@ -400,7 +399,6 @@ class UserProfileController extends Controller
         else
         {
             $orde=OrderDetail::findOrFail($orId);
-            // dd($data->order_id);
             if($status=='requested')
             {
                 $data->trip_status='1';
@@ -433,7 +431,7 @@ class UserProfileController extends Controller
         }
        
        
-        return redirect()->route('user.orders')->with("success");
+        return redirect()->route('user.orders')->withSuccess("Your request sended ");
     }
     public function check_trOffer(Request $request)
     {
@@ -451,10 +449,10 @@ class UserProfileController extends Controller
         if($data != null)
         {
             return view('frontend.user.order_travel_offer',compact('data')); 
-        }        // dd($data);
+        }
         else
         {
-            return redirect()->route('user.trip')->with("success");
+            return redirect()->route('user.trip');
         }
     }
     public function travel_offer_reChange(Request $request)
@@ -471,7 +469,7 @@ class UserProfileController extends Controller
             $data->trip_status='0';
         }
         $data->save();
-        return redirect()->route('user.orders')->with('success');
+        return redirect()->route('user.orders')->withSuccess('Your request Changed');
     }
     public function matched_order(Request $request)
     {

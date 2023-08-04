@@ -24,8 +24,6 @@ class StateController extends Controller
           $data->country_id=$request->country;
           $data->city_name=$request->city_name;
           $data->save();
-          // Session::flush();
-          // Session::put('success','You are logout successfully!!');
        return redirect()->route('admin.index_state');
      }
      public function edit(Request $request)

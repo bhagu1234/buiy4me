@@ -1,5 +1,8 @@
 <?php
-$userMobile=Auth::User()->mobile;
+$buy4meFee=$all_tax->buy4meFee;
+$paymentPro=$all_tax->payment_proccessing_tax;
+$travel_tax=$all_tax->travel_tax;
+
 ?>
 @include('frontend.includes.header')
 <body>
@@ -55,11 +58,11 @@ $userMobile=Auth::User()->mobile;
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Link</label>
-											<input type="text" class="form-control" id="order_product_link" name="product_link" required="" placeholder="Enter Product Link" onkeyup="summery_vali('product_link')">
+											<input type="text" class="form-control" id="order_product_link" name="product_link" required="" placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="LastName" class="form-label">Product Name</label>
-											<input type="text" class="form-control" id="order_productName" name="product_name" required="" placeholder="Enter Product Name" onkeyup="summery_vali('product_name')">
+											<input type="text" class="form-control" id="order_productName" name="product_name" required="" placeholder="Enter Product Name" onkeyup="summery_vali('product_name',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="PhoneNumber" class="form-label">Product Image</label>
@@ -67,11 +70,11 @@ $userMobile=Auth::User()->mobile;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputEmail" class="form-label">Price</label>
-											<input name="product_price" required="" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price')" id="order_product_price">
+											<input name="product_price" required="" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputCountry" class="form-label">QTY</label>
-											<input name="product_qty" required="" class="form-control" type="number" onkeyup="summery_vali('product_qty')" id="order_product_qty">
+											<input name="product_qty" required="" class="form-control" type="number" onkeyup="summery_vali('product_qty',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_qty">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputLanguage" class="form-label">With Box</label><br>
@@ -79,7 +82,7 @@ $userMobile=Auth::User()->mobile;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Details</label>
-											<textarea class="form-control product_details" name="product_details" required="" onkeyup="summery_vali('product_details')" id="order_product_details"></textarea>
+											<textarea class="form-control product_details" name="product_details" required="" onkeyup="summery_vali('product_details',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_details"></textarea>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 										</div>
@@ -167,7 +170,7 @@ $userMobile=Auth::User()->mobile;
 										<div class="">
 											<span>Packaging </span> :- <span id="summery_Packaging">Without Box</span>
 										</div>
-										<p id="sum_pro_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmol tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
+										<p id="sum_pro_description"></p>
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
 										<label for="InputCountry" class="form-label">Product price</label>
@@ -181,10 +184,10 @@ $userMobile=Auth::User()->mobile;
 										<label for="InputCountry" class="form-label">Buy4me fee</label>
 										<input class="form-control" id="summery_buy4me_fee" placeholder="Buy4me fee" disabled>	
 									</div>
-									<div class="col-12 col-lg-6" bis_skin_checked="1">
+									<!-- <div class="col-12 col-lg-6" bis_skin_checked="1">
 										<label for="InputCountry" class="form-label">Sales Tax</label>
 										<input class="form-control" id="summery_salesTax" placeholder="Sales Tax" disabled>	
-									</div>
+									</div> -->
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
 										<label for="InputCountry" class="form-label">Payment processing</label>
 										<input class="form-control" id="summery_payment_processing" placeholder="Payment processing" disabled>	

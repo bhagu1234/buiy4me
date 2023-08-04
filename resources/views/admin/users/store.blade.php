@@ -11,7 +11,6 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
-			@include('admin.includes.validation')
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
 						<div class="card">

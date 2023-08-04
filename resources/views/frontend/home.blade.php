@@ -119,12 +119,10 @@
                 </div>
             </div>
         </div>
-          
         
          <!-- popular product area start -->
          <div class="popular-product-area wrapper-padding-6 pt-115 pb-70 bg-img" style="background-image: url(assets/img/bg/13.jpg)">
             <div class="container-fluid">
-            @include('admin.includes.validation')
                 <div class="section-title-10 text-center mb-85">
                     <h2>Popular Traveller </h2>
                     <p>Buy4me shoppers and travelers who help each other access the world.</p>
@@ -134,19 +132,10 @@
                         <div class="col-md-3">
                             <div class="single-popular-product food-border-1 text-center mb-40">
                                 <a href="#"> 
-                                    @if($row->profile !="")
-                                        <img src="{{URL::to('/')}}/public/upload/profile_img/{{$row->profile}}" style="width:100px!important;">
-                                    @else
-                                        <img src="{{URL::to('/')}}/public/frontend/assets/img/profile/3135715.png" style="width:100px!important;" alt="" >
-                                    @endif
+                                   
+                                    <img src="{{URL::to('/')}}/public/frontend/assets/img/buy4me-03.png" width="150px" style="margin-left:115px; margin-top:60px;" alt="" >
                                 </a>
-                                <h4><a href="product-details.html">{{$row->first_name}}  {{$row->last_name}}</a></h4>
-                                
                                 <p><b> Location :-</b> {{$row->from_countryname}}- &nbsp;&nbsp;&nbsp; {{$row->toCountryName}} </p>
-                                <!-- <div class="popular-product">
-                                    <span class="pizza-old-price">$23.99</span>
-                                    <span class="pizza-new-price">$20.00</span>
-                                </div> -->
                             </div>
                         </div>
                     @endforeach
@@ -159,7 +148,6 @@
                     <div class="col-lg-4 col-md-4">
                         <div class="single-food-services text-center food-services-padding1 mb-40">
                             <img src="{{URL::to('/')}}/public/frontend/assets/img/banner-01.png" alt="">
-                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 relative">

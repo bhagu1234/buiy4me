@@ -11,7 +11,6 @@
 	   <!--end header wrapper-->
        <div class="page-wrapper">
 			<div class="page-content">
-			@include('admin.includes.validation')
             <h6 class="mb-0 text-uppercase">All Users </h6>
 			 <a href="{{route('admin.user_Create')}}">Add user</a>
 				<hr/>
