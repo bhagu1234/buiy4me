@@ -5,6 +5,7 @@
             <div class="header-bottom-wrapper">
                 <div class="logo-2 furniture-logo">
                     <a href="{{URL::to('/')}}">
+                    <input type="hidden" id="token" value="{{csrf_token()}}">
                         <input type="hidden" id="url" value="{{URL::to('/')}}">
                         <img src="{{URL::to('/')}}/public/frontend/assets/img/buy4me-02.png" width="110px" alt="" >
                     </a>

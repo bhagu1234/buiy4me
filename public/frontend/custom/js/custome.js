@@ -165,7 +165,7 @@ function getState(res,fun)
 
 // profile active class add 
 $("body").on('click','.account_details_active',function(){
-    alert("Fdfdsfsd");
+    // alert("Fdfdsfsd");
     $('ul.list-group li.profile').removeClass('active');
     $('ul.list-group li.account').addClass('active');
 })

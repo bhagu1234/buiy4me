@@ -293,35 +293,26 @@ $(".update_pro_setting").click(function(){
                 'Verifyed Your Order',
                 'success'
             )
-            // window.location.assign(base_path+"/orders")
         }
     })
 })
+// profile updated end ===============================================
 
-// create_order
+// create_order===================================================
 // header("Access-Control-Allow-Origin: *");
 $("#create_order").click(function(){
-    
-// api url
-const api_url =
-"https://employeedetails.free.beeceptor.com/my/api/path";
-
-// Defining async function
-async function getapi(url) {
-
-// Storing response
-const response = await fetch(url);
-
-// Storing data in form of JSON
-var data = await response.json();
-console.log(data);
-if (response) {
-  hideloader();
-}
-show(data);
-}
+ 
     // alert("bnbm");
-    // var url=$("#fromduct_from_url").val();
+    var url=$("#fromduct_from_url").val();
+    if(url=="")
+    {
+        alert("enter any product link");
+        return false;
+    }
+    $.get(url).then(function(responseData) {
+        $('#display').append(responseData);
+      });
+    // $("#display").load(url);
     // $.ajax({
     //     url:url,
     //     headers: {
@@ -332,9 +323,9 @@ show(data);
     //         'Access-Control-Allow-Headers' : 'X-Requested-With, Content-Type, X-Auth-Token, Origin, Authorization'
     //     },
     //     type:"post" , 
-    //     // data:{'_token':$("input[name=_token]").val()},
-    //     // contentType: false,
-    //     // processData: false, 
+    //     data:{'_token':$("input[name=_token]").val()},
+    //     contentType: false,
+    //     processData: false, 
     //     dataType: "json",
     //     cache: false,
     //     crossDomain: false,
@@ -343,4 +334,98 @@ show(data);
     //         console.log(response);
     //     }
     // });
-})
+});
+
+
+// mobile verification ============================================
+// function sendOTP() {
+    $("body").on("click","#sendOTP",function(){
+	$(".error").html("").hide();
+	var number = $("#mobile").val();
+	if (number.length == 10 && number != null) {
+        var _token = $("#token").val();
+        let formData = new FormData();
+        formData.append("_token", _token);
+        formData.append("mobile_number", number);
+        formData.append("action", 'send_otp');
+		// var input = {
+		// 	"mobile_number" : number,
+		// 	"action" : "send_otp"
+		// };
+        $.ajax({
+            url: base_path+"/processMobileVerification",
+            type:"POST" , 
+            contentType: false,
+            processData: false, 
+            data:formData,
+            success:function(response)
+            {
+                Swal.fire(
+                    'Good job!',
+                    'Verifyed Your Order',
+                    'success'
+                )
+            }
+        })
+		// $.ajax({
+		// 	url : 'controller.php',
+		// 	type : 'POST',
+		// 	data : input,
+		// 	success : function(response) {
+		// 		$(".container").html(response);
+		// 	}
+		// });
+	} else {
+		$(".error").html('Please enter a valid number!')
+		$(".error").show();
+	}
+});
+// }
+
+function verifyOTP() {
+	$(".error").html("").hide();
+	$(".success").html("").hide();
+	var otp = $("#mobileOtp").val();
+    var _token = $("#token").val();
+    let formData = new FormData();
+    formData.append("_token", _token);
+    formData.append("otp", otp);
+    formData.append("action", 'verify_otp');
+	// var input = {
+	// 	"otp" : otp,
+	// 	"action" : "verify_otp"
+	// };
+	if (otp.length == 6 && otp != null) {
+        $.ajax({
+            url: base_path+"/processMobileVerification",
+            type:"POST" , 
+            contentType: false,
+            processData: false, 
+            data:formData,
+            success:function(response)
+            {
+                Swal.fire(
+                    'Good job!',
+                    'Verifyed Your Order',
+                    'success'
+                )
+            }
+        })
+		// $.ajax({
+		// 	url : 'controller.php',
+		// 	type : 'POST',
+		// 	dataType : "json",
+		// 	data : input,
+		// 	success : function(response) {
+		// 		$("." + response.type).html(response.message)
+		// 		$("." + response.type).show();
+		// 	},
+		// 	error : function() {
+		// 		alert("ss");
+		// 	}
+		// });
+	} else {
+		$(".error").html('You have entered wrong OTP.')
+		$(".error").show();
+	}
+}

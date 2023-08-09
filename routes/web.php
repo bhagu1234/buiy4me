@@ -67,5 +67,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('stripePost', [paymentController::class, 'stripePost'])->name('stripe.post');
 
     // VerificationController
+    Route::get('email_verification', [VerificationController::class, 'email_verification'])->name('email_verification.index');
     Route::get('build', [VerificationController::class, 'build'])->name('build.index');
+    Route::get('mobile_verification', [VerificationController::class, 'mobile_verification'])->name('mobile_verification.index');
+    Route::post('processMobileVerification', [VerificationController::class, 'processMobileVerification'])->name('processMobileVerification.index');
 });
