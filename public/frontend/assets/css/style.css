@@ -5794,6 +5794,7 @@ a.icon-cart-furniture.food-cart span {
 .single-popular-product {
     position: relative;
 }
+
 .food-border-1::before {
     background-color: #ede9eb;
     content: "";
