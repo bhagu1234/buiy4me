@@ -13,6 +13,7 @@ use App\Models\Tax;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
+use DB;
 class UserProfileController extends Controller
 {
     public function profile(Request $request)
@@ -488,6 +489,11 @@ class UserProfileController extends Controller
     public function treveller_store(Request $request)
     {
         $data= Country::all();
-        return view('frontend.user.create_trip',compact('data'));
+        $popurlDe=OrderDetail::
+        join('countries','countries.id','order_details.deliver_to_country')
+        ->groupBy('order_details.deliver_to_country')
+        ->select(DB::raw('SUM(order_details.product_price) as product_price'),'countries.id as counrty_id','countries.name as country_name','countries.flag',\DB::raw('COUNT(order_details.deliver_to_country) as total_order'))
+        ->take(4)->get();
+        return view('frontend.user.create_trip',compact('data','popurlDe'));
     }
 }

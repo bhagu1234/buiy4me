@@ -368,3 +368,19 @@ width: fit-content;
     color:white;
 }
 /*profile page section starts end */
+/* arti */
+
+.menu-product-content>h4 {
+    border-bottom: 2px dashed #cccccc;
+    color: #353535;
+    font-family: "Roboto Slab", serif;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    padding-bottom: 16px;
+    max-width: 15ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    }
+    /* arti */

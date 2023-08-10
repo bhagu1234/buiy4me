@@ -9,6 +9,7 @@ use App\Models\OrderDetail;
 use App\Models\MatchedTripOrder;
 use App\Models\Country;
 use App\Models\State;
+use DB;
 class HomeController extends Controller
 {
    public function home(Request $request)
@@ -23,6 +24,11 @@ class HomeController extends Controller
                ->select('trips.*','users.first_name','users.last_name','users.email','users.mobile','users.profile','from_countries.name as from_countryname','to_countries.name as toCountryName','states.city_name as TOstate_name')
                ->get();
                // dd($latestProduct);
-      return view('frontend.home',compact('latestProduct','lestesTrip'));
+      $popurlDe=OrderDetail::
+         join('countries','countries.id','order_details.deliver_to_country')
+         ->groupBy('order_details.deliver_to_country')
+         ->select(DB::raw('SUM(order_details.product_price) as product_price'),'countries.id as counrty_id','countries.name as country_name','countries.flag',\DB::raw('COUNT(order_details.deliver_to_country) as total_order'))
+         ->take(4)->get();
+      return view('frontend.home',compact('latestProduct','lestesTrip','popurlDe'));
    }
 }

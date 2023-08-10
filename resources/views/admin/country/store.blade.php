@@ -23,7 +23,7 @@
 							<div class="card-body p-4">
 								<h5 class="mb-4">Create Country</h5>
                                 <form action="{{route('admin.store_country')}}" method="post" enctype="multipart/form-data">
-                                @csrf
+                                	@csrf
 									<div class="row mb-3">
                                         <label for="input35" class="col-sm-3 col-form-label">Name</label>
                                         <div class="col-sm-9">
@@ -40,7 +40,7 @@
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
 											<div class="d-md-flex d-grid align-items-center gap-3">
-												<button type="submit" class="btn btn-primary px-4" >Submit</button>
+												<button type="submit" class="btn btn-primary px-4">Submit</button>
 												
 											</div>
 										</div>

@@ -9,20 +9,6 @@ use Mail;
 use App\Mail\EmailManager;
 class VerificationController extends Controller
 {
-    // public function mail()
-    // {
-    //     $to_name = ‘RECEIVER_NAME’;
-    //     $to_email = ‘RECEIVER_EMAIL_ADDRESS’;
-    //     $data = array("name"=>"Cloudways(sender_name)", "body" => "A test mail");
-        
-    //     Mail::send("mail", $data, function($message) use ($to_name, $to_email) {
-    //     $message->to($to_email, $to_name)
-    //     ->subject("Laravel Test Mail");
-    //     $message->from("SENDER_EMAIL_ADDRESS","Test Mail");
-    //     });
-    
-    //     return 'Email sent Successfully';
-    // }
     public function email_verification(Request $request)
     {
         $user = User::where('id',$id)->first();
@@ -144,5 +130,27 @@ class VerificationController extends Controller
             }
             break;
         }
+    }
+    public function stripeIdentity(Request $request)
+    {
+        return view("frontend.stripe_verification.index");
+    }
+    public function create_verification_session(Request $request)
+    {
+        $stripe = new \Stripe\StripeClient([
+            'api_key' => $_ENV['STRIPE_SECRET_KEY'],
+            'stripe_version' => '2020-08-27',
+        ]);
+        $verification_session = $stripe->identity->verificationSessions->create([
+            'type' => 'document',
+            'metadata' => [
+            'user_id' => '{{USER_ID}}',
+            ]
+        ]);
+        echo json_encode(['client_secret' => $verification_session->client_secret]);
+    }
+    public function submitted(Request $request)
+    {
+        return view("frontend.stripe_verification.submitted");
     }
 }

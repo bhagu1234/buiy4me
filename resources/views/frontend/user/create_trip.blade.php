@@ -69,21 +69,25 @@
       <div class="blog-area pt-120 pb-80">
         <div class="container">
             <div class="section-title-3 text-center mb-50">
-                <h2>How to Earn Money Traveling</h2>
+                <h2>Popular Destinations</h2>
             </div>
             <div class="row">
+              @foreach($popurlDe as $row)
                 <div class="col-md-3">
                     <div class="blog-wrapper mb-40">
+                      <p>{{$row->country_name}}</p>
+                      <p>{{$row->total_order}} orders</p>
                         <div class="blog-img blog-hover mb-15">
-                            <a href="#"><img src="{{URL::to('/')}}/public/frontend/assets/img/blog/1.jpg" alt=""></a>
+                            <a href="#"><img src="{{URL::to('/')}}/public/upload/country_flag/{{$row->flag}}" alt=""></a>
                         </div>
                         <div class="blog-info">
-                            <h4><a href="#">Add trip</a></h4>
-                            <span>Start by adding your trip to see requested orders along your route.</span>
+                            <h4><a href="{{route('make_offer_html',['id'=>$row->counrty_id])}}">Add trip</a></h4>
+                            <span>${{$row->product_price}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+              @endforeach
+                <!-- <div class="col-md-3">
                     <div class="blog-wrapper mb-40">
                         <div class="blog-img blog-hover mb-15">
                             <a href="#"><img src="{{URL::to('/')}}/public/frontend/assets/img/blog/2.jpg" alt=""></a>
@@ -115,7 +119,7 @@
                               <span>Meet in person, deliver the product, get paid automatically by Buy4me.</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

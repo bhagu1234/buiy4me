@@ -7,6 +7,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\paymentController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\TripController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,4 +72,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('build', [VerificationController::class, 'build'])->name('build.index');
     Route::get('mobile_verification', [VerificationController::class, 'mobile_verification'])->name('mobile_verification.index');
     Route::post('processMobileVerification', [VerificationController::class, 'processMobileVerification'])->name('processMobileVerification.index');
+
+    Route::get('stripeIdentity', [VerificationController::class, 'stripeIdentity'])->name('stripeIdentity.index');
+    Route::get('create_verification_session', [VerificationController::class, 'create_verification_session'])->name('create_verification_session.index');
+    Route::get('submitted', [VerificationController::class, 'submitted'])->name('submitted.index');
+
 });
+// TripController
+Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
+Route::get('travel-create_offer/{id}', [TripController::class, 'create_offer'])->name('travel.create_offer');

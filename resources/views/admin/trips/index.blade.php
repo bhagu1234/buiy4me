@@ -29,8 +29,8 @@
 								<tbody>
                                     @foreach($TripData as $row)
                                         <tr>
-                                            <td>{{$row->from_location_country}}</td>
-                                            <td>{{$row->to_location_country}}</td>
+                                            <td>{{$row->fromCountry}}</td>
+                                            <td>{{$row->toCountry}}</td>
                                             <td>{{$row->travel_date}}</td>
                                             <td>
                                                 <a href="">edit</a>

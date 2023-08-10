@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\State;
-use Session;
+// use Session;
 
 use Illuminate\Http\Request;
 
@@ -24,7 +24,7 @@ class StateController extends Controller
           $data->country_id=$request->country;
           $data->city_name=$request->city_name;
           $data->save();
-       return redirect()->route('admin.index_state');
+       return redirect()->route('admin.index_state')->withSuccess("Data stored");
      }
      public function edit(Request $request)
      {
@@ -40,13 +40,13 @@ class StateController extends Controller
           $data->country_id=$request->country;
           $data->city_name=$request->city_name;
           $data->save();
-       return redirect()->route('admin.index_state');
+       return redirect()->route('admin.index_state')->withSuccess("Data Updated");
      }
      public function delete(Request $request)
      {
           $id=$request->id;
           $data=State::where('id',$id)->delete();
-          return back();
+          return back()->withSuccess("Data Deleted");
      }
      public function fatch_state(Request $request)
      {
