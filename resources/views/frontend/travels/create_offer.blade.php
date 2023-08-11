@@ -1,6 +1,3 @@
-<?php
-$userMobile=Auth::User()->mobile;
-?>
 @include('frontend.includes.header')
 <body>
     @include('frontend.includes.nav')
@@ -34,36 +31,26 @@ $userMobile=Auth::User()->mobile;
                         <div class="col-md-8">
                             <div class="card-body">
                             <h4 class="card-title">{{$data->product_name}}</h4>
-                            <div class="d-flex gap-3 py-3">
-                                <div class="rating-number">
-                                    <div class="quick-view-rating">
-                                        <i class="pe-7s-star red-star"></i>
-                                        <i class="pe-7s-star red-star"></i>
-                                        <i class="pe-7s-star"></i>
-                                        <i class="pe-7s-star"></i>
-                                        <i class="pe-7s-star"></i>
-                                    </div>
-                                    <div class="quick-view-number">
-                                        <span>2 Ratting (S)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3"> 
-                                <span class="price h4">${{$data->product_price}}</span> 
-                                
-                            </div>
+                            <dl class="row">
+                                <dt class="col-sm-3">Quantity</dt>
+                                <dd class="col-sm-9">{{$data->product_qty}}</dd>
+                            
+                                <dt class="col-sm-3">Packaging</dt>
+                                <dd class="col-sm-9">@if($data->box=='1') With Box @else Without box @endif</dd>
+                            
+                                <dt class="col-sm-3">Product Price</dt>
+                                <dd class="col-sm-9">${{$data->product_price}} </dd>
+                            </dl>
                             <p class="card-text fs-6">{{$data->product_details}}</p>
                             <dl class="row">
                                 <dt class="col-sm-3">Deliver from</dt>
-                                <dd class="col-sm-9">{{$data->fromCountry}},{{$data->fromCity}}</dd>
-                            
+                                <dd class="col-sm-9">{{$data->fromCountry}}</dd>
                                 <dt class="col-sm-3">Deliver to</dt>
                                 <dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
                             
                                 <dt class="col-sm-3">Deliver before</dt>
                                 <dd class="col-sm-9">{{$data->during_time}} </dd>
                             </dl>
-
                             <dl class="row">
                                 <dt class="col-sm-3">Traveler reward</dt>
                                 <dd class="col-sm-9">{{$data->traveller_reward}}</dd>
@@ -78,18 +65,11 @@ $userMobile=Auth::User()->mobile;
                                 <dd class="col-sm-9">{{$data->payment}} </dd>
                             </dl>
                             <div class="details-price">
-                                <span>Estimated total </span>:-<span id="">{{$data->estimated_total}}</span>
+                                <span>Your total payout </span>:-<span id="">{{$data->estimated_total}}</span>
                             </div>
-                            <div class="row row-cols-auto row-cols-1 row-cols-md-3 align-items-center">
-                                <div class="col">
-                                    <label class="form-label">Quantity</label>
-                                    <div class="input-group input-spinner">
-                                        <span>{{$data->product_qty}}</span>
-                            
-                                    </div>
-                                </div> 
-                            </div>
-                            
+                            <h5>Delivery details</h5>
+                            <hr>
+                            <button >Add trip</button>
                             <p><input type="checkbox"> By making a delivery offer or starting a delivery, I agree to Buy4me's Terms and Conditions and acknowledge that I am familiar with and agree to abide by the customs rules and regulations of my destination country. I also acknowledge that I am responsible for paying customs duties and covering any extra charges that the customs at my destination country may impose.</p>
                             <div class="d-flex gap-3 mt-3">
                                 <a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Make delivery offer</a>

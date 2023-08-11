@@ -153,4 +153,27 @@ class VerificationController extends Controller
     {
         return view("frontend.stripe_verification.submitted");
     }
+    public function create_concted_account(Request $request)
+    {
+        // Set your secret key. Remember to switch to your live secret key in production.
+        // See your keys here: https://dashboard.stripe.com/apikeys
+        $stripe = new \Stripe\StripeClient(
+             $_ENV['STRIPE_SECRET_KEY']
+        );
+        // $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
+
+        // $stripe->accounts->create(['type' => 'express']);
+        dd($stripe->accountLinks);
+        $verification_session=$stripe->accountLinks->create([
+            'account' => '{{CONNECTED_ACCOUNT_ID}}',
+            'refresh_url' => 'https://example.com/reauth',
+            'return_url' => 'https://example.com/return',
+            'type' => 'account_onboarding',
+        ]);
+        echo json_encode(['client_secret' => $verification_session]);
+    }
+    public function checkout(Request $request)
+    {
+        return view("frontend.stripe_conect_payout.checkout");
+    }
 }

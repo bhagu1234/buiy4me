@@ -1,6 +1,3 @@
-<?php
-$userMobile=Auth::User()->mobile;
-?>
 @include('frontend.includes.header')
   <body>
     @include('frontend.includes.nav')
@@ -40,7 +37,8 @@ $userMobile=Auth::User()->mobile;
                                         <div class="col-md-8">
                                             <div >
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} 
+                                                    <i class="ti-arrow-right"></i> {{$row->toCountry}} {{$row->toCIty}} , by  &nbsp; &nbsp; {{date('F d, y',strtotime($row->during_time)); }}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else

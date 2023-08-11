@@ -1,6 +1,3 @@
-<?php
-$userMobile=Auth::User()->mobile;
-?>
 @include('frontend.includes.header')
   <body>
     @include('frontend.includes.nav')

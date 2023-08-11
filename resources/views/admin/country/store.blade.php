@@ -48,7 +48,8 @@
                                 </from>
 							</div>
 						</div>
-                    </div><!--end row-->
+                    </div>
+					<!--end row-->
                 </div>
             </div>
 		@include('admin.includes.footer')

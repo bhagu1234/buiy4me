@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('stripeIdentity', [VerificationController::class, 'stripeIdentity'])->name('stripeIdentity.index');
     Route::get('create_verification_session', [VerificationController::class, 'create_verification_session'])->name('create_verification_session.index');
     Route::get('submitted', [VerificationController::class, 'submitted'])->name('submitted.index');
+    Route::post('create_concted_account', [VerificationController::class, 'create_concted_account'])->name('create_concted_account.index');
+    Route::get('checkout', [VerificationController::class, 'checkout'])->name('checkout.index');
 
 });
 // TripController
