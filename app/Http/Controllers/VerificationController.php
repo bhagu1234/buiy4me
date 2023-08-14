@@ -162,6 +162,7 @@ class VerificationController extends Controller
         );
         // $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
 
+        
         // $stripe->accounts->create(['type' => 'express']);
         dd($stripe->accountLinks);
         $verification_session=$stripe->accountLinks->create([
