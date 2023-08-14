@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // VerificationController
     Route::get('email_verification', [VerificationController::class, 'email_verification'])->name('email_verification.index');
-    Route::get('build', [VerificationController::class, 'build'])->name('build.index');
+    Route::get('email_verified/{id}', [VerificationController::class, 'email_verified'])->name('email_verified.index');
     Route::get('mobile_verification', [VerificationController::class, 'mobile_verification'])->name('mobile_verification.index');
     Route::post('processMobileVerification', [VerificationController::class, 'processMobileVerification'])->name('processMobileVerification.index');
 
@@ -79,7 +79,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('create_concted_account', [VerificationController::class, 'create_concted_account'])->name('create_concted_account.index');
     Route::get('checkout', [VerificationController::class, 'checkout'])->name('checkout.index');
 
+   Route::get('/stripe_connect_payout', function () {
+        return view('frontend.stripe_connect_payout.index');
+    });
+    Route::get('/return_stripe', function () {
+        return view('frontend.stripe_connect_payout.return');
+    });
+    Route::get('/reauth_stripe', function () {
+        return view('frontend.stripe_connect_payout.reauth');
+    });
+
+    // TripController
+    Route::get('travel-create_offer/{id}', [TripController::class, 'create_offer'])->name('travel.create_offer');
+
 });
-// TripController
-Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
-Route::get('travel-create_offer/{id}', [TripController::class, 'create_offer'])->name('travel.create_offer');
+    // TripController
+    Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
+

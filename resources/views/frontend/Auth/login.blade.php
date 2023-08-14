@@ -14,6 +14,7 @@
                                 <div class="login-form">
                                     <form action="{{route('login.user')}}" method="post">
                                         @csrf
+                                        <input type="hidden" name="previous_url" value="{{url()->previous()}}">
                                         <input type="email" name="email" placeholder="email">
                                         <input type="password" name="password" placeholder="Password">
                                         <div class="button-box">

@@ -19,7 +19,14 @@ class AuthController extends Controller
   
     public function Registrion(Request $request)
     {
-        return view('frontend.Auth.registrion');
+        if(Auth::user()==null)
+        {
+            return view('frontend.Auth.registrion');
+        }
+        else
+        {
+         return redirect("/");
+        }
     }
     public function userRegistration(Request $request)
     {
@@ -55,11 +62,20 @@ class AuthController extends Controller
     }
    public function login(Request $request)
    {
-    //   dd(Auth::User());
-       return view('frontend.Auth.login');
+       if(Auth::user()==null)
+       {
+            return view('frontend.Auth.login');
+       } 
+       else
+       {
+        return redirect("/");
+       }
+       
    }
    public function User_Login(Request $request)
    {
+        $previous_url=$request->previous_url;
+        // dd($previous_url);
     //   dd($request->password);
         $request->validate([
             'email' => 'required',
@@ -82,9 +98,9 @@ class AuthController extends Controller
                     $userModel->first_name = $user->first_name;
                     Auth::login($userModel); 
                 }
-                // Session::flush();
-                // Session::put('success','You are logout successfully!!');
-                return redirect('/')->withSuccess('You have Successfully loggedin');
+            //   dd($previous_url);
+              return redirect($previous_url)->withSuccess('You have Successfully loggedin');
+                // return back()->withSuccess('You have Successfully loggedin');
             }
                 
             else

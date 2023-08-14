@@ -11,44 +11,37 @@ class VerificationController extends Controller
 {
     public function email_verification(Request $request)
     {
-        $user = User::where('id',$id)->first();
-        if(!$user || $user->is_verified == 1){
-            return redirect('/');
-        }
-        $email = $user->email;
-
-        $this->sendOtp($user);//OTP SEND
-
-        return view('verification',compact('email'));
-        // return redirect("frontend.verification/".$user->id);
-        // $array['from'] = env('MAIL_FROM_ADDRESS');
-        // Mail::send('frontend.email_verification', $array, function($message) use ($array) {
-        //     $message->to("bhagwati@veravalonline.com");
-        //     $message->subject('User Activity Notification');
-        // });
+        $email=Auth::user()->email;
+        $stripe = new \Stripe\StripeClient(
+            $_ENV['STRIPE_SECRET_KEY']
+            );
+          // create connect accoount
+        $account=$stripe->accounts->create([
+        'type' => 'express',
+        'country' => 'US',
+        'email' => $email,
+        'capabilities' => [
+            'card_payments' => ['requested' => true],
+            'transfers' => ['requested' => true],
+            ],
+        ]);
+        $id=$account->id;
+        return redirect()->route('email_verified.index',['id'=>$id]);
     }
-    public function sendOtp(Request $request)
+    public function email_verified(Request $request)
     {
-        $otp = rand(100000,999999);
-        $time = time();
-
-        // EmailVerification::updateOrCreate(
-        //     ['email' => $user->email],
-        //     [
-        //     'email' => $user->email,
-        //     'otp' => $otp,
-        //     'created_at' => $time
-        //     ]
-        // );
-            $data=array();
-        // $data['email'] = $request->email;
-        // $data['title'] = 'Mail Verification';
-
-        // $data['body'] = 'Your OTP is:- '.$otp;
-
-        Mail::send('frontend.email_verification',['data'=>$data],function($message) use ($data){
-            $message->to($data['email'])->subject($data['title']);
-        });
+        $id=$request->id;
+        $stripe = new \Stripe\StripeClient(
+            $_ENV['STRIPE_SECRET_KEY']
+            );
+        $link=$stripe->accountLinks->create([
+            'account' =>$id,
+            'refresh_url' => 'https://b4m.veravalonline.com/b4m/reauth_stripe',
+            'return_url' => 'https://b4m.veravalonline.com/b4m/return_stripe',
+            'type' => 'account_onboarding',
+        ]);
+        // dd($link->url);
+        return redirect($link->url);
     }
     public function verifiedOtp(Request $request)
     {
@@ -133,7 +126,15 @@ class VerificationController extends Controller
     }
     public function stripeIdentity(Request $request)
     {
-        return view("frontend.stripe_verification.index");
+        if(Auth::user()->email_veryfied=='1')
+        {
+            return view("frontend.stripe_verification.index");
+        }
+        else
+        {
+            return redirect("/email_verification");
+        }
+       
     }
     public function create_verification_session(Request $request)
     {
@@ -155,26 +156,57 @@ class VerificationController extends Controller
     }
     public function create_concted_account(Request $request)
     {
-        // Set your secret key. Remember to switch to your live secret key in production.
-        // See your keys here: https://dashboard.stripe.com/apikeys
         $stripe = new \Stripe\StripeClient(
              $_ENV['STRIPE_SECRET_KEY']
         );
-        // $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
-
-        
-        // $stripe->accounts->create(['type' => 'express']);
-        dd($stripe->accountLinks);
-        $verification_session=$stripe->accountLinks->create([
-            'account' => '{{CONNECTED_ACCOUNT_ID}}',
-            'refresh_url' => 'https://example.com/reauth',
-            'return_url' => 'https://example.com/return',
-            'type' => 'account_onboarding',
-        ]);
-        echo json_encode(['client_secret' => $verification_session]);
+        $stripe->accounts->create([
+            'country' => 'US',
+            'type' => 'express',
+            'capabilities' => [
+              'card_payments' => ['requested' => true],
+              'transfers' => ['requested' => true],
+            ],
+            'business_type' => 'individual',
+            'business_profile' => ['url' => 'https://b4m.veravalonline.com/b4m/'],
+          ]);
+        return back();
     }
     public function checkout(Request $request)
     {
         return view("frontend.stripe_conect_payout.checkout");
     }
+    public function purchase(Request $request)
+    {
+        $user=Auth::user();
+        $product=OrderDetail::where('upc',$request->upc)->first();
+        if(is_null($product))
+        {
+            return back()->withError("product not available !");
+        }
+        return back()->withSuccess("You have bough the ".$product->product_name);
+    }
+    public function payment_save(Request $request)
+    {
+        $card=[
+            'cards'=>$request->cc_number,
+            'exp_month'=>$request->month,
+            'exp_year'=>$request->year,
+            'cvc'=>$request->cvc
+        ];
+        $user=Auth::user();
+        return redirect()->route("home")->withSuccss("card added");
+    }
+    public function seller_create(Request $request)
+    {
+        $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
+
+        $stripe->accountLinks->create([
+        'account' => '{{CONNECTED_ACCOUNT_ID}}',
+        'refresh_url' => 'https://example.com/reauth',
+        'return_url' => 'https://example.com/return',
+        'type' => 'account_onboarding',
+        ]);
+        return back();
+    }
+    
 }
