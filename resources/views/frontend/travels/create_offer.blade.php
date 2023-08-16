@@ -7,7 +7,7 @@
         <div class="container-fluid">
               <div class="section-title-3 text-center mb-40">
                 <h2>Orders  Details</h2>
-               
+               <!-- <input type="hidden" id="check_travelOfferurl" value="{{url()->current()}}"> -->
               </div>
               <div class="best-product-style">
                 <?php

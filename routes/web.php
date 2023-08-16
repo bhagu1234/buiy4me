@@ -51,7 +51,6 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('edit_order/{id}',[UserProfileController::class,'edit_order'])->name('user.edit_order');
     Route::post('update_order',[UserProfileController::class,'update_order'])->name('user.update_order');
-    Route::get('product_details',[UserProfileController::class,'product_details'])->name('user.product_details');
     Route::get('help_desk',[UserProfileController::class,'help_desk'])->name('user.help_desk');
     Route::get('firebase-phone-authentication', [UserProfileController::class, 'phone_verify']);
     Route::post('order_product', [UserProfileController::class, 'order_product'])->name('user.order_product');
@@ -82,6 +81,7 @@ Route::group(['middleware' => ['auth']], function() {
    Route::get('/stripe_connect_payout', function () {
         return view('frontend.stripe_connect_payout.index');
     });
+    // Route::post('/return_stripe', [VerificationController::class, 'confirm_verify_email'])->name('confirm_verify_email.index');
     Route::get('/return_stripe', function () {
         return view('frontend.stripe_connect_payout.return');
     });
@@ -93,6 +93,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('travel-create_offer/{id}', [TripController::class, 'create_offer'])->name('travel.create_offer');
 
 });
+// UserProfileController
+    Route::get('product_details',[UserProfileController::class,'product_details'])->name('user.product_details');
     // TripController
     Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
 

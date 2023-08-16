@@ -32,7 +32,15 @@
                 <div class="col-md-6 form-group">
                   <label>Travel date</label>
                   <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required><br>
-                  <button type="submit">Add trip</button>
+                  @if(Auth::check())
+                    @if(Auth::user()->email_veryfied=='1')
+                      <button type="submit">Add trip</button>
+                    @else
+                      <a href="{{route('stripeIdentity.index')}}"> Add trip</a>
+                    @endif
+                  @else
+                    <button type="submit">Add trip</button>
+                  @endif
                 </div>
               
               </div>
@@ -86,40 +94,7 @@
                         </div>
                     </div>
                 </div>
-              @endforeach
-                <!-- <div class="col-md-3">
-                    <div class="blog-wrapper mb-40">
-                        <div class="blog-img blog-hover mb-15">
-                            <a href="#"><img src="{{URL::to('/')}}/public/frontend/assets/img/blog/2.jpg" alt=""></a>
-                        </div>
-                        <div class="blog-info">
-                            <h4><a href="#">Make Offers</a></h4>
-                            <span>You choose the orders you’d like to deliver and arrange the details with your shoppers.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="blog-wrapper mb-40">
-                        <div class="blog-img blog-hover mb-15">
-                            <a href="#"><img src="{{URL::to('/')}}/public/frontend/assets/img/blog/3.jpg" alt=""></a>
-                        </div>
-                        <div class="blog-info">
-                            <h4><a href="#">Buy the Product </a></h4>
-                            <span>Once shoppers accept your offer, they pay. We hold payment. Then, you buy the item with your money.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="blog-wrapper mb-40">
-                        <div class="blog-img blog-hover mb-15">
-                            <a href="#"><img src="{{URL::to('/')}}/public/frontend/assets/img/blog/3.jpg" alt=""></a>
-                        </div>
-                        <div class="blog-info">
-                            <h4><a href="#">Deliver and Get Paid</a></h4>
-                              <span>Meet in person, deliver the product, get paid automatically by Buy4me.</span>
-                        </div>
-                    </div>
-                </div> -->
+              @endforeach               
             </div>
         </div>
     </div>

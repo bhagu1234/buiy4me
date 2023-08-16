@@ -250,6 +250,9 @@ $("#store_orderwith_details").click(function(){
                 'success'
             )
             window.location.assign(base_path+"/orders")
+        },
+        error:function(res){
+            location.href=base_path+"/login";
         }
     })
 });

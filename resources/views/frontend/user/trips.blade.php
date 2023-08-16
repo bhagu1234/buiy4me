@@ -115,10 +115,10 @@
                   <div class="tab-pane  show fade tabs__tab active " id="on_way"  role="tabpanel" data-tab-info>
                     <form class="store_trip_data" method="post">
                       @csrf
-                      <input type="hidden" class="user_mobile" name="user_mobile"  value={{$userMobile}}>
+                      <input type="hidden" class="user_mobile" name="user_mobile" >
                       <input type="text" name="from_location" class="form-control from_location" placeholder="from *" required>
                       <input type="text" name="to_location"  class="form-control to_location" placeholder="to*" required>
-                      <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>"  required><br>
+                      <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="</?php echo date('Y-m-d'); ?>"  required><br>
                       <button type="submit">Add trip</button>
                     </form>
                   </div>

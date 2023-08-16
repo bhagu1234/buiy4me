@@ -199,7 +199,16 @@ $travel_tax=$all_tax->travel_tax;
 									<div class="col-12" bis_skin_checked="1">
 										<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
 											<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
-											<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+											@if(Auth::check())
+												@if(Auth::user()->email_veryfied=="0")
+													<a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Request delivery offers</a>
+												@else
+													<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+												@endif
+											@else
+												<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+											@endif
+											
 										</div>
 									</div>
 								</div><!---end row-->
@@ -215,8 +224,8 @@ $travel_tax=$all_tax->travel_tax;
 	</div>
 </div> -->
   <!-- menu area end -->
-  @include('frontend.includes.footer');
+  @include('frontend.includes.footer')
   <!-- all js here -->
-  @include('frontend.includes.footer_script');
+  @include('frontend.includes.footer_script')
 </body>
 </html>

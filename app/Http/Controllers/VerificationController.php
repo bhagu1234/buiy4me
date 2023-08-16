@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Mail;
+use App\Models\User;
 use App\Mail\EmailManager;
 class VerificationController extends Controller
 {
@@ -43,6 +44,15 @@ class VerificationController extends Controller
         // dd($link->url);
         return redirect($link->url);
     }
+    // public function confirm_verify_email(Request $request)
+    // {
+    //     // dd(Auth::user()->email);
+    //     $email=Auth::user()->email;
+    //     $user=User::where('email',$email)->first();
+    //     $user->email_veryfied='1';
+    //     $user->save();
+    //     // return redirect("create_trip");
+    // }
     public function verifiedOtp(Request $request)
     {
         $user = User::where('email',$request->email)->first();
