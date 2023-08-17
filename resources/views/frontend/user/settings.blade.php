@@ -153,8 +153,8 @@
 </body>
 	   
         <!-- menu area end -->
-	    @include('frontend.includes.footer');
+	    @include('frontend.includes.footer')
 		<!-- all js here -->
-     @include('frontend.includes.footer_script');
+     @include('frontend.includes.footer_script')
     </body>
 </html>

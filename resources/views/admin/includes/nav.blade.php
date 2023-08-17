@@ -92,6 +92,15 @@
                             <div class="menu-title d-flex align-items-center">States</div>
                         </a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+                            <div class="menu-title d-flex align-items-center">Custom</div>
+                            <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{route('admin.index_topShop')}}"><i class='bx bx-pie-chart-alt' ></i>Top Shop</a></li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
         </div>

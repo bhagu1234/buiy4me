@@ -10,6 +10,7 @@ use App\Models\MatchedTripOrder;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\Tax;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Session;
@@ -185,7 +186,7 @@ class UserProfileController extends Controller
         $OrdersDetail->img_path=$filePathar;
         $OrdersDetail->product_qty=$request->product_qty;
         $OrdersDetail->product_details=$request->product_details;
-        $OrdersDetail->box=$request->box;
+        $OrdersDetail->box='0';
         // $OrdersDetail->us_sale_tax=$request->summery_salesTax;
         $OrdersDetail->traveller_reward=$request->summery_traveler_reward;
         $OrdersDetail->buy4me_fee=$request->summery_buy4me_fee;
@@ -217,6 +218,7 @@ class UserProfileController extends Controller
             }
            
         }
+        return back()->withSuccess("data stored succesfully");
         $response=array("status"=>200,"msg"=>"data stored succesfully");
         return $response;
     }
@@ -317,7 +319,8 @@ class UserProfileController extends Controller
     public function create_order(Request $request)
     {
         $latestProduct=OrderDetail::orderBy('id','Desc')->take(8)->where('status','1')->get();
-        return view('frontend.user.create_order',compact('latestProduct'));  
+        $topShop=Shop::orderBy('id','desc')->take(8)->where('status','1')->get();
+        return view('frontend.user.create_order',compact('latestProduct','topShop'));  
     }
     public function product_details(Request $request)
     {
@@ -495,5 +498,14 @@ class UserProfileController extends Controller
         ->select(DB::raw('SUM(order_details.product_price) as product_price'),'countries.id as counrty_id','countries.name as country_name','countries.flag',\DB::raw('COUNT(order_details.deliver_to_country) as total_order'))
         ->take(4)->get();
         return view('frontend.user.create_trip',compact('data','popurlDe'));
+    }
+    public function create_order2(Request $request)
+    {
+        $id=$request->id;
+        $data=OrderDetail::findOrFail($id);
+        $country=Country::all();
+        $state=State::where('country_id',$data->deliver_from_country)->get();
+        $state_to=State::where('country_id',$data->deliver_to_country)->get();
+        return view('frontend.user.create_order2',compact('data','country','state','state_to')); 
     }
 }

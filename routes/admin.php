@@ -9,6 +9,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\TaxController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,4 +62,13 @@ Route::post('/admin-LoginPost', [AdminAuthController::class, 'postLogin'])->name
 Route::get('/admin-indexTax', [TaxController::class, 'index'])->name('admin.indexTax');
 Route::get('/admin-editTax', [TaxController::class, 'edit'])->name('admin.editTax');
 Route::post('/admin-updateTax', [TaxController::class, 'update'])->name('admin.updateTax');
+
+// ShopController
+Route::get('/admin-index_topShop',[ShopController::class,"index"])->name('admin.index_topShop');
+Route::get('/admin-create_topShop',[ShopController::class,"create"])->name('admin.create_topShop');
+Route::post('/admin-store_topShop',[ShopController::class,"store"])->name('admin.store_topShop');
+Route::get('/admin-edit_topShop/{id}',[ShopController::class,"edit"])->name('admin.edit_topShop');
+Route::post('/admin-update_topShop',[ShopController::class,"update"])->name('admin.update_topShop');
+Route::get('/admin-delete_topShop/{id}',[ShopController::class,"delete"])->name('admin.delete_topShop');
+
 

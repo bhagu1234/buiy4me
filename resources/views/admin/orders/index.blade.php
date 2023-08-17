@@ -10,6 +10,7 @@
 	   </div>
 	   <!--end header wrapper-->
        <div class="page-wrapper">
+	   	@include('admin.includes.validation')	
 			<div class="page-content">
             <h6 class="mb-0 text-uppercase">Orders </h6>
 				<hr/>

@@ -6,9 +6,9 @@
         <div class="pl-100 pr-100">
             <div class="container-fluid">
                 <div class="section-title-3 text-center mb-40">
-                    <h2>Edit Order</h2>
+                    <h2>Create Order</h2>
                 </div>
-                <form action="{{route('user.update_order')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('user.order_product')}}" method="post" enctype="multipart/form-data">
                     @csrf 
                     <div class="row">
                         <div class="col-md-6">
@@ -19,16 +19,10 @@
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>Product Img</label>
-                                <input name="product_img[]"  type="file" multiple>
+                                <input name="file[]"  type="file" multiple required>
                                 <?php
                                     $img=$data->product_imgs;
                                     $img=explode(' , ', $img);
-                                    // foreach($img as $i)
-                                    // {
-                                    //     $i=$i;
-                                    // }
-                                    // $i=str_replace([']','[']," " ,$i);
-                                    // $i=trim($i);
                                 ?>
                                 <div>
                                     @foreach($img as $i)
@@ -54,7 +48,7 @@
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>With Box</label>
-                                <input name="box" type="checkbox" id="update_product_box" value="{{$data->box}}" >
+                                <input name="box" type="checkbox"  value="{{$data->box}}" >
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>Delivery route</label>
@@ -64,14 +58,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <!-- <div class="contact-input-style mb-30">
-                                <label>Delivery From City</label>
-                                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_fromOrderCity" id="deliver_fromOrderCity">
-                                    @foreach($state as $r)
-                                        <option </?php if($data->deliver_from_state==$r->id){ echo "selected"; } ?> value="{{$r->id}}">{{$r->city_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div> -->
                             <div class="contact-input-style mb-30">
                                 <label>Delivery to</label>
                                 <select class="form-select single-select-field " data-placeholder="Choose one thing" name="deliver_to" onchange="getState(this.value,'devliver_ToOrder')">
@@ -92,7 +78,7 @@
                                 <label>How long are you willing to wait?</label>
                                 <input name="during_date"  type="date"  min="<?php echo date('Y-m-d'); ?>"  value="<?php echo date('Y-m-d',strtotime($data["during_time"])) ?>" >
                                
-                                <button type="submit">Update order</button>
+                                <button type="submit">create order</button>
                             </div>
                         </div>
                     </div>

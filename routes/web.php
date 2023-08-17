@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('check_trOffer/{id}', [UserProfileController::class, 'check_trOffer'])->name('user.check_trOffer');
     Route::get('travel_offer_reChange/{id}', [UserProfileController::class, 'travel_offer_reChange'])->name('user.travel_offer_reChange');
     Route::get('matched_order/{id}', [UserProfileController::class, 'matched_order'])->name('user.matched_order');
+    Route::get('create_order2/{id}',[UserProfileController::class,'create_order2'])->name('user.create_order2');
 
     // ProductController
     Route::get('fatch/product_detail', [ProductController::class, 'fatch_product_detail'])->name('product.fatch_product_detail');
