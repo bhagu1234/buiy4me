@@ -77,7 +77,7 @@
 						  </dl>
 
                           <dl class="row">
-							<dt class="col-sm-3">Traveler reward</dt>
+							<dt class="col-sm-3">Traveller reward</dt>
 							<dd class="col-sm-9">{{$data->traveller_reward}}</dd>
 						  
 							<dt class="col-sm-3">Sales Tax</dt>

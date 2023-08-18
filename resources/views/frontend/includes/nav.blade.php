@@ -76,3 +76,4 @@
         </div>
     </div>
 </header>
+@include("frontend.Auth.login_modal")

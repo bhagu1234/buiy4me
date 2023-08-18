@@ -92,6 +92,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // TripController
     Route::get('travel-create_offer/{id}', [TripController::class, 'create_offer'])->name('travel.create_offer');
+    Route::post('travel-make_deliveryOffer', [TripController::class, 'make_deliveryOffer'])->name('travel.make_deliveryOffer');
 
 });
 // UserProfileController

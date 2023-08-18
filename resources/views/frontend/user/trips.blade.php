@@ -25,7 +25,7 @@
                                       <span>{{$row->travel_date}}</span>
                                     </div>
                                     <div class="replay-btn">
-                                      <a href="#">check Offer</a>
+                                      <a href="{{route('user.matched_trip',['id'=>$row->id,'from'=>'trip'])}}">check Offer</a>
                                     </div>
                                   </div>
                                   <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
@@ -78,9 +78,9 @@
                                         <h5><a href="#">Past Trip</a></h5>
                                         <span>{{$row->travel_date}}</span>
                                       </div>
-                                      <div class="replay-btn">
+                                      <!-- <div class="replay-btn">
                                         <a href="#">check Offer</a>
-                                      </div>
+                                      </div> -->
                                     </div>
                                     <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
                                     <p>{{$row->travel_date}}</p>

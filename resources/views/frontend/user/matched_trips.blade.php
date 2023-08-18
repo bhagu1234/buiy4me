@@ -32,7 +32,7 @@
                         <div class="custom-row">
                             <div class="custom-col-5 custom-col-style mb-95">
                                 @foreach($data as $row)
-                                    @if($row->orStatus==0)
+                                    <!-- @if($row->orStatus==0) -->
                                        
                                         <div class="product-wrapper">
                                             <div class="product-img-2">
@@ -56,12 +56,15 @@
                                                 <div class="details-price">
                                                     <span>Treveler Mobile</span> :-<span >{{$row->mobile}}</span>
                                                 </div>
-                                                <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button>
+                                                @if($row->trip_status=='1')
+                                                    <button><a href="{{route('stripeIdentity.index')}}">Accept Request </a></button>
+                                                @endif
+                                                <!-- <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button> -->
                                             </div>
                                         </div>
-                                    @else
+                                    <!-- @else
                                      <p>No matched Request</p>
-                                    @endif
+                                    @endif -->
                                 @endforeach
                             </div>
                         </div>

@@ -65,8 +65,8 @@ class UserProfileController extends Controller
     public function create_trip(Request $request)
     {
         // dd($request);
-        if($request->from_city != $request->to_city)
-        {
+        // if($request->from_city != $request->to_city)
+        // {
             $user=Auth::User();
             $user_id=$user->id;
             $trip=new Trip();
@@ -80,7 +80,7 @@ class UserProfileController extends Controller
             $t_id=Trip::latest()->first();
             $tid=$t_id->id;
             $t_user=$t_id->user_id;
-            $OrderDetail=OrderDetail::where('deliver_from_country',$request->from_location)->where('deliver_to_country',$request->to_location)->where('deliver_to_state',$request->to_city)->where('during_time' ,'>',$request->travel_date)->where('order_status','1')->get();
+            $OrderDetail=OrderDetail::where('deliver_from_country',$request->from_location)->where('deliver_to_country',$request->to_location)->where('deliver_to_state',$request->to_city)->where('during_time' ,'>=',$request->travel_date)->where('order_status','1')->get();
             foreach($OrderDetail as $r)
             {
                 if($t_user != $r->user_id)
@@ -95,11 +95,11 @@ class UserProfileController extends Controller
             
             }
             return redirect()->route('user.trip')->withSuccess('Trip Created Successfully');
-        }
-        else
-        {
-            return back()->withError('Something went Wrong');
-        }
+        // }
+        // else
+        // {
+        //     return back()->withError('Something went Wrong');
+        // }
         
     }
     public function phone_verify(Request $request)
@@ -319,7 +319,7 @@ class UserProfileController extends Controller
     public function create_order(Request $request)
     {
         $latestProduct=OrderDetail::orderBy('id','Desc')->take(8)->where('status','1')->get();
-        $topShop=Shop::orderBy('id','desc')->take(8)->where('status','1')->get();
+        $topShop=Shop::take(8)->where('status','1')->get();
         return view('frontend.user.create_order',compact('latestProduct','topShop'));  
     }
     public function product_details(Request $request)
@@ -492,8 +492,10 @@ class UserProfileController extends Controller
     public function treveller_store(Request $request)
     {
         $data= Country::all();
+        $today=date('y-m-d');
         $popurlDe=OrderDetail::
         join('countries','countries.id','order_details.deliver_to_country')
+        // ->where('order_details.during_time', ">",$today)
         ->groupBy('order_details.deliver_to_country')
         ->select(DB::raw('SUM(order_details.product_price) as product_price'),'countries.id as counrty_id','countries.name as country_name','countries.flag',\DB::raw('COUNT(order_details.deliver_to_country) as total_order'))
         ->take(4)->get();

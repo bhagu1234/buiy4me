@@ -58,23 +58,23 @@ $travel_tax=$all_tax->travel_tax;
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Link</label>
-											<input type="text" class="form-control" id="order_product_link" name="product_link" required="" placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
+											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="LastName" class="form-label">Product Name</label>
-											<input type="text" class="form-control" id="order_productName" name="product_name" required="" placeholder="Enter Product Name" onkeyup="summery_vali('product_name',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
+											<input type="text" class="form-control" id="order_productName" name="product_name"  placeholder="Enter Product Name" onkeyup="summery_vali('product_name',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="PhoneNumber" class="form-label">Product Image</label>
-											<input name="product_img[]" class="form-control" required="" id="product_images_pro" type="file" multiple="">
+											<input name="product_img[]" class="form-control" id="product_images_pro" type="file" multiple="">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputEmail" class="form-label">Price</label>
-											<input name="product_price" required="" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
+											<input name="product_price" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputCountry" class="form-label">QTY</label>
-											<input name="product_qty" required="" class="form-control" type="number" onkeyup="summery_vali('product_qty',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_qty">
+											<input name="product_qty"  class="form-control" type="number" onkeyup="summery_vali('product_qty',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_qty">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputLanguage" class="form-label">With Box</label><br>
@@ -82,12 +82,16 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Details</label>
-											<textarea class="form-control product_details" name="product_details" required="" onkeyup="summery_vali('product_details',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_details"></textarea>
+											<textarea class="form-control product_details" name="product_details"  onkeyup="summery_vali('product_details',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_details"></textarea>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
-											<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+											@if(Auth::check())
+												<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+											@else
+												<button class="btn btn-primary px-4" onclick="openLogin()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+											@endif
 										</div>
 									</div><!---end row-->
 								</div>
@@ -199,15 +203,15 @@ $travel_tax=$all_tax->travel_tax;
 									<div class="col-12" bis_skin_checked="1">
 										<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
 											<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
-											@if(Auth::check())
-												@if(Auth::user()->email_veryfied=="0")
+											<!-- @if(Auth::check()) -->
+												<!-- @if(Auth::user()->email_veryfied=="0")
 													<a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Request delivery offers</a>
-												@else
-													<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
-												@endif
-											@else
+												@else -->
+													<!-- <button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button> -->
+												<!-- @endif -->
+											<!-- @else -->
 												<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
-											@endif
+											<!-- @endif -->
 											
 										</div>
 									</div>

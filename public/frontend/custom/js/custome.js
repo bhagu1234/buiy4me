@@ -168,5 +168,36 @@ $("body").on('click','.account_details_active',function(){
     // alert("Fdfdsfsd");
     $('ul.list-group li.profile').removeClass('active');
     $('ul.list-group li.account').addClass('active');
-})
+});
+
+// open login modal 
+function openLogin()
+{
+    $("#openLoginModal").modal("show");
+}
+
+function chnagePriceTraveller(res,buy4meFee,paymentPro,travel_tax)
+{
+    var buy4meFee = buy4meFee.replace('$','')
+    var paymentPro = paymentPro.replace('$','')
+    var travel=document.getElementById("change_travel_fee").value;
+    if(travel =="")
+    {
+        var travel = travel_tax.replace('$','')
+    }
+    var change_product_price_fee = document.getElementById("change_product_price_fee").value;
+    if(change_product_price_fee =="")
+    {
+        var change_product_price_fee =  document.getElementById("pro_ch_price").value;
+    }
+    var qty = document.getElementById("qty_ch_price").value;
+    var total= Number(change_product_price_fee)+Number(buy4meFee)+Number(paymentPro)+Number(travel)*Number(qty);
+    $("#changed_traveller_re_tr").text('$'+travel);
+    $("#changed_pro_price_tr").text('$'+change_product_price_fee);
+    $("#changed_totalPrice_tr").text('$'+total);
+    $("#pro_total_price_changed").val('$'+total);
+    $("#pro_traveller_price_changed").val('$'+travel);
+    $("#pro_p_price_changed").val('$'+change_product_price_fee);
+    
+}
 

@@ -5,46 +5,40 @@
         <!-- header end -->  
         
         <!-- slider-area -->
-        <div class="slider-area">
-            <div class="slider-active owl-carousel">
-                <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-2.jpg)">
-                    <div class="container">
-                        <div class="food-slider-content text-center fadeinup-animated-1">
-                            <img class="animated" src="assets/img/slider/6.png" alt="">
-                            <p class="animated"></p>
-                            <a class="food-slider-btn-1 animated" href="#"></a>
-                        </div>
-                    </div>
+        <div class="slider-active owl-carousel">
+        <div class="food-slider bg-img slider-height-5" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg)">
+            <div class="container">
+                <div class="food-slider-content text-center fadeinup-animated-1">
+                    <form action="/action_page.php" class="container1">
+                        <h3></b>Add your trip details to start earning money</b></h3>
+
+                        <!-- <label for="email"><b>Email</b></label> -->
+                        <input type="text" placeholder="From" name="" required>
+
+                        <!-- <label for="psw"><b>Password</b></label> -->
+                        <input type="text" placeholder="To" name="" required>
+
+                        <!-- <label for="psw"><b>Password</b></label> -->
+                        <input type="date" placeholder="Travel Date" date="" required>
+
+                        <button type="submit" class="btn1">Add Trip</button>
+                    </form>
+                    <!-- <img class="animated" src="assets/img/slider/6.png" alt="">
+                    <p class="animated">Earn $200+ USD every time you travel abroad</p>
+                    <a class="food-slider-btn food-slider-btn-2 animated" href="#">How Buyforme works</a> -->
                 </div>
-                <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-3.jpg)">
-                    <div class="container">
-                        <div class="food-slider-content text-center fadeinup-animated-1">
-                            <img class="animated" src="assets/img/slider/6.png" alt="">
-                            <p class="animated"></p>
-                            <a class="food-slider-btn-1 animated" href="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-3.jpg)">
-                    <div class="container">
-                        <div class="food-slidercontent text-center fadeinup-animated">
-                            <img class="animated" src="assets/img/slider/6.png" alt="">
-                            <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
-                            <a class="food-slider-btn animated" href="#">Shop Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-4.jpg)">
-                    <div class="container">
-                        <div class="food-slider-content text-center fadeinup-animated">
-                            <img class="animated" src="assets/img/slider/6.png" alt="">
-                            <p class="animated">Lorem Ipsum is simply dummy text of the printing dummy and typesetting industry.</p>
-                            <a class="food-slider-btn animated" href="#">Shop Now</a>
-                        </div>
+            </div>
+        </div>
+        <!-- <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-2-1.jpg)">
+                <div class="container">
+                    <div class="food-slider-content text-center fadeinup-animated-1">
+                        <img class="animated" src="assets/img/slider/6.png" alt="">
+                        <p class="animated"></p>
+                        <a class="food-slider-btn-1 animated" href="#"></a>
                     </div>
                 </div>
             </div> -->
-        </div>
+    </div>
          <!-- slider-area end  -->
          <!-- popular product area start -->
          <div class="popular-product-area wrapper-padding-6 pt-115 pb-70 bg-img" style="background-image: url(assets/img/bg/13.jpg)">

@@ -118,8 +118,6 @@ function summery_vali(res,buy4meFee,paymentPro,travel_tax)
         var lblValue = document.getElementById("summ_productName");
         lblValue.innerText =  s;
     }
-    // if(res=='product_price')
-    // {
         var edValue = document.getElementById("order_product_price");
         var qty = document.getElementById("order_product_qty");
         var productPric= Number(edValue.value)*Number(qty.value);
@@ -137,8 +135,7 @@ function summery_vali(res,buy4meFee,paymentPro,travel_tax)
         document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
         // document.getElementById("summery_salesTax").value ="$"+salseTax;
         document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
-        
-    // }
+   
     if(res=='product_qty')
     {
         var edValue = document.getElementById("order_product_qty");
@@ -432,3 +429,34 @@ function verifyOTP() {
 		$(".error").show();
 	}
 }
+
+// make delivery offer =======================
+$("body").on('click',"#make_delivery_offer",function(){
+    var _token = $("#token").val();
+    var pro_total_price_changed=$("#pro_total_price_changed").val();
+    var travel=$("#pro_traveller_price_changed").val();
+    var change_product_price_fee=$("#pro_p_price_changed").val();
+    var or_id=$("#or_id").val();
+    let formData = new FormData();
+    formData.append("_token", _token);
+    formData.append("pro_total_price_changed", pro_total_price_changed);
+    formData.append("travel", travel);
+    formData.append("change_product_price_fee", change_product_price_fee);
+    formData.append("or_id", or_id);
+    $.ajax({
+        url: base_path+"/travel-make_deliveryOffer",
+        type:"POST" , 
+        contentType: false,
+        processData: false, 
+        data:formData,
+        success:function(response)
+        {
+            Swal.fire(
+                'Good job!',
+                'Verifyed Your Order',
+                'success'
+            )
+            location.href=base_path+"/trip";
+        }
+    })
+});

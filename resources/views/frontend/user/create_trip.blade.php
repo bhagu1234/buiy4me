@@ -32,15 +32,16 @@
                 <div class="col-md-6 form-group">
                   <label>Travel date</label>
                   <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required><br>
-                  @if(Auth::check())
+                  <!-- @if(Auth::check())
                     @if(Auth::user()->email_veryfied=='1')
                       <button type="submit">Add trip</button>
                     @else
                       <a href="{{route('stripeIdentity.index')}}"> Add trip</a>
                     @endif
-                  @else
-                    <button type="submit">Add trip</button>
-                  @endif
+                  @else -->
+                    <!-- <button type="submit">Add trip</button> -->
+                  <!-- @endif -->
+                  <button type="submit">Add trip</button>
                 </div>
               
               </div>
