@@ -14,12 +14,13 @@
                         <div class="col-md-6">
                             <div class="contact-input-style mb-30">
                                 <label>Product Name</label>
+                                <input type="hidden" name="from" value="request">
                                 <input type="hidden" name="id" value="{{$data->id}}">
                                 <input name="product_name" required="" type="text" placeholder="Enter Product Name" value="{{$data->product_name}}">
                             </div>
                             <div class="contact-input-style mb-30">
                                 <label>Product Img</label>
-                                <input name="file[]"  type="file" multiple required>
+                                <input name="file[]"  type="file" multiple>
                                 <?php
                                     $img=$data->product_imgs;
                                     $img=explode(' , ', $img);

@@ -13,7 +13,11 @@
         </div>
         <div class="button1">
             <!-- <button1 id="create_order"><a href="#">create Order</a></button1> -->
-            <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
+            @if(Auth::check())
+                <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
+            @else
+                <button1 onclick="openLogin()">Create Order</button1>
+            @endif
         </div>
         <br>
         <!-- Trending products area start -->

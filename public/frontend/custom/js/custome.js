@@ -173,7 +173,26 @@ $("body").on('click','.account_details_active',function(){
 // open login modal 
 function openLogin()
 {
+    $("#login_form_modal").show();
+    $("#registrion_form_modal").hide();
     $("#openLoginModal").modal("show");
+}
+function go_registrion_modal()
+{
+   
+    $("#login_form_modal").hide();
+    $("#registrion_form_modal").show();
+}
+function go_login(){
+    $("#login_form_modal").show();
+    $("#registrion_form_modal").hide();
+}
+// $('.closeLoginModal').click(function(){
+//     $("#openLoginModal").modal("hide");
+// });
+function closeLoginModal()
+{
+    $("#openLoginModal").modal("hide");
 }
 
 function chnagePriceTraveller(res,buy4meFee,paymentPro,travel_tax)

@@ -228,7 +228,6 @@ $("#store_orderwith_details").click(function(){
     formData.append("during_time", during_time);
     formData.append("summery_traveler_reward", summery_traveler_reward);
     formData.append("summery_buy4me_fee", summery_buy4me_fee);
-    // formData.append("summery_salesTax", summery_salesTax);
     formData.append("summery_payment_processing", summery_payment_processing);
     formData.append("summery_estimated_total", summery_estimated_total);
     formData.append("_token", _token);
@@ -241,16 +240,18 @@ $("#store_orderwith_details").click(function(){
         data:formData,
         success:function(response)
         {
+            alert("fdsfsd");
             Swal.fire(
                 'Good job!',
                 'Verifyed Your Order',
                 'success'
             )
-            window.location.assign(base_path+"/orders")
-        },
-        error:function(res){
-            location.href=base_path+"/login";
+            location.href=base_path+"/order_details/"+response.id;
         }
+        // ,
+        // error:function(res){
+        //     location.href=base_path+"/login";
+        // }
     })
 });
 if($("#update_product_box").val() == 1)
@@ -336,99 +337,6 @@ $("#create_order").click(function(){
     // });
 });
 
-
-// mobile verification ============================================
-// function sendOTP() {
-    $("body").on("click","#sendOTP",function(){
-	$(".error").html("").hide();
-	var number = $("#mobile").val();
-	if (number.length == 10 && number != null) {
-        var _token = $("#token").val();
-        let formData = new FormData();
-        formData.append("_token", _token);
-        formData.append("mobile_number", number);
-        formData.append("action", 'send_otp');
-		// var input = {
-		// 	"mobile_number" : number,
-		// 	"action" : "send_otp"
-		// };
-        $.ajax({
-            url: base_path+"/processMobileVerification",
-            type:"POST" , 
-            contentType: false,
-            processData: false, 
-            data:formData,
-            success:function(response)
-            {
-                Swal.fire(
-                    'Good job!',
-                    'Verifyed Your Order',
-                    'success'
-                )
-            }
-        })
-		// $.ajax({
-		// 	url : 'controller.php',
-		// 	type : 'POST',
-		// 	data : input,
-		// 	success : function(response) {
-		// 		$(".container").html(response);
-		// 	}
-		// });
-	} else {
-		$(".error").html('Please enter a valid number!')
-		$(".error").show();
-	}
-});
-// }
-
-function verifyOTP() {
-	$(".error").html("").hide();
-	$(".success").html("").hide();
-	var otp = $("#mobileOtp").val();
-    var _token = $("#token").val();
-    let formData = new FormData();
-    formData.append("_token", _token);
-    formData.append("otp", otp);
-    formData.append("action", 'verify_otp');
-	// var input = {
-	// 	"otp" : otp,
-	// 	"action" : "verify_otp"
-	// };
-	if (otp.length == 6 && otp != null) {
-        $.ajax({
-            url: base_path+"/processMobileVerification",
-            type:"POST" , 
-            contentType: false,
-            processData: false, 
-            data:formData,
-            success:function(response)
-            {
-                Swal.fire(
-                    'Good job!',
-                    'Verifyed Your Order',
-                    'success'
-                )
-            }
-        })
-		// $.ajax({
-		// 	url : 'controller.php',
-		// 	type : 'POST',
-		// 	dataType : "json",
-		// 	data : input,
-		// 	success : function(response) {
-		// 		$("." + response.type).html(response.message)
-		// 		$("." + response.type).show();
-		// 	},
-		// 	error : function() {
-		// 		alert("ss");
-		// 	}
-		// });
-	} else {
-		$(".error").html('You have entered wrong OTP.')
-		$(".error").show();
-	}
-}
 
 // make delivery offer =======================
 $("body").on('click',"#make_delivery_offer",function(){

@@ -210,8 +210,9 @@ $travel_tax=$all_tax->travel_tax;
 													<!-- <button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button> -->
 												<!-- @endif -->
 											<!-- @else -->
-												<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+												<!-- <button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button> -->
 											<!-- @endif -->
+											<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
 											
 										</div>
 									</div>

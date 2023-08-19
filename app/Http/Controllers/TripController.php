@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Trip;
 use App\Models\OrderDetail;
+use App\Models\Country;
 use Auth;
+use DB;
 use App\Models\MatchedTripOrder;
 
 class TripController extends Controller
@@ -86,5 +88,167 @@ class TripController extends Controller
             // }
             return redirect()->route('user.trip')->withSuccess('Trip Created Successfully');
        
+    }
+    public function matched_trip(Request $request)
+    {
+        $id=$request->id;
+        $data=MatchedTripOrder::where('matched_trip_orders.trip_id',$id)->leftJoin('trips','trips.id','matched_trip_orders.trip_id')->leftJoin('order_details','order_details.id','matched_trip_orders.order_id')
+        ->leftJoin('countries as coun1','coun1.id','order_details.deliver_from_country')
+        ->leftJoin('countries as coun2','coun2.id','order_details.deliver_to_country')
+        ->leftJoin('states as states1','states1.id','order_details.deliver_from_state')
+        ->leftJoin('states as states2','states2.id','order_details.deliver_to_state')
+        ->select('matched_trip_orders.id as ma_id','matched_trip_orders.trip_status','matched_trip_orders.order_status as orStatus','matched_trip_orders.order_id as o_id','order_details.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromcity','states2.city_name as toCity')->get();
+        // dd($data);
+        // dd($data);
+        $from="from_trip";
+        return view('frontend.user.matched_orders',compact('data','from')); 
+    }
+    public function send_tripRequest(Request $request)
+    {
+        $id=$request->id;
+        $status=$request->status;
+        $data=MatchedTripOrder::findOrFail($id);
+        $orId=$data->order_id;
+        $trId=$data->trip_id;
+        if($request->from=='from_order')
+        {
+            if($status=='requested')
+            {
+                $data->order_status='1';
+            }
+            if($status=='pick_up')
+            {
+                $data->order_status='3';
+            }
+            if($status=='delivered')
+            {
+                $data->order_status='4';
+            }
+            $data->save();
+        }
+        else
+        {
+            $orde=OrderDetail::findOrFail($orId);
+            if($status=='requested')
+            {
+                $data->trip_status='1';
+                $orde->trip_id=$data->trip_id;
+            }
+            if($status=='pick_up')
+            {
+                $data->trip_status='3';
+                $data->order_status='3';
+                $orde->order_status='2';
+            }
+            if($status=='delivered')
+            {
+                $data->trip_status='4';
+                $data->order_status='4';
+                $orde->order_status='3';
+            }
+            if($status=='accept_orderRe')
+            {
+                $data->trip_status='2';
+                $data->order_status='2';
+            }
+            if($status=='cancle_orderRe')
+            {
+                $data->trip_status='0';
+                $data->order_status='0';
+            }
+            $data->save();
+            $orde->save();
+        }
+       
+       
+        return redirect()->route('user.orders')->withSuccess("Your request sended ");
+    }
+    public function check_trOffer(Request $request)
+    {
+        $ord_id=$request->id;
+        $data=MatchedTripOrder::where('order_id',$ord_id)
+                ->leftJoin('order_details','order_details.id','matched_trip_orders.order_id')
+                ->leftJoin('users','users.id','matched_trip_orders.trip_user')
+                ->leftJoin('countries as coun1','coun1.id','order_details.deliver_from_country')
+                ->leftJoin('countries as coun2','coun2.id','order_details.deliver_to_country')
+                ->leftJoin('states as states1','states1.id','order_details.deliver_from_state')
+                ->leftJoin('states as states2','states2.id','order_details.deliver_to_state')
+                ->select('matched_trip_orders.id as m_id','users.*','order_details.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromcity','states2.city_name as toCity')
+                ->where('trip_status', '!=' ,'0')
+                ->first();
+        if($data != null)
+        {
+            return view('frontend.user.order_travel_offer',compact('data')); 
+        }
+        else
+        {
+            return redirect()->route('user.trip');
+        }
+    }
+    public function travel_offer_reChange(Request $request)
+    {
+        $id=$request->id;
+        $status=$request->status;
+        $data=MatchedTripOrder::findOrFail($id);
+        if($status=='accept')
+        {
+            $data->trip_status='2';
+        }
+        elseif($status=='cancle')
+        {
+            $data->trip_status='0';
+        }
+        $data->save();
+        return redirect()->route('user.orders')->withSuccess('Your request Changed');
+    }
+    public function treveller_store(Request $request)
+    {
+        $data= Country::all();
+        $today=date('y-m-d');
+        $popurlDe=OrderDetail::
+        join('countries','countries.id','order_details.deliver_to_country')
+        // ->where('order_details.during_time', ">",$today)
+        ->groupBy('order_details.deliver_to_country')
+        ->select(DB::raw('SUM(order_details.product_price) as product_price'),'countries.id as counrty_id','countries.name as country_name','countries.flag',\DB::raw('COUNT(order_details.deliver_to_country) as total_order'))
+        ->take(4)->get();
+        return view('frontend.user.create_trip',compact('data','popurlDe'));
+    }
+    public function trip(Request $request)
+    {
+        $user_id=Auth::User()->id;
+        $today=date('y-m-d');
+        // dd($today);
+        $data=Trip::where('travel_date' ,'=', $today)
+            ->where('user_id',$user_id)
+            ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
+            ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
+            ->leftJoin('states as states1','states1.id','trips.from_location_state')
+            ->leftJoin('states as states2','states2.id','trips.to_location_state')
+            ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+            ->get();
+        $current=Trip::where('travel_date' ,'=', $today)
+                ->where('user_id',$user_id)
+                ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
+                ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
+                ->leftJoin('states as states1','states1.id','trips.from_location_state')
+                ->leftJoin('states as states2','states2.id','trips.to_location_state')
+                ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+                ->get();
+        // dd($current);
+        $cur=$current->count();
+        $upcoming=Trip::where('travel_date' ,'>', $today)
+            ->where('user_id',$user_id)
+            ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
+            ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
+            ->leftJoin('states as states1','states1.id','trips.from_location_state')
+            ->leftJoin('states as states2','states2.id','trips.to_location_state')
+            ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+            ->get();
+            // dd($upcoming);
+        $upc=$upcoming->count();
+        $past=Trip::where('travel_date' ,'<', $today)->where('user_id',$user_id)->get();
+        $pastCount=$past->count();
+        // dd($upcoming);
+        return view('frontend.user.trips',compact('upcoming','current','past','cur','upc','pastCount'));
     }
 }

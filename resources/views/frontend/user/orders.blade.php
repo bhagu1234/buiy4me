@@ -30,8 +30,9 @@
                     <div class="tab-pane active show fade" id="order_requested" role="tabpanel">
                         <div class="custom-row">
                             <div class="custom-col-12 custom-col-style mb-95">
+                               
                                 @foreach($data as $row)
-                                    @if($row->order_status==1)
+                                    @if($row->order_status==1 && $row->during_time > date('Y-m-d'))
                                         <?php
                                         $img=$row->product_imgs;
                                         $img=explode(' , ', $img);
@@ -53,7 +54,8 @@
                                             <div class="col-md-8">
                                                 <div >
                                                     <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                    <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                    <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; 
+                                                        {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                     @if($row->box==0)
                                                         <p> Without Box</p>
                                                     @else
@@ -93,8 +95,9 @@
                         <div class="custom-row">
                             <div class="custom-col-5 custom-col-style mb-95">
                                 @foreach($data as $row)
-                                    @if($row->order_status==2)
+                                    @if($row->order_status==2 && $row->during_time > date('Y-m-d'))
                                         <?php
+                                       
                                             $img=$row->product_imgs;
                                             $img=explode(' , ', $img);
                                             foreach($img as $i)
@@ -116,7 +119,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;   {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -148,7 +151,7 @@
                         <div class="custom-row">
                             <div class="custom-col-5 custom-col-style mb-95">
                                 @foreach($data as $row)
-                                    @if($row->order_status==3)
+                                    @if($row->order_status==3 && $row->during_time > date('Y-m-d'))
                                         <?php
                                             $img=$row->product_imgs;
                                             $img=explode(' , ', $img);
@@ -170,7 +173,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;   {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -192,7 +195,7 @@
                                             </div>
                                         </div>
                                     @else
-                                     <!-- <p>Orders you have received.</p> -->
+                                    
                                     @endif
                                 @endforeach
                             </div>
@@ -201,9 +204,12 @@
                     <div class="tab-pane fade" id="order_inactive" role="tabpanel">
                         <div class="custom-row">
                             <div class="custom-col-5 custom-col-style mb-95">
+                               
                                 @foreach($data as $row)
-                                    @if($row->order_status==4)
-                                        <?php
+                                <?php
+                                    if($row->order_status==4 || $row->during_time < date('Y-m-d'))
+                                    {
+                                      
                                             $img=$row->product_imgs;
                                             $img=explode(' , ', $img);
                                             foreach($img as $i)
@@ -221,7 +227,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;   {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else
@@ -246,9 +252,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @else
-                                     <!-- <p>Unpublished, expired or canceled orders.</p> -->
-                                    @endif
+                                    <?php } ?>
                                 @endforeach
                             </div>
                         </div>

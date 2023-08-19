@@ -23,12 +23,6 @@
                                 <?php
                                     $img=$data->product_imgs;
                                     $img=explode(' , ', $img);
-                                    // foreach($img as $i)
-                                    // {
-                                    //     $i=$i;
-                                    // }
-                                    // $i=str_replace([']','[']," " ,$i);
-                                    // $i=trim($i);
                                 ?>
                                 <div>
                                     @foreach($img as $i)

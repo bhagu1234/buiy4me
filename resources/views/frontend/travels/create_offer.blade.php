@@ -44,7 +44,7 @@
                                 <input type="hidden" id="pro_ch_price" value="{{$data->product_price}}">
                                 <input type="hidden" id="qty_ch_price" value="{{$data->product_qty}}">
                                 <input type="hidden" id="traveller_re_ch_price" value="{{$data->traveller_reward}}">
-                                <input type="number" placeholder="Add shipping and customs fees" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee">
+                                
 
                                 <input type="number" placeholder="change Prouduct price" onkeyup="chnagePriceTraveller('product_price_change','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" class="form-group" id="change_product_price_fee">
                                 <dl class="row">
@@ -60,7 +60,9 @@
                                 <dt class="col-sm-3">Product Price</dt>
                                     <dd class="col-sm-9" id="changed_pro_price_tr">${{$data->product_price}} </dd>
                                     <dt class="col-sm-3">traveller reward</dt>
-                                    <dd class="col-sm-9" id="changed_traveller_re_tr">{{$data->traveller_reward}}</dd>
+                                    <dd class="col-sm-9" id="changed_traveller_re_tr">{{$data->traveller_reward}} 
+                                    <input type="number" placeholder="change traveller fee" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee">
+                                    </dd>
                                 
                                     <dt class="col-sm-3">Buy4me fee</dt>
                                     <dd class="col-sm-9" id="changed_buy4me_fee_tr">{{$data->buy4me_fee}} </dd>

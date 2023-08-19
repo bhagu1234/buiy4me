@@ -2,6 +2,21 @@
   <body>
     @include('frontend.includes.nav')
     <!-- header end -->
+    <div class="slider-active owl-carousel">
+      <div class="food-slider bg-img slider-height-5" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg)">
+        <div class="container">
+          <div class="food-slider-content text-center fadeinup-animated-1">
+            <form action="/action_page.php" class="container1">
+              <h3></b>Add your trip details to start earning money</b></h3>
+              <input type="text" placeholder="From" name="" required>
+              <input type="text" placeholder="To" name="" required>
+              <input type="date" placeholder="Travel Date" date="" required>
+              <button type="submit" class="btn1">Add Trip</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="product-description-review-area pb-90">
       <div class="container">
         <div class="product-description-review text-center">
