@@ -86,11 +86,11 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 										</div>
-										<div class="col-12 col-lg-6" bis_skin_checked="1">
+										<div class="col-12 col-lg-6" bis_skin_checked="1" id="reload_div_auth">
 											@if(Auth::check())
-												<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+												<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
 											@else
-												<button class="btn btn-primary px-4" onclick="openLogin()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+												<a class="btn btn-primary px-4" onclick="openLogin()">Next<i class="bx bx-right-arrow-alt ms-2"></i></a>
 											@endif
 										</div>
 									</div><!---end row-->

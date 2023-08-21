@@ -6,18 +6,31 @@
       <div class="food-slider bg-img slider-height-5" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg)">
         <div class="container">
           <div class="food-slider-content text-center fadeinup-animated-1">
-            <form action="/action_page.php" class="container1">
-              <h3></b>Add your trip details to start earning money</b></h3>
-              <input type="text" placeholder="From" name="" required>
-              <input type="text" placeholder="To" name="" required>
-              <input type="date" placeholder="Travel Date" date="" required>
+            <form action="{{route('user.create_trip')}}" method="post" class="container1">
+              @csrf
+              <h5></b>Add your trip details to start earning money</b></h5>
+              <label>From Country *</label>
+              <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
+              </select>
+              
+              <label>To Country *</label>
+              <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
+              </select>
+
+              <label>To City*</label>
+              <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
+              </select>
+
+              <!-- <label for="psw"><b>Password</b></label> -->
+              <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required>
+
               <button type="submit" class="btn1">Add Trip</button>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <div class="product-description-review-area pb-90">
+    <!-- <div class="product-description-review-area pb-90">
       <div class="container">
         <div class="product-description-review text-center">
           <h5> Add your trip details to start earning money  </h5> 
@@ -29,11 +42,6 @@
                   <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
                   </select>
                 </div>
-                <!-- <div class="col-md-6 form-group"> 
-                  <label>from City*</label>
-                  <select class="form-select single-select-field " data-placeholder="Choose one thing" id="travel_from_state" name="from_city" required>
-                  </select>
-                </div> -->
                 <div class="col-md-6 form-group">
                   <label>To Country *</label>
                   <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
@@ -47,15 +55,6 @@
                 <div class="col-md-6 form-group">
                   <label>Travel date</label>
                   <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required><br>
-                  <!-- @if(Auth::check())
-                    @if(Auth::user()->email_veryfied=='1')
-                      <button type="submit">Add trip</button>
-                    @else
-                      <a href="{{route('stripeIdentity.index')}}"> Add trip</a>
-                    @endif
-                  @else -->
-                    <!-- <button type="submit">Add trip</button> -->
-                  <!-- @endif -->
                   <button type="submit">Add trip</button>
                 </div>
               
@@ -63,7 +62,7 @@
             </form>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- menu area  -->
     <div class="about-story pt-95 pb-100">
       <div class="container">

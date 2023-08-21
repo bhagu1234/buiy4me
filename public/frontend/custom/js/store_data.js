@@ -310,31 +310,20 @@ $("#create_order").click(function(){
         alert("enter any product link");
         return false;
     }
-    $.get(url).then(function(responseData) {
-        $('#display').append(responseData);
-      });
+    // $.get(url).then(function(responseData) {
+    //     $('#display').append(responseData);
+    //   });
     // $("#display").load(url);
-    // $.ajax({
-    //     url:url,
-    //     headers: {
-    //         'X-Requested-With': 'XMLHttpRequest',
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    //         'Access-Control-Allow-Methods' : 'POST',
-    //         'Access-Control-Allow-Origin':' *',
-    //         'Access-Control-Allow-Headers' : 'X-Requested-With, Content-Type, X-Auth-Token, Origin, Authorization'
-    //     },
-    //     type:"post" , 
-    //     data:{'_token':$("input[name=_token]").val()},
-    //     contentType: false,
-    //     processData: false, 
-    //     dataType: "json",
-    //     cache: false,
-    //     crossDomain: false,
-    //     success:function(response)
-    //     {
-    //         console.log(response);
-    //     }
-    // });
+    $.ajax({
+        url:base_path+"/fetch-amazon-data",
+        type:"get" , 
+        success:function(response)
+        {
+            alert(response)
+            // location.href=base_path+"/product_details";
+            // $("#order_product_price").val();
+        }
+    });
 });
 
 

@@ -12,12 +12,8 @@
             <input type="url" placeholder="Paste the URL of the Product"  class="from-group" name="product" id="fromduct_from_url"> 
         </div>
         <div class="button1">
-            <!-- <button1 id="create_order"><a href="#">create Order</a></button1> -->
-            @if(Auth::check())
-                <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
-            @else
-                <button1 onclick="openLogin()">Create Order</button1>
-            @endif
+            <!-- <button1 id="create_order">Create Order</button1> -->
+            <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
         </div>
         <br>
         <!-- Trending products area start -->

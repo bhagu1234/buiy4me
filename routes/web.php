@@ -9,6 +9,8 @@ use App\Http\Controllers\paymentController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\AmazonController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,11 +22,11 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('/fetch-amazon-data', [AmazonController::class, 'fetchAmazonData']);
 // HomeController==================
 Route::get('/',[HomeController::class,"home"])->name('home');
+Route::get('/nav',[HomeController::class,"nav"])->name('home.nav');
         
 // AuthController
 Route::get('/registrion',[AuthController::class,"Registrion"])->name('registrion');
@@ -35,13 +37,14 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // OrderController
 Route::get('create_order',[OrderController::class,'create_order'])->name('user.create_order');
+Route::get('product_details',[OrderController::class,'product_details'])->name('user.product_details');
 
 // TripController
 Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
 Route::get('treveller',[TripController::class,'treveller_store'])->name('user.treveller');
 
 // UserProfileController
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth','verified']], function() {
     Route::get('profile',[UserProfileController::class,'profile'])->name('user.profile');
     Route::post('edit_profile_data',[UserProfileController::class,'edit_profile_data'])->name('user.edit_profile_data');
     Route::get('setting',[UserProfileController::class,'setting'])->name('user.setting');
@@ -94,11 +97,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('order_cancle/{id}',[OrderController::class,'order_cancle'])->name('user.order_cancle');
     Route::get('edit_order/{id}',[OrderController::class,'edit_order'])->name('user.edit_order');
     Route::post('update_order',[OrderController::class,'update_order'])->name('user.update_order');
-    Route::get('product_details',[OrderController::class,'product_details'])->name('user.product_details');
+   
 
 });
 // VerificationController
 Route::get('/verify/stripe/{accountId}', [VerificationController::class,'verify'])->name('verify.stripe');
+
+
+
 
 
 

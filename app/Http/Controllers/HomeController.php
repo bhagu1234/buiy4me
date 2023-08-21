@@ -31,4 +31,8 @@ class HomeController extends Controller
          ->take(4)->get();
       return view('frontend.home',compact('latestProduct','lestesTrip','popurlDe'));
    }
+   public function nav(Request $request)
+   {
+      return view("frontend.includes.nav");
+   }
 }

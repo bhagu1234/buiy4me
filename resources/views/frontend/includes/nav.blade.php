@@ -1,5 +1,5 @@
 
-<header class="headerclass">
+<header class="headerclass" id="header_navbar">
     <div class="header-top-furniture wrapper-padding-2 res-header-sm">
         <div class="container-fluid">
             <div class="header-bottom-wrapper">

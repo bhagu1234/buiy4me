@@ -34,8 +34,16 @@ class AuthController extends Controller
         {
             if(User::where('email', $request->email)->first() != null)
             {
-                Session::put('error','Email already exits!!');
-                return back();
+                if($request->sub=='modal')
+                {
+                    return array("status"=>500,'msg'=>'Email already exits!!');
+                }
+                else
+                {
+                    Session::put('error','Email already exits!!');
+                    return back();
+                }
+               
             }
 
         }
@@ -58,7 +66,16 @@ class AuthController extends Controller
                 Auth::login($userModel); 
         }
         // Session::put('success','You are logged in successfully!!');
-        return redirect()->route("home");
+        if($request->sub=='modal')
+        {
+            return array("status"=>200,'msg'=>'Welcome'.$userModel->first_name);
+        }
+        else
+        {
+            return redirect()->route("home")->withSuccess("Welcome " .$userModel->first_name);
+        }
+      
+       
     }
    public function login(Request $request)
    {
@@ -75,8 +92,6 @@ class AuthController extends Controller
    public function User_Login(Request $request)
    {
         $previous_url=$request->previous_url;
-        // dd($previous_url);
-    //   dd($request->password);
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -98,19 +113,28 @@ class AuthController extends Controller
                     $userModel->first_name = $user->first_name;
                     Auth::login($userModel); 
                 }
-            //   dd($previous_url);
+                if($request->sub=='modal')
+                {
+                    return array("status"=>200,'msg'=>'You have successfully loggedin !');
+                }
               return redirect($previous_url)->withSuccess('You have Successfully loggedin');
-                // return back()->withSuccess('You have Successfully loggedin');
-            }
-                
+            }   
             else
             {
+                if($request->sub=='modal')
+                {
+                    return array("status"=>500,'msg'=>'Something Went wrong!!');
+                }
                 Session::put('error','Something Went wrong!!');
                 return back();
             }
         }
+        if($request->sub=='modal')
+        {
+            return array("status"=>500,'msg'=>'Something Went wrong!!');
+        }
         Session::put('error','Something Went wrong!!');
-                return back();
+        return back();
        
        
    }
