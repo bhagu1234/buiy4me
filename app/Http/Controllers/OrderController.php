@@ -11,7 +11,8 @@ use App\Models\MatchedTripOrder;
 use App\Models\Shop;
 use App\Models\Tax;
 use Auth;
-
+use Goutte\Client;
+use Illuminate\Support\Str;
 class OrderController extends Controller
 {
     public function index(Request $request)
@@ -230,16 +231,22 @@ class OrderController extends Controller
     }
     public function product_details(Request $request)
     {
+        $url=$request->url;
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+
+        $title = $crawler->filter('title')->text();
+        $price = $crawler->filter('.a-price-whole ')->text();
+        $discription=$crawler->filter('#feature-bullets')->text();
+        // return [
+        //     'title' => $title,
+        //     'price' => $price,
+        // ];
         $all_tax=Tax::first();
         // dd($all_tax);
-        return view('frontend.user.create_product',compact('all_tax'));  
+        return view('frontend.user.create_product',compact('all_tax','price','title','discription','url'));  
     }
-    public function setting(Request $request)
-    {
-        $user_id=Auth::user()->id;
-        $user_data=User::findOrFail($user_id);
-        return view('frontend.user.settings',compact('user_data'));
-    }
+   
     public function orders(Request $request)
     {
         $user_id=Auth::User()->id;

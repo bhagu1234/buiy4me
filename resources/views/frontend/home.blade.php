@@ -1,196 +1,206 @@
 @include('frontend.includes.header')
-    <body>
-        @include('frontend.includes.nav')
-        
-        <!-- header end -->  
-        
-        <!-- slider-area -->
+
+<body>
+    @include('frontend.includes.nav')
+
+    <!-- slider-area strat -->
+    <div class="slider-area">
         <div class="slider-active owl-carousel">
-            <div class="food-slider bg-img slider-height-5" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg)">
+            <div class="single-slider single-slider-book1 bg-img" style="background-image: url(public/frontend/custom/img/Banner-1.jpg)">
                 <div class="container">
-                    <div class="food-slider-content text-center fadeinup-animated-1">
-                        <form action="/action_page.php" class="container1">
-                            <h3></b>Add your trip details to start earning money</b></h3>
-
-                            <!-- <label for="email"><b>Email</b></label> -->
-                            <input type="text" placeholder="From" name="" required>
-
-                            <!-- <label for="psw"><b>Password</b></label> -->
-                            <input type="text" placeholder="To" name="" required>
-
-                            <!-- <label for="psw"><b>Password</b></label> -->
-                            <input type="date" placeholder="Travel Date" date="" required>
-
-                            <button type="submit" class="btn1">Add Trip</button>
-                        </form>
-                        <!-- <img class="animated" src="assets/img/slider/6.png" alt="">
-                        <p class="animated">Earn $200+ USD every time you travel abroad</p>
-                        <a class="food-slider-btn food-slider-btn-2 animated" href="#">How Buyforme works</a> -->
+                    <div class="slider-animation slider-content-book fadeinup-animated">
+                        <h1 class="animated"><span>Knowledge</span> is</h1>
+                        <h2 class="animated">Power.</h2>
+                        <p class="animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <a href="shop.html">More Books</a>
                     </div>
                 </div>
             </div>
-            <!-- <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Web-Banners-2-1.jpg)">
-                    <div class="container">
-                        <div class="food-slider-content text-center fadeinup-animated-1">
-                            <img class="animated" src="assets/img/slider/6.png" alt="">
-                            <p class="animated"></p>
-                            <a class="food-slider-btn-1 animated" href="#"></a>
-                        </div>
+            <div class="single-slider single-slider-book1 bg-img" style="background-image: url(public/frontend/custom/img/Banner-2.jpg)">
+                <div class="container">
+                    <div class="slider-animation slider-content-book fadeinup-animated">
+                        <h1 class="animated"><span>Knowledge</span> is</h1>
+                        <h2 class="animated">Power.</h2>
+                        <p class="animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <a href="shop.html">More Books</a>
                     </div>
-                </div> -->
-        </div>
-         <!-- slider-area end  -->
-         <!-- popular product area start -->
-         <div class="popular-product-area wrapper-padding-6 pt-115 pb-70 bg-img" style="background-image: url(assets/img/bg/13.jpg)">
-            <div class="container-fluid">
-            @include('admin.includes.validation')
-                <div class="section-title-10 text-center mb-85">
-                    <h2>Popular Traveller </h2>
-                    <p>Buy4me shoppers and travelers who help each other access the world.</p>
                 </div>
-                <div class="row">
-                    @foreach($lestesTrip as $row)
-                        <div class="col-md-3">
-                            <div class="single-popular-product food-border-1 text-center mb-40">
-                                <a href="#"> 
-                                    @if($row->profile !="")
-                                        <img src="{{URL::to('/')}}/public/upload/profile_img/{{$row->profile}}" style="width:100px!important;">
-                                    @else
-                                        <img src="{{URL::to('/')}}/public/frontend/assets/img/profile/3135715.png" style="width:100px!important;" alt="" >
-                                    @endif
+            </div>
+        </div>
+    </div>
+    <!-- slider-area end-->
+    <!-- <div class="slider-active owl-carousel">
+        <div class="food-slider bg-img slider-height-5" style="background-image: url(public/frontend/custom/img/Banner-1.jpg)">
+            <div class="container">
+                <div class="food-slider-content text-center fadeinup-animated-1">
+                     <img class="animated" src="assets/img/slider/6.png" alt="">
+                    <p class="animated">Earn $200+ USD every time you travel abroad</p>
+                    <a class="food-slider-btn food-slider-btn-2 animated" href="#">How Buyforme works</a> -->
+    <!-- Recent Transactions area start -->
+    <div class="popular-product-area wrapper-padding-3 pt-115 pb-115">
+        <div class="container-fluid">
+            <div class="section-title-6 text-center mb-50">
+                <h2>Recent Products</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+            </div>
+            <div class="product-style">
+                <div class="popular-product-active owl-carousel">
+                    @foreach($latestProduct as $row)
+                        <?php
+                            $img=$row->product_imgs;
+                            $img=explode(' , ', $img);
+                            foreach($img as $i)
+                            {
+                                $i=$i;
+                            }
+                            $i=str_replace([']','[']," " ,$i);
+                            $i=trim($i);
+                        ?>  
+                        <div class="product-wrapper">
+                            <div class="product-img-1">
+                                <a href="#">
+                                    <img src="https://b4m.veravalonline.com/b4m/public/upload/product_img/{{$i}}" alt="">
                                 </a>
-                                <h4><a href="product-details.html">{{$row->first_name}}  {{$row->last_name}}</a></h4>
-                                
-                                <p><b> Location :-</b> {{$row->from_countryname}}- &nbsp;&nbsp;&nbsp; {{$row->toCountryName}} </p>
-                                <!-- <div class="popular-product">
-                                    <span class="pizza-old-price">$23.99</span>
-                                    <span class="pizza-new-price">$20.00</span>
-                                </div> -->
+                            </div>
+                            <div class="funiture-product-content text-center">
+                                <h4><a href="#">{{$row->product_name}}</a></h4>
+                                <span>${{$row->product_price}}</span>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
-        <!-- end traveler area  -->
+    </div>
+    <!-- Recent Transactions area end -->
+    <!-- whybuyforme area start -->
+    <div class="food-menu-area bg-img pt-110 pb-120" style="background-image: url(assets/img/bg/13.jpg)">
+        <div class="services-area wrapper-padding-4 gray-bg pt-120 pb-80">
+            <div class="container-fluid">
+                <div class="section-title-6 text-center mb-50">
+                    <h2>Why For 4 Me </h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                </div>
+                <div class="services-wrapper">
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Faster, Cost-Effective Shipping.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Faster, Cost-Effective Shipping</h4>
+                            <p>Say goodbye to lengthy shipping times and high costs. Our innovative approach leverages travelers' existing trips to deliver items swiftly and economically, meeting urgent and specialized shipping requirements.</p>
+                        </div>
+                    </div>
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Dedicated Customer Support.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Dedicated Customer Support</h4>
+                            <p>Have a question or need assistance? Our dedicated customer support team is here to help. We're committed to providing you with a seamless and hassle-free experience.</p>
+                        </div>
+                    </div>
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Secure and Transparent Transactions.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Secure and Transparent Transactions</h4>
+                            <p>We prioritize the security of your transactions and personal information. Our platform employs cutting-edge security measures, and our transparent tracking system keeps you informed at every step of the journey. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-wrapper">
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Earning Opportunities for Travelers.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Earning Opportunities for Travelers</h4>
+                            <p>Traveling becomes more rewarding than ever. Travelers can earn extra income by carrying items requested by shoppers during their trips. It's a win-win situation that turns your travel plans into profitable ventures.</p>
+                        </div>
+                    </div>
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Reliable Travelers, Trusted Deliveries.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Reliable Travelers, Trusted Deliveries</h4>
+                            <p>We take trust seriously. Our rigorous verification process ensures that travelers and shoppers on our platform are reliable and trustworthy. Rest assured that your items are in safe hands from pick-up to delivery.</p>
+                        </div>
+                    </div>
+                    <div class="single-services mb-40">
+                        <div class="services-img">
+                            <img src="{{URL::to('/')}}/public/frontend/custom/img/icon-img/Seamless Global Connectivity.png" alt="">
+                        </div>
+                        <div class="services-content">
+                            <h4>Seamless Global Connectivity</h4>
+                            <p>Our platform bridges the gap between travelers and shoppers worldwide. With a vast network of users spanning across countries, we offer an unmatched global reach for your shipping and needs. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- whybuyforme area end -->
+    <!-- testimonials area start -->
+    <div class="testimonials-area mt-90 pt-130 pb-125 wishlist bg-img" style="background-image: url(public/frontend/custom/img/49.jpg)">
+        <div class="container">
+            <div class="testimonials-active owl-carousel">
+                <div class="fruits-single-testimonial text-center">
+                    <img alt="" src="assets/img/team/1.png">
+                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    <p>I was skeptical about the concept initially, but Buy4Me exceeded my expectations. The website is well-designed, and the entire process is so straightforward. I've recommended it to friends already! </p>
+                    <div class="client-name">
+                        <span class="client-name-bright">Rachel B/</span>
+                        <span>UIUX DEsigner</span>
+                    </div>
+                    <div class="fruits-ratting">
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                    </div>
+                </div>
+                <div class="fruits-single-testimonial text-center">
+                    <img alt="" src="assets/img/team/1.png">
+                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    <p>As a fashion enthusiast, I often find unique pieces online that aren't available in my country. Buy4Me made it simple to get those pieces delivered right to my door. I'm thrilled with the service! </p>
+                    <div class="client-name">
+                        <span class="client-name-bright">Mia L /</span>
+                        <span>UIUX DEsigner</span>
+                    </div>
+                    <div class="fruits-ratting">
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                    </div>
+                </div>
+                <div class="fruits-single-testimonial text-center">
+                    <img alt="" src="assets/img/team/1.png">
+                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    <p>Buy4Me is a game-changer in the shipping industry. It's the future of cross-border shopping and travel. The platform's transparency and user-friendliness are remarkable. </p>
+                    <div class="client-name">
+                        <span class="client-name-bright">David W /</span>
+                        <span>UIUX DEsigner</span>
+                    </div>
+                    <div class="fruits-ratting">
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                        <i class="icofont icofont-star yellow"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonials area end -->
+    </div>
+    @include('frontend.includes.footer') @include('frontend.includes.footer_script')
+</body>
 
-        <!-- Popular Destinations -->
-        <div class="blog-area pt-120 pb-80">
-            <div class="container">
-                <div class="section-title-3 text-center mb-50">
-                    <h2>Popular Destinations</h2>
-                </div>
-                <div class="row">
-                    @foreach($popurlDe as $row)
-                        <div class="col-md-3">
-                            <div class="blog-wrapper mb-40">
-                            <p>{{$row->country_name}}</p>
-                            <p>{{$row->total_order}} orders</p>
-                                <div class="blog-img blog-hover mb-15">
-                                    <a href="#"><img src="{{URL::to('/')}}/public/upload/country_flag/{{$row->flag}}" alt=""></a>
-                                </div>
-                                <div class="blog-info">
-                                    <h4><a href="{{route('make_offer_html',['id'=>$row->counrty_id])}}">Add trip</a></h4>
-                                    <span>${{$row->product_price}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <!-- end Popular Destinations -->
-        <div class="food-services-area bg-img pt-200 pb-155" style="background-image: url({{URL::to('/')}}/public/frontend/assets/img/bg/12.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="single-food-services text-center food-services-padding1 mb-40">
-                            <img src="{{URL::to('/')}}/public/frontend/assets/img/banner-01.png" alt="">
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 relative">
-                        <div class="single-food-services2 text-center food-services-padding2 mb-40">
-                            <div class="logo-2">
-                    <a href="{{URL::to('/')}}">
-                        <input type="hidden" id="url" value="{{URL::to('/')}}">
-                        <img src="{{URL::to('/')}}/public/frontend/assets/img/buy4me-03.png" width="150px" style="margin-left:115px; margin-top:60px;" alt="" >
-                    </a>
-                </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="single-food-services text-center food-services-padding3 mb-40">
-                            <img src="{{URL::to('/')}}/public/frontend/assets/img/banner-02.png" alt="">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- services area end -->
-
-        <!-- menu area start -->
-        <div class="food-menu-area bg-img pt-110 pb-120" style="background-image: url(assets/img/bg/13.jpg)">
-            <div class="container">
-                <div class="section-title-10 text-center mb-60">
-                    <h2>Trending products on Buy4me</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text </p>
-                </div>
-                <div class="food-menu-product-style">
-                    <div class="tab-content">
-                        <div class="tab-pane active show fade" id="menu1" role="tabpanel">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="menu-product-wrapper">
-                                        @foreach($latestProduct as $row)
-                                            <?php
-                                                $img=$row->product_imgs;
-                                                $img=explode(' , ', $img);
-                                                foreach($img as $i)
-                                                {
-                                                    $i=$i;
-                                                }
-                                                $i=str_replace([']','[']," " ,$i);
-                                                $i=trim($i);
-                                            ?>                 
-                                            <div class="single-menu-product mb-30 col-5">
-                                                <div class="menu-product-img">
-                                                    <img src="https://b4m.veravalonline.com/b4m/public/upload/product_img/{{$i}}" alt="" class="product_section_img" width="100px" height="100px">
-                                                </div>
-                                                <div class="menu-product-content">
-                                                    <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                    <div class="menu-product-price-rating">
-                                                        <div class="menu-product-price">
-                                                            <span class="menu-product-old">${{$row->product_price}} </span>
-                                                            <span class="menu-product-new">${{$row->product_price}}</span>
-                                                        </div>
-                                                        <div class="menu-product-rating">
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                            <i class="pe-7s-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <!-- <p>Categories: Subway, Masala, Indian</p> -->
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-btn-area text-center mt-40">
-                        <a class="menu-btn btn-hover" href="menu-list.html">Buy Product</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- menu area end -->
-    @include('frontend.includes.footer')
-    @include('frontend.includes.footer_script')
-    </body>
 </html>

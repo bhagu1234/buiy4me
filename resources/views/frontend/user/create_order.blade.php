@@ -7,15 +7,20 @@
         <center>
         <div class="header">
 	        <h1><b>Shop products from USA and save up to 40%</b></h1>
-	    </div> 
-        <div class="form-control1">
-            <input type="url" placeholder="Paste the URL of the Product"  class="from-group" name="product" id="fromduct_from_url"> 
-        </div>
-        <div class="button1">
-            <!-- <button1 id="create_order">Create Order</button1> -->
-            <button1><a href="{{route('user.product_details')}}">Create Order</a></button1>
-        </div>
-        <br>
+	    </div>   
+         <form action="{{route('user.product_details')}}" method="get">
+            @csrf
+            <div class="form-control1">        
+                <input type="url" placeholder="Paste the URL of the Product"  class="from-group" name="url" id="fromduct_from_url"> 
+            </div>
+            <div class="button1">
+                <button type="submit">Create Order</button>
+                  <!-- <button1 id="create_order">Create Order</button1> -->
+                <!-- <button1><a href="{{route('user.product_details')}}">Create Order</a></button1> -->
+            </div>
+            <br>
+        </form>
+          
         <!-- Trending products area start -->
         <div class="food-menu-area bg-img pt-110 pb-120" style="background-image: url(assets/img/bg/13.jpg)">
             <div class="container">

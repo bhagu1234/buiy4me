@@ -1,18 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Auth;
 use App\Models\Trip;
 use App\Models\OrderDetail;
 use App\Models\MatchedTripOrder;
 use App\Models\Country;
 use App\Models\State;
 use DB;
+use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
-   public function home(Request $request)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+   //  public function __construct()
+   //  {
+   //      $this->middleware('auth');
+   //  }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    
+    public function home(Request $request)
    {
       $latestProduct=OrderDetail::orderBy('id','Desc')->take(8)->where('status','1')->get();
       $lestesTrip=Trip::take(4)->orderBy('trips.id','DESC')

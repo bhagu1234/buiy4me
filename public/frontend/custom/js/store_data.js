@@ -310,20 +310,22 @@ $("#create_order").click(function(){
         alert("enter any product link");
         return false;
     }
+    location.href=base_path+"/fetch-amazon-data/"+url;
     // $.get(url).then(function(responseData) {
     //     $('#display').append(responseData);
     //   });
     // $("#display").load(url);
-    $.ajax({
-        url:base_path+"/fetch-amazon-data",
-        type:"get" , 
-        success:function(response)
-        {
-            alert(response)
-            // location.href=base_path+"/product_details";
-            // $("#order_product_price").val();
-        }
-    });
+    // $.ajax({
+    //     url:base_path+"/fetch-amazon-data",
+    //     type:"get" , 
+    //     success:function(response)
+    //     {
+    //         // console.log(response);
+    //         // alert(response)
+    //         // // location.href=base_path+"/product_details";
+    //         // // $("#order_product_price").val();
+    //     }
+    // });
 });
 
 

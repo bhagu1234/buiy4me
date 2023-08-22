@@ -221,31 +221,25 @@ class VerificationController extends Controller
     }
 
     public function sendVerificationEmail(Request $request)
-{
-    // Get the user's Stripe Account ID
-     $stripe = new \Stripe\StripeClient([
-        'api_key' => $_ENV['STRIPE_SECRET_KEY'],
-        'stripe_version' => '2020-08-27',
-    ]);
-    $stripeAccountId = $stripe->identity->verificationSessions->create([
-        'type' => 'document',
-        'metadata' => [
-        'user_id' => '{{USER_ID}}',
-        ]
-    ]);
-
-    // Send the verification email
-    Mail::to($user->email)->send(new StripeAccountVerification($stripeAccountId));
-
-    // Return a response or redirect
-}
-public function verify($accountId)
-{
-    // Mark the user's email as verified in your application
-    // Complete any necessary account setup
-
-    return redirect()->route('/')->with('success', 'Your Stripe account is now verified!');
-}
+    {
+        $email=$request->email;
+        $user=User::where('email',$email)->first();
+        $user->email_veryfied="1";
+        $user->save();
+        return redirect()->route("home")->withSuccess("email verified !");
+    }
+    public function check_mail(Request $request)
+    {
+        if(Auth::user()->email_veryfied=="0")
+        {
+            return view("frontend.emails.check_mail");
+        }
+        else
+        {
+            return redirect()->route("home")->withSuccess("Welcome Your email verified !");
+        }
+      
+    }
 
     
 }

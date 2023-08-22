@@ -93,6 +93,12 @@ class UserProfileController extends Controller
     {
         return view('frontend.user.help_center'); 
     }
+    public function setting(Request $request)
+    {
+        $user_id=Auth::user()->id;
+        $user_data=User::findOrFail($user_id);
+        return view('frontend.user.settings',compact('user_data'));
+    }
   
     
 }

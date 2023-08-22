@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests;
+use App\Mail\MyCustomMail;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
   
@@ -30,6 +33,14 @@ class AuthController extends Controller
     }
     public function userRegistration(Request $request)
     {
+        // Mail::to($request->email)->send(new MyCustomMail());
+        // dd("dffd");
+        // Mail::to($request->email)->send(new MyCustomMail());
+        
+        // $user = Auth::user();  // Replace with your logic to get the user
+        // Mail::to("dharmaram503@gmail.com")->send(new MyCustomMail());
+        // dd("dffd");
+
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) 
         {
             if(User::where('email', $request->email)->first() != null)
@@ -64,6 +75,14 @@ class AuthController extends Controller
                 $userModel->password = $user_data->password;
                 $userModel->first_name = $user_data->first_name;
                 Auth::login($userModel); 
+                $array=array();
+                $array['email'] = $request->email;
+                Mail::send('frontend.emails.verify_email', $array,function($message) use ($array) {
+                    $message->to($array['email']);
+                    $message->subject('buy4me email verify');
+                });
+               
+                
         }
         // Session::put('success','You are logged in successfully!!');
         if($request->sub=='modal')
@@ -72,7 +91,15 @@ class AuthController extends Controller
         }
         else
         {
-            return redirect()->route("home")->withSuccess("Welcome " .$userModel->first_name);
+            if(Auth::user()->email_veryfied=="1")
+            {
+                return redirect()->route("home")->withSuccess("Welcome " .$userModel->first_name);
+            } 
+            else
+            {
+                return redirect()->route("check_mail")->withSuccess("check your mail");
+            }
+           
         }
       
        

@@ -58,11 +58,11 @@ $travel_tax=$all_tax->travel_tax;
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Link</label>
-											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
+											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" value="{{$url}}" readonly>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="LastName" class="form-label">Product Name</label>
-											<input type="text" class="form-control" id="order_productName" name="product_name"  placeholder="Enter Product Name" onkeyup="summery_vali('product_name',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
+											<input type="text" class="form-control" id="order_productName" name="product_name"  value ="{{$title}}" placeholder="Enter Product Name" onkeyup="summery_vali('product_name',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="PhoneNumber" class="form-label">Product Image</label>
@@ -70,7 +70,7 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputEmail" class="form-label">Price</label>
-											<input name="product_price" class="form-control" type="number" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
+											<input name="product_price" class="form-control" type="text" value="{{$price}}" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputCountry" class="form-label">QTY</label>
@@ -82,7 +82,7 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Details</label>
-											<textarea class="form-control product_details" name="product_details"  onkeyup="summery_vali('product_details',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_details"></textarea>
+											<textarea class="form-control product_details" name="product_details"  onkeyup="summery_vali('product_details',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_details">{{$discription}}</textarea>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 										</div>
