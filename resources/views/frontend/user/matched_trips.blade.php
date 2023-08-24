@@ -56,10 +56,12 @@
                                                 <div class="details-price">
                                                     <span>Treveler Mobile</span> :-<span >{{$row->mobile}}</span>
                                                 </div>
-                                                @if($row->trip_status=='1')
+                                                <!-- @if($row->trip_status=='1') -->
                                                     <button><a href="{{route('stripeIdentity.index')}}">Accept Request </a></button>
-                                                @endif
+                                                    
+                                                <!-- @endif -->
                                                 <!-- <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button> -->
+                                                <button><a href="{{route('stripeIdentity.index')}}">Accept Request </a></button>
                                             </div>
                                         </div>
                                     <!-- @else

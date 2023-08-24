@@ -52,7 +52,7 @@ class StateController extends Controller
      {
           $countryId=$request->id;
           $data=State::where('country_id',$countryId)->get();
-          $opt="<option selected disabled>--select--</option>";
+          $opt="<option selected disabled>City</option>";
           foreach($data as $row)
           {
                $opt.="<option value=".$row->id.">".$row->city_name."</option>";

@@ -24,6 +24,7 @@
                                                 <!--<a href="#">Forgot Password?</a>-->
                                             </div>
                                             <button type="submit" class="default-btn floatright">Login</button>
+                                            <button type="button" class="default-btn floatright"><a href="{{route('registrion')}}">Registrion</a></button>
                                         </div>
                                     </form>
                                 </div>
@@ -34,9 +35,9 @@
             </div>
         </div>
         <!-- login-area end -->
-	    @include('frontend.includes.footer');
+	    @include('frontend.includes.footer')
 		
 		<!-- all js here -->
-     @include('frontend.includes.footer_script');
+     @include('frontend.includes.footer_script')
     </body>
 </html>

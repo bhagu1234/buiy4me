@@ -41,27 +41,43 @@ class OrderController extends Controller
         $user=Auth::User();
         $user_id=$user->id;
         $data="";
-        if($request->file('file') !=null ||$request->file('file') !='null')
-        {
-            $files=$request->file('file');
-            $data=array();
-            foreach($files as $file)
-            {
-                $name =  time().rand(1,100).'.'.$file->getClientOriginalName();
-                $filePath=$file->move(public_path() . '/upload/product_img/', $name);
-                $data[] = $name;
-            }
-            $filePathar=$filePath;
-            $data=json_encode($data);
-            $data=str_ireplace(['"',' ;']," ",$data);
-        }
-        // dd($data);
+        // dd($request->file('file'));
+        // if($request->file('file') !=null && $request->file('file') !='null'  ||$request->file('file') !='')
+        // {
+          
+        // }
+        // dd($request->id);
         if($request->from=="request")
         {
             $getOrder=OrderDetail::findOrFail($request->id);
+            // dd($getOrder);
             $data=new OrderDetail();
-            $data=$getOrder;
+            $data->user_id=Auth::user()->id;
+            $data->product_name=$getOrder->product_name;
+            $data->product_url=$getOrder->product_url;
+            $data->product_price=$getOrder->product_price;
+            $data->product_imgs=$getOrder->product_imgs;
+            $data->img_path=$getOrder->img_path;
+            $data->product_qty=$request->product_qty;
+            $data->product_details=$getOrder->product_details;
+            $data->box=$getOrder->box;
+            $data->information=$getOrder->information;
+            $data->us_sale_tax=$getOrder->us_sale_tax;
+            $data->traveller_reward=$getOrder->traveller_reward;
+            $data->buy4me_fee=$getOrder->buy4me_fee;
+            $data->payment=$getOrder->payment;
+            $data->payment_id=$getOrder->payment_id;
+            $data->order_status=$getOrder->order_status;
+            $data->deliver_from_country=$getOrder->deliver_from_country;
+            $data->deliver_to_country=$getOrder->deliver_to_country;
+            $data->deliver_from_state=$getOrder->deliver_from_state;
+            $data->deliver_to_state=$getOrder->deliver_to_state;
+            $data->during_time=$getOrder->during_time;
+            $data->estimated_total=$getOrder->estimated_total;
+            $data->upc=$getOrder->upc;
             $data->save();
+            $or_id=OrderDetail::latest()->first();
+            $oid=$or_id->id;
             return  redirect("order_details/".$oid)->withSuccess("Data updated successfully");
            
         }
@@ -87,7 +103,17 @@ class OrderController extends Controller
         {
             $d=date('y-m-d');
         }
-     
+        $files=$request->file('file');
+        $data=array();
+        foreach($files as $file)
+        {
+            $name =  time().rand(1,100).'.'.$file->getClientOriginalName();
+            $filePath=$file->move(public_path() . '/upload/product_img/', $name);
+            $data[] = $name;
+        }
+        $filePathar=$filePath;
+        $data=json_encode($data);
+        $data=str_ireplace(['"',' ;']," ",$data);
         $OrdersDetail= new OrderDetail();
         $OrdersDetail->user_id=$user_id;
         $OrdersDetail->product_name=$request->product_name;
@@ -232,18 +258,21 @@ class OrderController extends Controller
     public function product_details(Request $request)
     {
         $url=$request->url;
-        $client = new Client();
-        $crawler = $client->request('GET', $url);
-
-        $title = $crawler->filter('title')->text();
-        $price = $crawler->filter('.a-price-whole ')->text();
-        $discription=$crawler->filter('#feature-bullets')->text();
-        // return [
-        //     'title' => $title,
-        //     'price' => $price,
-        // ];
+        $price="";
+        $title=""; 
+        $discription="";
+        // $client = new Client();
+        // $crawler = $client->request('GET', $url);
+        // $title = $crawler->filter('body')->text();
+        // //  dd($title);
+        // $price = $crawler->filter('.a-price-whole')->text();
+        // $discription=$crawler->filter('#feature-bullets')->text();
+        // // return [
+        // //     'title' => $title,
+        // //     'price' => $price,
+        // // ];
         $all_tax=Tax::first();
-        // dd($all_tax);
+        // dd($url);
         return view('frontend.user.create_product',compact('all_tax','price','title','discription','url'));  
     }
    

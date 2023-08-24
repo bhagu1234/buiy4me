@@ -3,12 +3,14 @@
     @include('frontend.includes.nav')
     <!-- header end -->
     <div class="best-product-area pb-15">
+	@include('admin.includes.validation')
       <div class="pl-100 pr-100">
         <div class="container-fluid">
               <div class="section-title-3 text-center mb-40">
                 <h2>Orders  Details</h2>
                
               </div>
+			 
               <div class="best-product-style">
                   <div class="product-tab-list2 text-center mb-95 nav product-menu-mrg" role="tablist">
                     <a class="active" href="#order_Orderpublished" data-bs-toggle="tab" role="tab">
@@ -66,35 +68,35 @@
 						</div>
 						  <p class="card-text fs-6">{{$data->product_details}}</p>
 						  <dl class="row">
-							<dt class="col-sm-3">Deliver from</dt>
+							<dt class="col-sm-3">From</dt>
 							<dd class="col-sm-9">{{$data->fromCountry}},{{$data->fromCity}}</dd>
 						  
-							<dt class="col-sm-3">Deliver to</dt>
+							<dt class="col-sm-3">To</dt>
 							<dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
 						  
-							<dt class="col-sm-3">Deliver before</dt>
+							<dt class="col-sm-3">Before</dt>
 							<dd class="col-sm-9">{{$data->during_time}} </dd>
 						  </dl>
 
                           <dl class="row">
-							<dt class="col-sm-3">Traveller reward</dt>
+							<dt class="col-sm-3">Reward</dt>
 							<dd class="col-sm-9">{{$data->traveller_reward}}</dd>
 						  
-							<dt class="col-sm-3">Sales Tax</dt>
+							<dt class="col-sm-3">Tax</dt>
 							<dd class="col-sm-9">{{$data->us_sale_tax}}</dd>
 						  
-							<dt class="col-sm-3">Buy4me fee</dt>
+							<dt class="col-sm-3">Buy4Me Fee</dt>
 							<dd class="col-sm-9">{{$data->buy4me_fee}} </dd>
 
-                            <dt class="col-sm-3">Payment processing</dt>
+                            <dt class="col-sm-3">Payment Processing</dt>
 							<dd class="col-sm-9">{{$data->payment}} </dd>
 						  </dl>
                           <div class="details-price">
-                            <span>Estimated total </span>:-<span id="">{{$data->estimated_total}}</span>
+                            <span>Total </span>:-<span id="">{{$data->estimated_total}}</span>
                         </div>
 						  <div class="row row-cols-auto row-cols-1 row-cols-md-3 align-items-center">
 							<div class="col">
-								<label class="form-label">Quantity</label>
+								<label class="form-label">QTY</label>
 								<div class="input-group input-spinner">
                                     <span>{{$data->product_qty}}</span>
 						
@@ -107,9 +109,9 @@
 						<?php if(url()->previous()==URL::to('/')."/create_order"){  ?>
 								<a href="{{route('user.create_order2',['id'=>$data->id])}}" class="btn btn-primary">Request this Item</a>
 							<?php }else{ ?>
-								<a href="{{route('user.matched_order',['id'=>$data->id,'status'=>$from])}}" class="btn btn-primary">Check matched trip</a>
-								<a href="{{route('user.edit_order',['id'=>$data->id])}}" class="btn btn-outline-primary"><span class="text">Edit Order</span> <i class='bx bxs-cart-alt'></i></a>
-								<a href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" class="btn btn-outline-primary"><span class="text">Cancle Order</span> <i class='bx bxs-cart-alt'></i></a>
+								<a href="{{route('user.matched_order',['id'=>$data->id,'status'=>$from])}}" class="btn btn-primary">Find Traveller</a>
+								<a href="{{route('user.edit_order',['id'=>$data->id])}}" class="btn btn-outline-primary"><span class="text">Edit</span> <i class='bx bxs-cart-alt'></i></a>
+								<a href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" class="btn btn-outline-primary"><span class="text">Cancle</span> <i class='bx bxs-cart-alt'></i></a>
 							<?php } ?>
 						</div>
 						</div>

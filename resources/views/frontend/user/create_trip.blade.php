@@ -2,16 +2,17 @@
   <body>
     @include('frontend.includes.nav')
     <!-- header end -->
-    <div class="slider-active owl-carousel">
+    <!-- <div class="slider-active owl-carousel">
       <div class="food-slider bg-img slider-height-5" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg)">
         <div class="container">
           <div class="food-slider-content text-center fadeinup-animated-1">
-            <form action="{{route('user.create_trip')}}" method="post" class="container1">
+             <form action="{{route('user.create_trip')}}" method="post" class="container1">
               @csrf
-              <h5></b>Add your trip details to start earning money</b></h5>
-              <label>From Country *</label>
+              <h5></b>Add your trip details to start earning money</b></h5> -->
+              <!-- <label>From Country *</label>
               <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
               </select>
+              
               
               <label>To Country *</label>
               <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
@@ -20,49 +21,43 @@
               <label>To City*</label>
               <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
               </select>
+            
+              <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="</?php echo date('Y-m-d'); ?>" required>
 
-              <!-- <label for="psw"><b>Password</b></label> -->
-              <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required>
+              <button type="submit" class="btn1">Add Trip</button> -->
+            <!-- </form> -->
+          <!-- </div>
+        </div>
+      </div>
+    </div>    -->
+    <div class="row traveller_slider" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg);height: 500px !important;"> 
+      <div class="product-description-review-area pb-90s col-12">
+        <div class="container">
+            <div class="food-slider-content text-center fadeinup-animated-1">
+              <form action="{{route('user.create_trip')}}" method="post" class="container1">
+                @csrf
+                <h5></b>Add your trip details to start earning money</b></h5>
+                <label>From Country *</label>
+                <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
+                </select>
+                
+                
+                <label>To Country *</label>
+                <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
+                </select>
 
-              <button type="submit" class="btn1">Add Trip</button>
-            </form>
+                <label>To City*</label>
+                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
+                </select>
+              
+                <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="</?php echo date('Y-m-d'); ?>" required>
+
+                <button type="submit" class="btn1">Add Trip</button>
+              </form>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="product-description-review-area pb-90">
-      <div class="container">
-        <div class="product-description-review text-center">
-          <h5> Add your trip details to start earning money  </h5> 
-            <form action="{{route('user.create_trip')}}" method="post">
-              @csrf
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label>from Country*</label>
-                  <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
-                  </select>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>To Country *</label>
-                  <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
-                  </select>
-                </div> 
-                <div class="col-md-6 form-group"> 
-                  <label>To City*</label>
-                  <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
-                  </select>
-                </div>
-                <div class="col-md-6 form-group">
-                  <label>Travel date</label>
-                  <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="<?php echo date('Y-m-d'); ?>" required><br>
-                  <button type="submit">Add trip</button>
-                </div>
-              
-              </div>
-            </form>
-        </div>
-      </div>
-    </div> -->
     <!-- menu area  -->
     <div class="about-story pt-95 pb-100">
       <div class="container">
@@ -118,4 +113,6 @@
 		<!-- all js here -->
     @include('frontend.includes.footer_script')
   </body>
+
 </html>
+

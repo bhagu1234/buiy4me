@@ -124,7 +124,6 @@ function getState(res,fun)
         url: base_path+"/admin-fatch_state",
         data:{id:res},
         success:function(result){
-            alert(fun);
             if(fun=="from_travel")
             {
                 $("#travel_from_state").html("");

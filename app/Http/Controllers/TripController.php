@@ -201,6 +201,46 @@ class TripController extends Controller
         $data->save();
         return redirect()->route('user.orders')->withSuccess('Your request Changed');
     }
+    public function create_trip(Request $request)
+    {
+        // dd($request);
+        // if($request->from_city != $request->to_city)
+        // {
+            $user=Auth::User();
+            $user_id=$user->id;
+            $trip=new Trip();
+            $trip->user_id=$user_id;
+            $trip->from_location_country=$request->from_location;
+            $trip->to_location_country=$request->to_location;
+            // $trip->from_location_state=$request->from_city;
+            $trip->to_location_state=$request->to_city;
+            $trip->travel_date=$request->travel_date;
+            $trip->save();
+            $t_id=Trip::latest()->first();
+            $tid=$t_id->id;
+            $t_user=$t_id->user_id;
+            $OrderDetail=OrderDetail::where('deliver_from_country',$request->from_location)->where('deliver_to_country',$request->to_location)->where('deliver_to_state',$request->to_city)->where('during_time' ,'>=',$request->travel_date)->where('order_status','1')->get();
+            foreach($OrderDetail as $r)
+            {
+                if($t_user != $r->user_id)
+                {
+                    $MatchedTripOrder=new MatchedTripOrder();
+                    $MatchedTripOrder->trip_id=$tid;
+                    $MatchedTripOrder->order_id=$r->id;
+                    $MatchedTripOrder->trip_user=$t_user;
+                    $MatchedTripOrder->order_user=$r->user_id;
+                    $MatchedTripOrder->save();
+                }
+            
+            }
+            return redirect()->route('user.trip')->withSuccess('Trip Created Successfully');
+        // }
+        // else
+        // {
+        //     return back()->withError('Something went Wrong');
+        // }
+        
+    }
     public function treveller_store(Request $request)
     {
         $data= Country::all();
@@ -225,6 +265,7 @@ class TripController extends Controller
             ->leftJoin('states as states1','states1.id','trips.from_location_state')
             ->leftJoin('states as states2','states2.id','trips.to_location_state')
             ->select('trips.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
+            ->orderBy('trips.id')
             ->get();
         $current=Trip::where('travel_date' ,'=', $today)
                 ->where('user_id',$user_id)

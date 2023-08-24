@@ -1,31 +1,15 @@
 @include('frontend.includes.header')
-
 <body>
     @include('frontend.includes.nav')
 
     <!-- slider-area strat -->
     <div class="slider-area">
-        <div class="slider-active owl-carousel">
-            <div class="single-slider single-slider-book1 bg-img" style="background-image: url(public/frontend/custom/img/Banner-1.jpg)">
-                <div class="container">
-                    <div class="slider-animation slider-content-book fadeinup-animated">
-                        <h1 class="animated"><span>Knowledge</span> is</h1>
-                        <h2 class="animated">Power.</h2>
-                        <p class="animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <a href="shop.html">More Books</a>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider single-slider-book1 bg-img" style="background-image: url(public/frontend/custom/img/Banner-2.jpg)">
-                <div class="container">
-                    <div class="slider-animation slider-content-book fadeinup-animated">
-                        <h1 class="animated"><span>Knowledge</span> is</h1>
-                        <h2 class="animated">Power.</h2>
-                        <p class="animated">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <a href="shop.html">More Books</a>
-                    </div>
-                </div>
-            </div>
+        <div class=" containerimage mydeivtest" style=" background-image: url(
+        'public/frontend/custom/img/Banner Final - 1.jpg' );">
+            <div class="bottom-left text-block btn-1">Shopper</div>
+            <!-- <div class="text-left">Turn your <br>Journey into Money</div> -->
+            <div class="bottom-right text-block btn-1">Traveller</div>
+            <!-- <div class="text-right">Receive Items from all <br> around the world</div> -->
         </div>
     </div>
     <!-- slider-area end-->
@@ -40,8 +24,8 @@
     <div class="popular-product-area wrapper-padding-3 pt-115 pb-115">
         <div class="container-fluid">
             <div class="section-title-6 text-center mb-50">
-                <h2>Recent Products</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                <h2>Recent Transcations</h2>
+                <p>Bridging Nations, One Transaction at a Time.</p>
             </div>
             <div class="product-style">
                 <div class="popular-product-active owl-carousel">
@@ -63,7 +47,7 @@
                                 </a>
                             </div>
                             <div class="funiture-product-content text-center">
-                                <h4><a href="#">{{$row->product_name}}</a></h4>
+                                <h4><a href="#" class="max-width-50">{{$row->product_name}}</a></h4>
                                 <span>${{$row->product_price}}</span>
                             </div>
                         </div>
@@ -74,12 +58,12 @@
     </div>
     <!-- Recent Transactions area end -->
     <!-- whybuyforme area start -->
-    <div class="food-menu-area bg-img pt-110 pb-120" style="background-image: url(assets/img/bg/13.jpg)">
+    <div class="food-menu-area bg-img pt-110" style="background-image: url(assets/img/bg/13.jpg)">
         <div class="services-area wrapper-padding-4 gray-bg pt-120 pb-80">
             <div class="container-fluid">
                 <div class="section-title-6 text-center mb-50">
-                    <h2>Why For 4 Me </h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                    <h2>Why Buy4Me </h2>
+                    <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p> -->
                 </div>
                 <div class="services-wrapper">
                     <div class="single-services mb-40">
@@ -144,12 +128,15 @@
     </div>
     <!-- whybuyforme area end -->
     <!-- testimonials area start -->
-    <div class="testimonials-area mt-90 pt-130 pb-125 wishlist bg-img" style="background-image: url(public/frontend/custom/img/49.jpg)">
+    <div class="testimonials-area  pt-50 pb-50 wishlist bg-img" style="background-image: url(public/frontend/custom/img/47.jpg)">
+    
         <div class="container">
+        <h2 style="text-align: center;">Our Testimonials </h2>
+        <p style="text-align: center;">Real Stories from Our Community</p>
             <div class="testimonials-active owl-carousel">
                 <div class="fruits-single-testimonial text-center">
                     <img alt="" src="assets/img/team/1.png">
-                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    
                     <p>I was skeptical about the concept initially, but Buy4Me exceeded my expectations. The website is well-designed, and the entire process is so straightforward. I've recommended it to friends already! </p>
                     <div class="client-name">
                         <span class="client-name-bright">Rachel B/</span>
@@ -165,7 +152,7 @@
                 </div>
                 <div class="fruits-single-testimonial text-center">
                     <img alt="" src="assets/img/team/1.png">
-                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    <!-- <h3>Real Stories from Our Community Our Testimonials</h3> -->
                     <p>As a fashion enthusiast, I often find unique pieces online that aren't available in my country. Buy4Me made it simple to get those pieces delivered right to my door. I'm thrilled with the service! </p>
                     <div class="client-name">
                         <span class="client-name-bright">Mia L /</span>
@@ -181,7 +168,7 @@
                 </div>
                 <div class="fruits-single-testimonial text-center">
                     <img alt="" src="assets/img/team/1.png">
-                    <h3>Real Stories from Our Community Our Testimonials</h3>
+                    <!-- <h3>Real Stories from Our Community Our Testimonials</h3> -->
                     <p>Buy4Me is a game-changer in the shipping industry. It's the future of cross-border shopping and travel. The platform's transparency and user-friendliness are remarkable. </p>
                     <div class="client-name">
                         <span class="client-name-bright">David W /</span>

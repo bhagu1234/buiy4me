@@ -16,7 +16,6 @@
                             <li><a href="{{route('home')}}">home</a></li>
                             <li><a href="{{route('user.create_order')}}">Shopper</a></li>
                             <li><a href="{{route('user.treveller')}}">Traveller</a></li>
-                            <li><a href="{{route('user.treveller')}}">Trips</a></li>
                             <li><a href="#">Cost Calculator</a></li>
                             <li><a href="#">FAQ</a></li>
                         </ul>
@@ -25,7 +24,8 @@
                 <div class="header-cart">
                     
                      @if(!empty(Auth::User()))
-                        <a class="icon-cart-furniture" href="#">
+                        <a class="icon-cart-furniture" href="#" style="text-align: center;">
+                        <i class="ti-user"></i><br>
                           Welcome {{Auth::User()->first_name}}
                         </a>
                     @else

@@ -2,7 +2,7 @@
   <body>
     @include('frontend.includes.nav')
       <!-- header end -->
-	    <div class="product-description-review-area pb-90">
+	    <div class="product-description-review-area pb-90 pt-40">
             <div class="container">
                 <div class="product-description-review text-center">
                      <h5> Trips  &nbsp;&nbsp;<a href="{{route('user.treveller')}}">Add Trip</a></h5> 
@@ -39,7 +39,7 @@
                                
                             </div>
                             <div>
-                            <div class="blog-replay-wrapper">
+                            <div class="blog-replay-wrapper pb-40">
                               <h4 class="blog-details-title2">Upcoming</h4>
                               @if($upc !=0)
                                 @foreach($upcoming as $row)

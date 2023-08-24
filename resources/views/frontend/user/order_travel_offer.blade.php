@@ -1,6 +1,7 @@
 @include('frontend.includes.header')
     <body>
         @include('frontend.includes.nav')
+        
         <!-- header end -->
 	    <div class="breadcrumb-area pt-205 pb-210" style="background-image: url({{URL::to('/')}}/public/frontend/assets/img/bg/breadcrumb.jpg)">
             <div class="container">

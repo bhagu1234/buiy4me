@@ -32,6 +32,7 @@
                                         <input name="last_name" placeholder="last name" type="text">
                                         <div class="button-box">
                                             <button type="submit" class="default-btn floatright">Register</button>
+                                            <button type="button" class="default-btn floatright"><a href="{{route('login')}}">Login</a></button>
                                         </div>
                                     </form>
                                 </div>

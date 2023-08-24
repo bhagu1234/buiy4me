@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,3 +16,8 @@
     </div>
 </div>
 @endsection
+<script>
+    setTimeout(() => {
+  document.location.reload();
+}, 3000);
+</script>

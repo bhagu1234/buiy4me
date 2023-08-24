@@ -8,6 +8,7 @@ $travel_tax=$all_tax->travel_tax;
 <body>
 @include('frontend.includes.nav')
 <!-- header end -->
+<div>
 <div class="best-product-area pb-15">
 	<div class="pl-100 pr-100">
 		<div class="container-fluid">
@@ -42,8 +43,8 @@ $travel_tax=$all_tax->travel_tax;
 								<div class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3" aria-selected="false" disabled="disabled" bis_skin_checked="1">
 									<div class="bs-stepper-circle" bis_skin_checked="1">3</div>
 									<div class="" bis_skin_checked="1">
-										<h5 class="mb-0 steper-title">Summery</h5>
-										<p class="mb-0 steper-sub-title">Summery Details</p>
+										<h5 class="mb-0 steper-title">Summary</h5>
+										<p class="mb-0 steper-sub-title">Summary Details</p>
 									</div>
 								</div>
 							</div>
@@ -58,7 +59,7 @@ $travel_tax=$all_tax->travel_tax;
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="FisrtName" class="form-label">Product Link</label>
-											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" value="{{$url}}" readonly>
+											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" value="{{$url}}" >
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="LastName" class="form-label">Product Name</label>
@@ -70,7 +71,7 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputEmail" class="form-label">Price</label>
-											<input name="product_price" class="form-control" type="text" value="{{$price}}" placeholder="enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
+											<input name="product_price" class="form-control" type="text" value="{{$price}}" placeholder="Enter Price" onkeyup="summery_vali('product_price',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_price">
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputCountry" class="form-label">QTY</label>
@@ -88,9 +89,9 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1" id="reload_div_auth">
 											@if(Auth::check())
-												<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+												<button  class="menu-btn1 btn-hover" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
 											@else
-												<a class="btn btn-primary px-4" onclick="openLogin()">Next<i class="bx bx-right-arrow-alt ms-2"></i></a>
+												<a class="menu-btn1 btn-hover" onclick="openLogin()">Next<i class="bx bx-right-arrow-alt ms-2"></i></a>
 											@endif
 										</div>
 									</div><!---end row-->
@@ -100,7 +101,7 @@ $travel_tax=$all_tax->travel_tax;
 									<p class="mb-4">Confirm Delivery City and Date</p>
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
-											<label for="delivery" class="form-label">Delivery From Country</label>
+											<label for="delivery" class="form-label">From</label>
 											<select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_from" onchange="getState(this.value,'devliver_from')" id="delivery_from_ord">
 											</select>
 										</div>
@@ -110,13 +111,13 @@ $travel_tax=$all_tax->travel_tax;
 											</select>
 										</div> -->
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
-											<label for="InputPassword" class="form-label">Deliver To</label>
+											<label for="InputPassword" class="form-label">To</label>
 											<select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="devliver_to" id="deliver_to_ord" onchange="getState(this.value,'deliver_to_ord')" >
 											</select>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
-											<label for="InputConfirmPassword" class="form-label">Deliver To City</label>
-											<select class="form-select single-select-field" data-placeholder="Choose one thing" name="devliver_to_city" id="deliver_to_ordCity" >
+											<label for="InputConfirmPassword" class="form-label">Select</label>
+											<select class="form-select single-select-field" data-placeholder="City" name="devliver_to_city" id="deliver_to_ordCity" >
 											</select>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
@@ -132,8 +133,8 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12" bis_skin_checked="1">
 											<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
-												<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
-												<button class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
+												<button class="btn btn-outline-secondary px-4 butnclass" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
+												<button class="menu-btn1 btn-hover" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>
 											</div>
 										</div>
 									</div><!---end row-->
@@ -177,32 +178,32 @@ $travel_tax=$all_tax->travel_tax;
 										<p id="sum_pro_description"></p>
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
-										<label for="InputCountry" class="form-label">Product price</label>
-										<input class="form-control" id="summery_pro_price" placeholder="Product price" disabled>	
+										<label for="InputCountry" class="form-label">Product Price</label>
+										<input class="form-control" id="summery_pro_price" placeholder="Product Price" disabled>	
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
-										<label for="InputCountry" class="form-label">Traveler reward</label>
-										<input class="form-control" id="summery_traveler_reward" placeholder="Traveler reward" disabled>	
+										<label for="InputCountry" class="form-label">Traveler Reward</label>
+										<input class="form-control" id="summery_traveler_reward" placeholder="Traveler Reward" disabled>	
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
-										<label for="InputCountry" class="form-label">Buy4me fee</label>
-										<input class="form-control" id="summery_buy4me_fee" placeholder="Buy4me fee" disabled>	
+										<label for="InputCountry" class="form-label">Buy4me Fee</label>
+										<input class="form-control" id="summery_buy4me_fee" placeholder="Buy4me Fee" disabled>	
 									</div>
 									<!-- <div class="col-12 col-lg-6" bis_skin_checked="1">
 										<label for="InputCountry" class="form-label">Sales Tax</label>
 										<input class="form-control" id="summery_salesTax" placeholder="Sales Tax" disabled>	
 									</div> -->
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
-										<label for="InputCountry" class="form-label">Payment processing</label>
-										<input class="form-control" id="summery_payment_processing" placeholder="Payment processing" disabled>	
+										<label for="InputCountry" class="form-label">Payment Processing</label>
+										<input class="form-control" id="summery_payment_processing" placeholder="Payment Processing" disabled>	
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">
-										<label for="InputCountry" class="form-label">Estimated total</label>
-										<input class="form-control" id="summery_estimated_total" placeholder="Estimated total" disabled>	
+										<label for="InputCountry" class="form-label">Estimated Total</label>
+										<input class="form-control" id="summery_estimated_total" placeholder="Estimated Total" disabled>	
 									</div>
 									<div class="col-12" bis_skin_checked="1">
 										<div class="d-flex align-items-center gap-3" bis_skin_checked="1">
-											<button class="btn btn-outline-secondary px-4" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
+											<button class="btn btn-outline-secondary px-4 butnclass" onclick="stepper1.previous()"><i class="bx bx-left-arrow-alt me-2"></i>Previous</button>
 											<!-- @if(Auth::check()) -->
 												<!-- @if(Auth::user()->email_veryfied=="0")
 													<a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Request delivery offers</a>
@@ -212,7 +213,7 @@ $travel_tax=$all_tax->travel_tax;
 											<!-- @else -->
 												<!-- <button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button> -->
 											<!-- @endif -->
-											<button class="btn btn-success px-4" id="store_orderwith_details">Request delivery offers</button>
+											<button class="btn btn-success px-4 butnclass" id="store_orderwith_details">Create Order</button>
 											
 										</div>
 									</div>
@@ -224,6 +225,7 @@ $travel_tax=$all_tax->travel_tax;
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 	<!-- </div>
 	</div>

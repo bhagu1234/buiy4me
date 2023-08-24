@@ -50,7 +50,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-content-2 text-center">
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                <h4><a href="{{route('travel.create_offer',['id'=>$row->id])}}">{{$row->product_name}}</a></h4>
                                                 <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
@@ -72,7 +72,10 @@
 
                                                     <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'cancle_orderRe','from'=>$from])}}" onclick="return confirm('are you sure cancle this offer');">Cancle request </a></button>
                                                 @else
-                                                    <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button>
+                                                <button><a href="{{route('travel.create_offer',['id'=>$row->id])}}">Request</button>
+                                                <button><a href="{{route('stripeIdentity.index')}}">Confirm </a></button>
+                                               
+                                                    <!-- <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button> -->
                                                 @endif
                                             </div>
                                         </div>

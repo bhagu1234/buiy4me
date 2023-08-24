@@ -240,7 +240,6 @@ $("#store_orderwith_details").click(function(){
         data:formData,
         success:function(response)
         {
-            alert("fdsfsd");
             Swal.fire(
                 'Good job!',
                 'Verifyed Your Order',

@@ -53,7 +53,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div >
-                                                    <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                    <h4><a href="#">{{$row->product_name}}</a></h4>
                                                     <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}} , by  &nbsp; &nbsp; 
                                                         {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                     @if($row->box==0)
@@ -118,7 +118,7 @@
                                               
                                             </div>
                                             <div class="product-content-2 text-center">
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                <h4><a href="#">{{$row->product_name}}</a></h4>
                                                 <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;   {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
@@ -226,7 +226,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-content-2 text-center">
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                <h4><a href="#">{{$row->product_name}}</a></h4>
                                                 <span>{{$row->fromCountry}},{{$row->fromCity}} :- {{$row->toCountry}},{{$row->toCIty}}  , by &nbsp; &nbsp;   {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>

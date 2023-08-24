@@ -38,8 +38,8 @@ class VerificationController extends Controller
             );
         $link=$stripe->accountLinks->create([
             'account' =>$id,
-            'refresh_url' => 'https://b4m.veravalonline.com/b4m/reauth_stripe',
-            'return_url' => 'https://b4m.veravalonline.com/b4m/return_stripe',
+            'refresh_url' => 'https://b4m.veravalonline.com/b4m/trip',
+            'return_url' => 'https://b4m.veravalonline.com/b4m/trip',
             'type' => 'account_onboarding',
         ]);
         // dd($link->url);
@@ -137,14 +137,14 @@ class VerificationController extends Controller
     }
     public function stripeIdentity(Request $request)
     {
-        if(Auth::user()->email_veryfied=='1')
-        {
-            return view("frontend.stripe_verification.index");
-        }
-        else
-        {
+        // if(Auth::user()->email_veryfied=='1')
+        // {
+            // return view("frontend.stripe_verification.index");
+        // }
+        // else
+        // {
             return redirect("/email_verification");
-        }
+        // }
        
     }
     public function create_verification_session(Request $request)
@@ -209,15 +209,15 @@ class VerificationController extends Controller
     }
     public function seller_create(Request $request)
     {
-        $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
+        // $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
 
-        $stripe->accountLinks->create([
-        'account' => '{{CONNECTED_ACCOUNT_ID}}',
-        'refresh_url' => 'https://example.com/reauth',
-        'return_url' => 'https://example.com/return',
-        'type' => 'account_onboarding',
-        ]);
-        return back();
+        // $stripe->accountLinks->create([
+        // 'account' => '{{CONNECTED_ACCOUNT_ID}}',
+        // 'refresh_url' => 'https://example.com/reauth',
+        // 'return_url' => 'https://example.com/return',
+        // 'type' => 'account_onboarding',
+        // ]);
+        // return back();
     }
 
     public function sendVerificationEmail(Request $request)

@@ -24,46 +24,7 @@ class UserProfileController extends Controller
         // $request->session()->flash('status', 'Task was successful!');
         return view('frontend.user.profile',compact('data'));
     }
-    public function create_trip(Request $request)
-    {
-        // dd($request);
-        // if($request->from_city != $request->to_city)
-        // {
-            $user=Auth::User();
-            $user_id=$user->id;
-            $trip=new Trip();
-            $trip->user_id=$user_id;
-            $trip->from_location_country=$request->from_location;
-            $trip->to_location_country=$request->to_location;
-            // $trip->from_location_state=$request->from_city;
-            $trip->to_location_state=$request->to_city;
-            $trip->travel_date=$request->travel_date;
-            $trip->save();
-            $t_id=Trip::latest()->first();
-            $tid=$t_id->id;
-            $t_user=$t_id->user_id;
-            $OrderDetail=OrderDetail::where('deliver_from_country',$request->from_location)->where('deliver_to_country',$request->to_location)->where('deliver_to_state',$request->to_city)->where('during_time' ,'>=',$request->travel_date)->where('order_status','1')->get();
-            foreach($OrderDetail as $r)
-            {
-                if($t_user != $r->user_id)
-                {
-                    $MatchedTripOrder=new MatchedTripOrder();
-                    $MatchedTripOrder->trip_id=$tid;
-                    $MatchedTripOrder->order_id=$r->id;
-                    $MatchedTripOrder->trip_user=$t_user;
-                    $MatchedTripOrder->order_user=$r->user_id;
-                    $MatchedTripOrder->save();
-                }
-            
-            }
-            return redirect()->route('user.trip')->withSuccess('Trip Created Successfully');
-        // }
-        // else
-        // {
-        //     return back()->withError('Something went Wrong');
-        // }
-        
-    }
+  
     public function edit_profile_data(Request $request)
     {
         // dd($request->mobile);

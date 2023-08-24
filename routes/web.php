@@ -42,7 +42,7 @@ Route::get('product_details',[OrderController::class,'product_details'])->name('
 
 // TripController
 Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->name('make_offer_html');
-Route::get('treveller',[TripController::class,'treveller_store'])->name('user.treveller');
+Route::get('traveller',[TripController::class,'treveller_store'])->name('user.treveller');
 
 // UserProfileController
 Auth::routes([
@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('checkout', [VerificationController::class, 'checkout'])->name('checkout.index');
    Route::get('/stripe_connect_payout', function () {
         return view('frontend.stripe_connect_payout.index');
-    });
+    })->name("stripe_connect_payout");
     // Route::post('/return_stripe', [VerificationController::class, 'confirm_verify_email'])->name('confirm_verify_email.index');
     Route::get('/return_stripe', function () {
         return view('frontend.stripe_connect_payout.return');

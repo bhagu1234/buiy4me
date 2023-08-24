@@ -51,22 +51,89 @@
 	<script src="{{URL::to('/')}}/public/admin/assets/plugins/bs-stepper/js/main.js"></script>
     <!--app JS-->
 	<script src="{{URL::to('/')}}/public/admin/assets/js/app.js"></script>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            float:'top-right';
+            top: 20%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            background-color: #087C1D;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 60%;
+            min-width: 50%;
+        }
+
+        .popup-content {
+            max-width: 50%;
+            margin: 0 auto;
+            color: #fff !important;
+        }
+        .popup-error{
+            display: none;
+            position: fixed;
+            float:'top-right';
+            top: 20%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+            background-color: #D62D08;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 60%;
+            min-width: 50%;
+        }
+    </style>
 </head>
 @if(\Session::get('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="popup" id="success-popup">
+    <div class="popup-content">
+        <p style="color:#fff;"> {{ \Session::get('success') }}</p>
+    </div>
+</div>
+    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <div class="alert-body">
             {{ \Session::get('success') }}
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    </div> -->
 @endif
 {{ \Session::forget('success') }}
 @if(\Session::get('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <div class="alert-body">
             {{ \Session::get('error') }}
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div> -->
+    <div class="popup-error" id="error-popup">
+    <div class="popup-content">
+        <p style="color:#fff;">  {{ \Session::get('error') }}</p>
     </div>
+</div>
 @endif
 {{ \Session::forget('error') }}
+<script>
+    $(document).ready(function() {
+        function showSuccessPopup() {
+            $("#success-popup").fadeIn();
+            setTimeout(function() {
+                $("#success-popup").fadeOut();
+            }, 3000); // Hide after 3 seconds
+        }
+        function showSuccessPopup() {
+            $("#error-popup").fadeIn();
+            setTimeout(function() {
+                $("#error-popup").fadeOut();
+            }, 2000); // Hide after 3 seconds
+        }
+
+        // Call the function to show the popup (you can trigger this as needed)
+        showSuccessPopup();
+    });
+</script>
