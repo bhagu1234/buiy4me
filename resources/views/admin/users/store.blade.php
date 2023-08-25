@@ -23,13 +23,13 @@
 									<div class="row mb-3">
 										<label for="input35" class="col-sm-3 col-form-label">First Name</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="first_name" placeholder="Enter first Name">
+											<input type="text" class="form-control" name="first_name" placeholder="Enter First Name">
 										</div>
 									</div>
 									<div class="row mb-3">
 										<label for="input35" class="col-sm-3 col-form-label">Last Name</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" name="last_name" placeholder="Enter last Name">
+											<input type="text" class="form-control" name="last_name" placeholder="Enter Last Name">
 										</div>
 									</div>
 									<div class="row mb-3">

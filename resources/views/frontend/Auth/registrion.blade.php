@@ -29,9 +29,9 @@
                                     <form action="{{route('register.user')}}" method="post">
                                         @csrf
                                         <input type="email" name="email" placeholder="email">
-                                        <input type="password" name="password" placeholder="Password">
-                                        <input name="first_name" placeholder="first name" type="text">
-                                        <input name="last_name" placeholder="last name" type="text">
+                                        <input type="password" name="password" placeholder="Create Password">
+                                        <input name="first_name" placeholder="First Name" type="text">
+                                        <input name="last_name" placeholder="Last Name" type="text">
                                         <div class="button-box">
                                             <button type="submit" class="default-btn floatright">Register</button>
                                             <button type="button" class="default-btn floatright"><a href="{{route('login')}}">Login</a></button>

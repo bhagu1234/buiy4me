@@ -52,7 +52,7 @@
                     <div class="description-review-text tab-content">
                         <div class="tab-pane active show fade" id="pro-dec" role="tabpanel">
                         <button class="status-btn" ><a href="{{route('user.travel_offer_reChange',['id'=>$data->m_id,'status'=>'accept'])}}">Accept Request </a></button>
-                        <button class="status-btn" ><a href="{{route('user.travel_offer_reChange',['id'=>$data->m_id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" >Cancle Request </a> </button>
+                        <button class="status-btn" ><a href="{{route('user.travel_offer_reChange',['id'=>$data->m_id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" >Cancel Request </a> </button>
                         </div>
                     </div>
                 </div>

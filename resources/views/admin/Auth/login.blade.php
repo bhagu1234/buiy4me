@@ -31,9 +31,9 @@
 									</div>
 									<div class="col-md-12">
 										<label for="bsValidation5" class="form-label">Password</label>
-										<input type="password" class="form-control" id="bsValidation5" placeholder="Password" name="password" required>
+										<input type="password" class="form-control" id="bsValidation5" placeholder="Create Password" name="password" required>
 										<div class="invalid-feedback">
-											Please choose a password.
+											Please Choose a Password.
 										</div>
 									</div>
 									<div class="col-md-12">

@@ -70,7 +70,7 @@
                                                 @if($row->orStatus=='1')
                                                     <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'accept_orderRe','from'=>$from])}}">Accept request </a></button>
 
-                                                    <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'cancle_orderRe','from'=>$from])}}" onclick="return confirm('are you sure cancle this offer');">Cancle request </a></button>
+                                                    <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'cancle_orderRe','from'=>$from])}}" onclick="return confirm('are you sure cancle this offer');">Cancel Request </a></button>
                                                 @else
                                                 <button><a href="{{route('travel.create_offer',['id'=>$row->id])}}">Request</button>
                                                 <button><a href="{{route('stripeIdentity.index')}}">Confirm </a></button>

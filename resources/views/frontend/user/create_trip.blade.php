@@ -33,26 +33,27 @@
     <div class="row traveller_slider" style="background-image: url({{URL::to('/')}}/public/frontend/custom/img/Web-Banners-1.jpg);height: 500px !important;"> 
       <div class="product-description-review-area pb-90s col-12">
         <div class="container">
-            <div class="food-slider-content text-center fadeinup-animated-1">
+            <div class="food-slider-content fadeinup-animated-1">
+           <!-- <div class="food-slider-content text-center fadeinup-animated-1"> -->
               <form action="{{route('user.create_trip')}}" method="post" class="container1">
                 @csrf
-                <h5></b>Add your trip details to start earning money</b></h5>
-                <label>From Country *</label>
+                <h1></b>Travel to Earn</b></h1><p>Embark on Your Next Adventure!</p>
+                <label>From*</label>
                 <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="from_location" onchange="getState(this.value,'from_travel')" required>
                 </select>
                 
                 
-                <label>To Country *</label>
+                <label>To*</label>
                 <select class="form-select single-select-field browsers_country" data-placeholder="Choose one thing" name="to_location" onchange="getState(this.value,'to_travel')" required>
                 </select>
 
-                <label>To City*</label>
-                <select class="form-select single-select-field " data-placeholder="Choose one thing" name="to_city" id="travel_to_state" required>
+                <label>Select*</label>
+                <select class="form-select single-select-field " data-placeholder="City" name="to_city" id="travel_to_state" required>
                 </select>
               
                 <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="</?php echo date('Y-m-d'); ?>" required>
 
-                <button type="submit" class="btn1">Add Trip</button>
+                <button type="submit" class="menu-btn1 btn-hover">Add Trip</button>
               </form>
           </div>
         </div>
@@ -75,7 +76,7 @@
                       <div class="story-details-top">
                           <h2>WELCOME TO <span>Buy4me</span></h2>
                           <p>…wondering if you should try Grabr on your next trip? The answer is YES. Shoppers all came to my hotel lobby within two hours. Quick, easy, and fun. What a cool way to meet new people and earn some cash.</p>
-                          <button>More Buy4me stories</button>
+                          <button class="menu-btn1 btn-hover">More Buy4me stories</button>
                       </div>
                   </div>
               </div>

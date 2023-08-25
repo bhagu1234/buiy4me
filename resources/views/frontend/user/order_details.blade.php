@@ -111,7 +111,7 @@
 							<?php }else{ ?>
 								<a href="{{route('user.matched_order',['id'=>$data->id,'status'=>$from])}}" class="btn btn-primary">Find Traveller</a>
 								<a href="{{route('user.edit_order',['id'=>$data->id])}}" class="btn btn-outline-primary"><span class="text">Edit</span> <i class='bx bxs-cart-alt'></i></a>
-								<a href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" class="btn btn-outline-primary"><span class="text">Cancle</span> <i class='bx bxs-cart-alt'></i></a>
+								<a href="{{route('user.order_cancle',['id'=>$data->id,'status'=>'cancle'])}}" onclick="return confirm('Are you sure you want to cancle this ?');" class="btn btn-outline-primary"><span class="text">Cancel</span> <i class='bx bxs-cart-alt'></i></a>
 							<?php } ?>
 						</div>
 						</div>

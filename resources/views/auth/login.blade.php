@@ -17,7 +17,7 @@
                                         @csrf
                                         <input type="hidden" name="previous_url" value="{{url()->previous()}}">
                                         <input type="email" name="email" placeholder="email">
-                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="password" name="password" >
                                         <div class="button-box">
                                             <div class="login-toggle-btn">
                                                 <input type="checkbox">
