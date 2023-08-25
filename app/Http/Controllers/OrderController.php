@@ -35,18 +35,9 @@ class OrderController extends Controller
     }
     public function order_product(Request $request)
     {	
-        // dd($request);
-        $or_id=OrderDetail::latest()->first();
-        $oid=$or_id->id;
         $user=Auth::User();
         $user_id=$user->id;
         $data="";
-        // dd($request->file('file'));
-        // if($request->file('file') !=null && $request->file('file') !='null'  ||$request->file('file') !='')
-        // {
-          
-        // }
-        // dd($request->id);
         if($request->from=="request")
         {
             $getOrder=OrderDetail::findOrFail($request->id);
@@ -114,6 +105,7 @@ class OrderController extends Controller
         $filePathar=$filePath;
         $data=json_encode($data);
         $data=str_ireplace(['"',' ;']," ",$data);
+       
         $OrdersDetail= new OrderDetail();
         $OrdersDetail->user_id=$user_id;
         $OrdersDetail->product_name=$request->product_name;
@@ -121,9 +113,16 @@ class OrderController extends Controller
         $OrdersDetail->product_price=$request->product_price;
         $OrdersDetail->product_imgs=$data;
         $OrdersDetail->img_path=$filePathar;
-        $OrdersDetail->product_qty=$request->product_qty;
+        if($request->product_qty<=0)
+        {
+            $OrdersDetail->product_qty=1;
+        }
+        else
+        {
+            $OrdersDetail->product_qty=$request->product_qty;
+        }
         $OrdersDetail->product_details=$request->product_details;
-        $OrdersDetail->box='0';
+        $OrdersDetail->box=$request->box;
         $OrdersDetail->traveller_reward=$request->summery_traveler_reward;
         $OrdersDetail->buy4me_fee=$request->summery_buy4me_fee;
         $OrdersDetail->payment=$request->summery_payment_processing;
@@ -134,7 +133,8 @@ class OrderController extends Controller
         $OrdersDetail->deliver_to_state=$request->devliver_to_city;
         $OrdersDetail->during_time=$d;
         $OrdersDetail->save();
-       
+        $or_id=OrderDetail::latest()->first();
+        $oid=$or_id->id;
         $or_user=Auth::user()->id;
         $trip_de=Trip::where('from_location_country',$request->devliver_from_country)->where('to_location_country',$request->devliver_to_country)->where('to_location_state',$request->devliver_to_city)->where('travel_date' ,'<',$d)->get();
         foreach($trip_de as $r)
@@ -150,9 +150,7 @@ class OrderController extends Controller
             }
            
         }
-       
-        // return back()->withSuccess("data stored succesfully");
-        $response=array("status"=>200,"msg"=>"data stored succesfully",'id'=>$oid);
+        $response=array("status"=>200,"msg"=>"Order created succesfully",'id'=>$oid);
         return $response;
     }
     public function order_cancle(Request $request)
@@ -275,7 +273,6 @@ class OrderController extends Controller
         // dd($url);
         return view('frontend.user.create_product',compact('all_tax','price','title','discription','url'));  
     }
-   
     public function orders(Request $request)
     {
         $user_id=Auth::User()->id;

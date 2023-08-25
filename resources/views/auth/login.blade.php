@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 @include('frontend.includes.header')
 <body>
 @include('frontend.includes.nav')
@@ -36,4 +36,4 @@
         </div>
     @include('frontend.includes.footer')
      @include('frontend.includes.footer_script')
-@endsection
+@endsection -->

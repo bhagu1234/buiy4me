@@ -22,14 +22,14 @@
                                   <div class="replay-info">
                                     <div class="replay-name-date">
                                       <h5><a href="#">Upcoming Trip</a></h5>
-                                      <span>{{$row->travel_date}}</span>
+                                      <span>{{ date("M d , Y", strtotime($row->travel_date))}}</span>
                                     </div>
                                     <div class="replay-btn">
                                       <a href="{{route('user.matched_trip',['id'=>$row->id,'from'=>'trip'])}}">check Offer</a>
                                     </div>
                                   </div>
                                   <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
-                                  <p>{{$row->travel_date}}</p>
+                                  <p>{{ date("M d , Y", strtotime($row->travel_date))}}</p>
                                 </div>
                               </div>
                               @endforeach
@@ -55,7 +55,7 @@
                                         </div>
                                       </div>
                                       <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
-                                      <p>{{$row->travel_date}}</p>
+                                      <p>{{ date("M d , Y", strtotime($row->travel_date))}}</p>
                                     </div>
                                   </div>
                                 @endforeach
@@ -83,7 +83,7 @@
                                       </div> -->
                                     </div>
                                     <p>{{$row->fromCountry}},{{$row->fromCity}} -> {{$row->toCountry}},{{$row->toCIty}}</p>
-                                    <p>{{$row->travel_date}}</p>
+                                    <p>{{ date("M d , Y", strtotime($row->travel_date))}}</p>
                                   </div>
                                 </div>
                               @endforeach

@@ -1,23 +1,26 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Verify Your Email Address</div>
-
-                <div class="card-body">
-                        <div class="alert alert-success" role="alert">
-                            A fresh verification link has been sent to your email address
-                        </div>
+@include('frontend.includes.header')
+    <body>
+    @include('frontend.includes.nav')
+        <!-- header end -->
+        <!-- testimonials area start -->
+        <div class="testimonials-area pt-120 pb-115">
+            <div class="container">
+                <div class="testimonials-active owl-carousel">
+                    <div class="single-testimonial-2 text-center">
+                    <h3>Verify Your Email Address</h3>
+                        <p> A fresh verification link has been sent to your email address</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+        <!-- testimonials area end -->
+        <!-- footer area start -->
+        @include('frontend.includes.footer')
+        @include('frontend.includes.footer_script')
+    </body>
+</html>
 <script>
-    setTimeout(() => {
-  document.location.reload();
-}, 3000);
+//     setTimeout(() => {
+//   document.location.reload();
+// }, 3000);
 </script>

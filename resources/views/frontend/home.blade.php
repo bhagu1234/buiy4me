@@ -1,14 +1,14 @@
 @include('frontend.includes.header')
-<body>
+<!-- <body> -->
     @include('frontend.includes.nav')
 
     <!-- slider-area strat -->
     <div class="slider-area">
         <div class=" containerimage mydeivtest" style=" background-image: url(
         'public/frontend/custom/img/Banner Final - 1.jpg' );">
-            <div class="bottom-left text-block btn-1">Shopper</div>
+            <div class="bottom-left text-block btn-1"><a href="{{route('user.create_order')}}">Shopper</a></div>
             <!-- <div class="text-left">Turn your <br>Journey into Money</div> -->
-            <div class="bottom-right text-block btn-1">Traveller</div>
+            <div class="bottom-right text-block btn-1"><a href="{{route('user.treveller')}}">Traveller</a></div>
             <!-- <div class="text-right">Receive Items from all <br> around the world</div> -->
         </div>
     </div>

@@ -6,7 +6,6 @@
         <!-- login-area start -->
         <div class="register-area " style="margin:50px">
             <div class="container-fluid">
-                @include('admin.includes.validation')
                 <div class="row">
                     <div class="col-md-12 col-12 col-lg-6 col-xl-6 ms-auto me-auto">
                         <div class="login">

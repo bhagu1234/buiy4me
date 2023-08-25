@@ -30,7 +30,7 @@
                    </div>
                     <div class="stars-container-main">
                         <div class="stars-container first">
-                            <p>Joined {{$data->created_at}}</p>
+                            <p>Joined {{ date("M d , Y", strtotime($data->created_at))}}</p>
                             <span>Shopper</span>
                             <div class="stars">
                                 <i class="fa-regular fa-star" ></i>

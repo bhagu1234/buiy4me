@@ -58,12 +58,14 @@
                                 </dl>
                                 <dl class="row">
                                 <dt class="col-sm-3">Product Price</dt>
-                                    <dd class="col-sm-9" id="changed_pro_price_tr">${{$data->product_price}}
-                                    <input type="number" placeholder="Offer" onkeyup="chnagePriceTraveller('product_price_change','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" class="form-group" id="change_product_price_fee">
+                                    <dd class="col-sm-9" >
+                                        <span id="changed_pro_price_tr">${{$data->product_price}}</span>
+                                        <input type="number" placeholder="Offer" onkeyup="chnagePriceTraveller('product_price_change','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" class="form-group" id="change_product_price_fee">
                                     </dd>
                                     <dt class="col-sm-3">Reward</dt>
-                                    <dd class="col-sm-9" id="changed_traveller_re_tr">{{$data->traveller_reward}} 
-                                    <input type="number" placeholder="Offer" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee">
+                                    <dd class="col-sm-9" >
+                                        <span id="changed_traveller_re_tr">{{$data->traveller_reward}}</span> 
+                                        <input type="number" placeholder="Offer" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee">
                                     </dd>
                                 
                                     <dt class="col-sm-3">Buy4me Fee</dt>
@@ -86,7 +88,7 @@
                                 <div class="d-flex gap-3 mt-3">
                                     <!-- <a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Make delivery offer</a> -->
                                     <!-- <a href="#" id="make_delivery_offer" class="btn btn-primary">Make delivery offer</a> -->
-                                    <button><a href="{{route('travel.create_offer',['id'=>$data->id])}}">Request</button>
+                                    <button><a href="{{route('user.send_tripRequest',['id'=>request()->matched_id,'from'=>'trip','status'=>'requested','url'=>url()->previous()])}}">Request</button>
                                     <button><a href="{{route('stripeIdentity.index')}}">Confirm </a></button>
                                 </div>
                             </div>

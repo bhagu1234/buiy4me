@@ -52,8 +52,17 @@
                 </select>
               
                 <input type="date" name="travel_date"   class="form-control travel_date" placeholder="travel date" min="</?php echo date('Y-m-d'); ?>" required>
-
-                <button type="submit" class="menu-btn1 btn-hover">Add Trip</button>
+                <div id="trip_check_verify">
+                  @if(Auth::check())
+                    @if(Auth::user()->email_veryfied=='1')
+                      <button type="submit" class="menu-btn1 btn-hover">Add Trip</button>
+                    @else
+                      <button type="button" class="menu-btn1 btn-hover"> <a href="{{route('email_verify.auth',['email'=>Auth::user()->email])}}">Add Trip</a></button>
+                    @endif
+                  @else
+                    <button type="button" onclick="openLogin()" class="menu-btn1 btn-hover">Add Trip</button>
+                  @endif
+                </div>
               </form>
           </div>
         </div>

@@ -59,11 +59,24 @@ $("body").on('click',"#login_auth",function(){
                     'Successfully Logged in ...',
                     'success'
                 )
+                if(response.email_status=='1')
+                {
                     $.ajax({url: base_path+"/nav", success: function(result){
                             $('#header_navbar').html(result);
                         }
                     });
-                $("#reload_div_auth").html('<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>');
+                    $("#reload_div_auth").html('<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>');
+                    $("#trip_check_verify").html(' <button type="submit" class="menu-btn1 btn-hover">Add Trip</button>');
+                }
+                else
+                {
+                    $.ajax({url: base_path+"/nav", success: function(result){
+                            $('#header_navbar').html(result);
+                        }   
+                    });
+                    // $("#emailverifyPopup").modal("show");
+                    location.href=base_path+"/verify/check_mail";
+                }
             }
             else
             {
@@ -136,11 +149,25 @@ $("body").on('click',"#registrion_auth",function(){
                     'Successfully registered ...',
                     'success'
                 )
+                if(response.email_status=='1')
+                {
                     $.ajax({url: base_path+"/nav", success: function(result){
                             $('#header_navbar').html(result);
                         }
                     });
-                $("#reload_div_auth").html('<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>');
+                    $("#reload_div_auth").html('<button  class="btn btn-primary px-4" onclick="stepper1.next()">Next<i class="bx bx-right-arrow-alt ms-2"></i></button>');
+                    $("#trip_check_verify").html(' <button type="submit" class="menu-btn1 btn-hover">Add Trip</button>');
+                }
+                else
+                {
+                    $.ajax({url: base_path+"/nav", success: function(result){
+                            $('#header_navbar').html(result);
+                        }   
+                    });
+                    // $("#emailverifyPopup").modal("show");
+                    location.href=base_path+"/verify/check_mail";
+                }
+                   
             }
             else
             {

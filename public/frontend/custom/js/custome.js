@@ -185,8 +185,14 @@ function chnagePriceTraveller(res,buy4meFee,paymentPro,travel_tax)
     {
         var change_product_price_fee =  document.getElementById("pro_ch_price").value;
     }
+    var r = buy4meFee.replace('$', " " ,'rs','.');
     var qty = document.getElementById("qty_ch_price").value;
+    buy4meFee= Number(change_product_price_fee)*5/100;
+    paymentPro=Number(change_product_price_fee)*5/100;
+    // travel=Number(change_product_price_fee)*10/100;
     var total= Number(change_product_price_fee)+Number(buy4meFee)+Number(paymentPro)+Number(travel)*Number(qty);
+    // alert(r);
+    // alert(total);
     $("#changed_traveller_re_tr").text('$'+travel);
     $("#changed_pro_price_tr").text('$'+change_product_price_fee);
     $("#changed_totalPrice_tr").text('$'+total);
@@ -194,5 +200,66 @@ function chnagePriceTraveller(res,buy4meFee,paymentPro,travel_tax)
     $("#pro_traveller_price_changed").val('$'+travel);
     $("#pro_p_price_changed").val('$'+change_product_price_fee);
     
+}
+
+// change currency 
+function updateCurrency(buy4meFee,paymentPro,travel_tax)
+{
+    var inrValue=$("#change_currency").val();
+    if(inrValue=='1')
+    {
+        var exchangeRate = 82.67;
+        // var qty=parseFloat($("#order_product_qty").val());
+        // if(qty<=0)
+        // {
+        //     qty=1;
+        // }
+       var e=$("#summery_pro_price").val();
+        var res = e.replace('$', "");
+        var price=parseFloat(res);
+        var usdValue = (price * exchangeRate).toFixed(2);
+        $("#summery_pro_price").val("rs."+usdValue);
+        var travller_re=usdValue*Number(travel_tax)/Number(100);
+        if(travller_re<10)
+        {
+            travller_re=Number(10);
+        }
+        var buy4mefee=usdValue*Number(buy4meFee)/Number(100);
+        var paymentproccessing=usdValue*Number(paymentPro)/Number(100);
+        var total= usdValue+travller_re+buy4mefee+paymentproccessing;
+        document.getElementById("summery_estimated_total").value ="rs. "+total;
+        document.getElementById("summery_traveler_reward").value ="rs. "+travller_re;
+        document.getElementById("summery_buy4me_fee").value ="rs. "+buy4mefee;
+        // document.getElementById("summery_salesTax").value ="rs. "+salseTax;
+        document.getElementById("summery_payment_processing").value ="rs. "+paymentproccessing;
+    }
+    else
+    {
+        var exchangeRate = 0.012;
+        var qty=parseFloat($("#order_product_qty").val());
+        if(qty<=0)
+        {
+            qty=1;
+        }
+        var price=parseFloat($("#order_product_price").val())*qty;
+        var usdValue = (price * exchangeRate).toFixed(2);
+        $("#summery_pro_price").val("$"+usdValue);
+        var travller_re=usdValue*Number(travel_tax)/Number(100);
+        if(travller_re<10)
+        {
+            travller_re=Number(10);
+        }
+        var buy4mefee=usdValue*Number(buy4meFee)/Number(100);
+        var paymentproccessing=usdValue*Number(paymentPro)/Number(100);
+        var total= usdValue+travller_re+buy4mefee+paymentproccessing;
+        document.getElementById("summery_estimated_total").value ="$"+total;
+        document.getElementById("summery_traveler_reward").value ="$"+travller_re;
+        document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
+        // document.getElementById("summery_salesTax").value ="$"+salseTax;
+        document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
+    }
+    // var usdValue = (inrValue * exchangeRate).toFixed(2);
+    // alert(usdValue);
+    // $("#usdAmount").text(usdValue);
 }
 

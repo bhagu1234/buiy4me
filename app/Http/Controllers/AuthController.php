@@ -33,14 +33,6 @@ class AuthController extends Controller
     }
     public function userRegistration(Request $request)
     {
-        // Mail::to($request->email)->send(new MyCustomMail());
-        // dd("dffd");
-        // Mail::to($request->email)->send(new MyCustomMail());
-        
-        // $user = Auth::user();  // Replace with your logic to get the user
-        // Mail::to("dharmaram503@gmail.com")->send(new MyCustomMail());
-        // dd("dffd");
-
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) 
         {
             if(User::where('email', $request->email)->first() != null)
@@ -84,10 +76,9 @@ class AuthController extends Controller
                
                 
         }
-        // Session::put('success','You are logged in successfully!!');
         if($request->sub=='modal')
         {
-            return array("status"=>200,'msg'=>'Welcome'.$userModel->first_name);
+            return array("status"=>200,'msg'=>'Welcome'.$userModel->first_name,'email_status'=>Auth::user()->email_veryfied);
         }
         else
         {
@@ -140,18 +131,35 @@ class AuthController extends Controller
                     $userModel->password = $user->password;
                     $userModel->first_name = $user->first_name;
                     Auth::login($userModel); 
+                    if($user->email_veryfied=='0')
+                    {
+                        $array=array();
+                        $array['email'] = $user->email;
+                        Mail::send('frontend.emails.verify_email', $array,function($message) use ($array) {
+                            $message->to($array['email']);
+                            $message->subject('buy4me email verify');
+                        });
+                    }
+                    
                 }
                 if($request->sub=='modal')
                 {
-                    return array("status"=>200,'msg'=>'You have successfully loggedin !');
+                    return array("status"=>200,'msg'=>'You have successfully loggedin !','email_status'=>$user->email_veryfied);
                 }
-              return redirect($previous_url)->withSuccess('You have Successfully loggedin');
+                if($user->email_veryfied=='1')
+                {
+                    return redirect()->route("home")->withSuccess("You have Successfully loggedin");
+                } 
+                else
+                {
+                    return redirect()->route("check_mail")->withSuccess("check your mail");
+                }
             }   
             else
             {
                 if($request->sub=='modal')
                 {
-                    return array("status"=>500,'msg'=>'Something Went wrong!!');
+                    return array("status"=>500,'msg'=>'Something Went wrong!!','email_status'=>$user->email_veryfied);
                 }
                 Session::put('error','Something Went wrong!!');
                 return back();
@@ -168,11 +176,9 @@ class AuthController extends Controller
    }
    public function logout(Request $request)
    {
-        flash('logged in !', 'success');
-        Session::put('success','You are logout successfully!!');
         Auth::logout();
    
-        return Redirect('login');
+        return Redirect('login')->withSuccess('You are logout successfully!!');
    }
 //    public function checkForUpdates()
 //    {

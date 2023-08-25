@@ -119,8 +119,12 @@ function summery_vali(res,buy4meFee,paymentPro,travel_tax)
         lblValue.innerText =  s;
     }
         var edValue = document.getElementById("order_product_price");
-        var qty = document.getElementById("order_product_qty");
-        var productPric= Number(edValue.value)*Number(qty.value);
+        var qty = document.getElementById("order_product_qty").value;
+        if(qty=="0" ||Number(qty)<=0)
+        {
+            qty=1;
+        }
+        var productPric= Number(edValue.value)*Number(qty);
         var travller_re=productPric*Number(travel_tax)/Number(100);
         if(travller_re<10)
         {
@@ -129,17 +133,21 @@ function summery_vali(res,buy4meFee,paymentPro,travel_tax)
         var buy4mefee=productPric*Number(buy4meFee)/Number(100);
         var paymentproccessing=productPric*Number(paymentPro)/Number(100);
         var total= productPric+travller_re+buy4mefee+paymentproccessing;
-        var lblValue = $("#summery_pro_price").val("$"+productPric) 
-        document.getElementById("summery_estimated_total").value ="$"+total;
-        document.getElementById("summery_traveler_reward").value ="$"+travller_re;
-        document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
-        // document.getElementById("summery_salesTax").value ="$"+salseTax;
-        document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
+        var lblValue = $("#summery_pro_price").val("rs. "+productPric) 
+        document.getElementById("summery_estimated_total").value ="rs. "+total;
+        document.getElementById("summery_traveler_reward").value ="rs. "+travller_re;
+        document.getElementById("summery_buy4me_fee").value ="rs. "+buy4mefee;
+        // document.getElementById("summery_salesTax").value ="rs. "+salseTax;
+        document.getElementById("summery_payment_processing").value ="rs. "+paymentproccessing;
    
     if(res=='product_qty')
     {
         var edValue = document.getElementById("order_product_qty");
         var s = edValue.value;
+        if(Number(s) <=0)
+        {
+            s=1;
+        }
         var lblValue = document.getElementById("summery_Quantity");
         lblValue.innerText =  s;
     }

@@ -34,3 +34,26 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="emailverifyPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center> <h5 class="modal-title" id="exampleModalLongTitle">Email verify</h5>
+                </button></center>
+            </div>
+            <div class="modal-body">
+                <div class="testimonials-area pt-120 pb-115">
+                    <div class="container">
+                        <div class="testimonials-active owl-carousel">
+                            <div class="single-testimonial-2 text-center">
+                            <h3>Verify Your Email AddressM</h3>
+                                <p> A fresh verification link has been sent to your email address</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

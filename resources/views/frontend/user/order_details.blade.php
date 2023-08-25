@@ -75,7 +75,7 @@
 							<dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
 						  
 							<dt class="col-sm-3">Before</dt>
-							<dd class="col-sm-9">{{$data->during_time}} </dd>
+							<dd class="col-sm-9">{{ date("M d , Y", strtotime($data->during_time))}} </dd>
 						  </dl>
 
                           <dl class="row">

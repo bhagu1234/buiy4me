@@ -125,6 +125,7 @@ class TripController extends Controller
                 $data->order_status='4';
             }
             $data->save();
+            return redirect()->route('user.orders')->withSuccess("Your request sended ");
         }
         else
         {
@@ -158,10 +159,9 @@ class TripController extends Controller
             }
             $data->save();
             $orde->save();
+            return redirect($request->url);
         }
        
-       
-        return redirect()->route('user.orders')->withSuccess("Your request sended ");
     }
     public function check_trOffer(Request $request)
     {
@@ -279,6 +279,7 @@ class TripController extends Controller
         $cur=$current->count();
         $upcoming=Trip::where('travel_date' ,'>', $today)
             ->where('user_id',$user_id)
+            ->orderBy('trips.id','DESC')
             ->leftJoin('countries as coun1','coun1.id','trips.from_location_country')
             ->leftJoin('countries as coun2','coun2.id','trips.to_location_country')
             ->leftJoin('states as states1','states1.id','trips.from_location_state')

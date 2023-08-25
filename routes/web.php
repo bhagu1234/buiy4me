@@ -45,9 +45,9 @@ Route::get('make_offer_html/{id}', [TripController::class, 'make_offer_html'])->
 Route::get('traveller',[TripController::class,'treveller_store'])->name('user.treveller');
 
 // UserProfileController
-Auth::routes([
-    'verify'=>true
-]);
+// Auth::routes([
+//     'verify'=>true
+// ]);
 Route::group(['middleware' => ['auth']], function() {
     Route::get('profile',[UserProfileController::class,'profile'])->name('user.profile');
     Route::post('edit_profile_data',[UserProfileController::class,'edit_profile_data'])->name('user.edit_profile_data');
@@ -110,6 +110,7 @@ Route::group(['middleware' => ['auth']], function() {
 // VerificationController
 Route::get('/verify/stripe/{accountId}', [VerificationController::class,'verify'])->name('verify.stripe');
 Route::get('/verify/check_mail', [VerificationController::class,'check_mail'])->name('check_mail');
+Route::get('/verify/email_verify', [VerificationController::class,'email_verify'])->name('email_verify.auth');
 Route::get('/verify/email-auth/{email}', [VerificationController::class,'sendVerificationEmail'])->name('verify_email.auth');
 
 

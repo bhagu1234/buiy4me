@@ -1,4 +1,4 @@
-<?php
+<!-- </?php
 
 namespace App\Http\Controllers\Auth;
 
@@ -7,8 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
-{
-    /*
+{ -->
+    <!-- /*
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
@@ -17,11 +17,11 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+    */ -->
 
-    use AuthenticatesUsers;
+    <!-- use AuthenticatesUsers; -->
 
-    /**
+    <!-- /**
      * Where to redirect users after login.
      *
      * @var string
@@ -32,9 +32,9 @@ class LoginController extends Controller
      * Create a new controller instance.
      *
      * @return void
-     */
-    public function __construct()
+     */ -->
+    <!-- public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-}
+} -->

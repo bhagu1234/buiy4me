@@ -32,8 +32,7 @@
                         <div class="custom-row">
                             <div class="custom-col-5 custom-col-style mb-95">
                                 @foreach($data as $row)
-                                    <!-- @if($row->orStatus==0) -->
-                                       
+                                    @if($row->orStatus==0)
                                         <div class="product-wrapper">
                                             <div class="product-img-2">
                                                 <a href="#">
@@ -42,7 +41,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="#">{{$row->first_name}}</a></h4><h4><a href="#">{{$row->last_name}}</a></h4>
-                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 <div class="product-rating">
                                                     <i class="ti-star black"></i>
                                                     <i class="ti-star black"></i>
@@ -57,16 +56,16 @@
                                                     <span>Treveler Mobile</span> :-<span >{{$row->mobile}}</span>
                                                 </div>
                                                 <!-- @if($row->trip_status=='1') -->
-                                                    <button><a href="{{route('stripeIdentity.index')}}">Accept Request </a></button>
-                                                    
                                                 <!-- @endif -->
                                                 <!-- <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button> -->
-                                                <button><a href="{{route('stripeIdentity.index')}}">Accept Request </a></button>
+                                                @if($row->trip_status=='1')
+                                                    <button><a href="{{route('stripeIdentity.index')}}">Accept Offer</a></button>
+                                                @else
+                                                    <button><a href="{{route('user.send_tripRequest',['id'=>$row->ma_id,'status'=>'requested','from'=>$from])}}">Send request </a></button>
+                                                @endif
                                             </div>
                                         </div>
-                                    <!-- @else
-                                     <p>No matched Request</p>
-                                    @endif -->
+                                    @endif 
                                 @endforeach
                             </div>
                         </div>
@@ -85,7 +84,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="#">{{$row->first_name}}</a></h4><h4><a href="#">{{$row->last_name}}</a></h4>
-                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 <div class="product-rating">
                                                     <i class="ti-star black"></i>
                                                     <i class="ti-star black"></i>
@@ -103,7 +102,6 @@
                                             </div>
                                         </div>
                                     @else
-                                     <p>No matched Request</p>
                                     @endif
                                 @endforeach
                             </div>
@@ -123,7 +121,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="#">{{$row->first_name}}</a></h4><h4><a href="#">{{$row->last_name}}</a></h4>
-                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 <div class="product-rating">
                                                     <i class="ti-star black"></i>
                                                     <i class="ti-star black"></i>
@@ -141,7 +139,7 @@
                                             </div>
                                         </div>
                                     @else
-                                     <p>No matched Request</p>
+                                     <!-- <p>No matched Request</p> -->
                                     @endif
                                 @endforeach
                             </div>
@@ -161,7 +159,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="#">{{$row->first_name}}</a></h4><h4><a href="#">{{$row->last_name}}</a></h4>
-                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by  &nbsp; &nbsp; {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 <div class="product-rating">
                                                     <i class="ti-star black"></i>
                                                     <i class="ti-star black"></i>
@@ -179,7 +177,7 @@
                                             </div>
                                         </div>
                                     @else
-                                     <p>No matched Request</p>
+                                     <!-- <p>No matched Request</p> -->
                                     @endif
                                 @endforeach
                             </div>
@@ -208,7 +206,7 @@
                                             </div>
                                             <div class="product-content-2 text-center">
                                                 <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
-                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{$row->during_time}}</span>
+                                                <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>
                                                 @else

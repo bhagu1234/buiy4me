@@ -11,7 +11,7 @@ class StateController extends Controller
 {
      public function index(Request $request)
      {
-          $data=State::join('countries','countries.id','states.country_id')->select('states.*','countries.name')->orderBy('states.id','DESC')->get();
+          $data=State::join('countries','countries.id','states.country_id')->select('states.*','countries.name')->orderBy('states.id','DESC')->where('states.status','1')->get();
           return view('admin.States.index',compact('data'));
      }
      public function create(Request $request)
@@ -30,7 +30,7 @@ class StateController extends Controller
      {
           $id=$request->id;
           $data=State::findOrFail($id);
-          $country=Country::all();
+          $country=Country::where('status','1')->get();
           return view('admin.States.edit',compact('data','country'));
      }
      public function update(Request $request)
@@ -45,13 +45,16 @@ class StateController extends Controller
      public function delete(Request $request)
      {
           $id=$request->id;
-          $data=State::where('id',$id)->delete();
+          $data=State::findOrFail($id);
+          $data->status="0";
+          $data->save();
+          // $data=State::where('id',$id)->delete();
           return back()->withSuccess("Data Deleted");
      }
      public function fatch_state(Request $request)
      {
           $countryId=$request->id;
-          $data=State::where('country_id',$countryId)->get();
+          $data=State::where('country_id',$countryId)->where('status','1')->get();
           $opt="<option selected disabled>City</option>";
           foreach($data as $row)
           {

@@ -11,7 +11,7 @@
                     </a>
                 </div>
                 <div class="menu-style-2 furniture-menu menu-hover">
-                   <nav>
+                    <nav>
                         <ul>
                             <li><a href="{{route('home')}}">home</a></li>
                             <li><a href="{{route('user.create_order')}}">Shopper</a></li>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="header-cart">
                     
-                     @if(!empty(Auth::User()))
+                    @if(!empty(Auth::User()))
                         <a class="icon-cart-furniture" href="#" style="text-align: center;">
                         <i class="ti-user"></i><br>
                           Welcome {{Auth::User()->first_name}}
@@ -36,27 +36,34 @@
                     
                     <ul class="cart-dropdown">
                         @if(!empty(Auth::User()))
-                            <li class="single-product-cart">
-                                <a href="{{route('user.profile')}}">Profile</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.orders')}}">Orders</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.trip')}}">Trips</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.setting')}}">Wallets</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.setting')}}">Coupons</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.setting')}}">Settings</a>
-                            </li>
-                            <li class="single-product-cart">
-                                <a href="{{route('user.help_desk')}}">Help Desk</a>
-                            </li>
+                            @if(Auth::User()->email_veryfied=='1')
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.profile')}}">Profile</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.orders')}}">Orders</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.trip')}}">Trips</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.setting')}}">Wallets</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.setting')}}">Coupons</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.setting')}}">Settings</a>
+                                </li>
+                                <li class="single-product-cart">
+                                    <a href="{{route('user.help_desk')}}">Help Desk</a>
+                                </li>
+                            @else
+                                <li class="single-product-cart">
+                                    <a href="{{route('email_verify.auth',['email'=>Auth::user()->email])}}">Email Verify</a>
+                                </li>
+                            @endif
+                            
                         @endif
                         @if(empty(Auth::User()))
                             <li class="single-product-cart">

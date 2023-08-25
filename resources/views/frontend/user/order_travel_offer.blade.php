@@ -28,7 +28,7 @@
                         @endif
                         <div>
                     </div>
-                    <p>Joined {{$data->created_at}}</p></div>
+                    <p>Joined {{ date("M d , Y", strtotime($data->created_at))}}</p></div>
                     <div class="stars-container-main">
                         <div class="stars-container first">
                             <span>Travel From :-</span>

@@ -43,17 +43,8 @@ class VerificationController extends Controller
             'type' => 'account_onboarding',
         ]);
         // dd($link->url);
-        return redirect($link->url);
+        return redirect($link->url)->withSuccess("You are successfully connected with Stripe");
     }
-    // public function confirm_verify_email(Request $request)
-    // {
-    //     // dd(Auth::user()->email);
-    //     $email=Auth::user()->email;
-    //     $user=User::where('email',$email)->first();
-    //     $user->email_veryfied='1';
-    //     $user->save();
-    //     // return redirect("create_trip");
-    // }
     public function verifiedOtp(Request $request)
     {
         $user = User::where('email',$request->email)->first();
@@ -209,15 +200,7 @@ class VerificationController extends Controller
     }
     public function seller_create(Request $request)
     {
-        // $stripe = new \Stripe\StripeClient('sk_test_51MOweQArAHfnnpVFMWRkZnxNSt8BVrZcubmiKiVHkr5xnembMFAeLfS0QrmFTT8Kk7R9apchfwNDE21E9XNllzBY00KCpMpQzq');
-
-        // $stripe->accountLinks->create([
-        // 'account' => '{{CONNECTED_ACCOUNT_ID}}',
-        // 'refresh_url' => 'https://example.com/reauth',
-        // 'return_url' => 'https://example.com/return',
-        // 'type' => 'account_onboarding',
-        // ]);
-        // return back();
+       
     }
 
     public function sendVerificationEmail(Request $request)
@@ -239,6 +222,25 @@ class VerificationController extends Controller
             return redirect()->route("home")->withSuccess("Welcome Your email verified !");
         }
       
+    }
+    public function email_verify(Request $request)
+    {
+        
+        
+        if(Auth::user()->email_veryfied=="0")
+        {
+            $array=array();
+            $array['email'] = Auth::user()->email;
+            Mail::send('frontend.emails.verify_email', $array,function($message) use ($array) {
+                $message->to($array['email']);
+                $message->subject('buy4me email verify');
+            });
+            return view("frontend.emails.check_mail");
+        }
+        else
+        {
+            return redirect()->route("home")->withSuccess("Welcome Your email verified !");
+        }
     }
 
     

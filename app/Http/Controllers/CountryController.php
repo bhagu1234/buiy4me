@@ -9,7 +9,7 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        $data= Country::all();
+        $data= Country::where('status','1')->get();
         return view('admin.country.index',compact('data'));
     }
     public function create(Request $request)
@@ -34,7 +34,7 @@ class CountryController extends Controller
     {
         // $value=$request->value;
         // $data=Country::where('name','LIKE', '%'.$value.'%')->get();
-        $data=Country::all();
+        $data=Country::where('status','1')->get();
         $opt="<option selected disabled>Country</option>";
         foreach($data as $row)
         {
@@ -48,7 +48,10 @@ class CountryController extends Controller
     public function delete_country(Request $request)
     {
         $id=$request->id;
-        $data=Country::where('id',$id)->delete();
+        $data=Country::findOrFail($id);
+        $data->status='0';
+        $data->save();
+        // $data=Country::where('id',$id)->delete();
         return back()->with("success","deleted");
     }
 }

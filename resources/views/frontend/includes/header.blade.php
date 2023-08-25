@@ -58,6 +58,7 @@
             float:'top-right';
             top: 20%;
             left: 10%;
+            z-index:666;
             transform: translate(-50%, -50%);
             background-color: #087C1D;
             color: #fff;
@@ -90,27 +91,16 @@
         }
     </style>
 </head>
+<body>
 @if(\Session::get('success'))
-<div class="popup" id="success-popup">
-    <div class="popup-content">
-        <p style="color:#fff;"> {{ \Session::get('success') }}</p>
-    </div>
-</div>
-    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <div class="alert-body">
-            {{ \Session::get('success') }}
+    <div class="popup" id="success-popup">
+        <div class="popup-content">
+            <p style="color:#fff;">  {{ \Session::get('success') }}</p>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> -->
+    </div>
 @endif
 {{ \Session::forget('success') }}
 @if(\Session::get('error'))
-    <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <div class="alert-body">
-            {{ \Session::get('error') }}
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div> -->
     <div class="popup-error" id="error-popup">
     <div class="popup-content">
         <p style="color:#fff;">  {{ \Session::get('error') }}</p>
@@ -120,12 +110,7 @@
 {{ \Session::forget('error') }}
 <script>
     $(document).ready(function() {
-        function showSuccessPopup() {
-            $("#success-popup").fadeIn();
-            setTimeout(function() {
-                $("#success-popup").fadeOut();
-            }, 3000); // Hide after 3 seconds
-        }
+       
         function showSuccessPopup() {
             $("#error-popup").fadeIn();
             setTimeout(function() {
@@ -133,7 +118,14 @@
             }, 2000); // Hide after 3 seconds
         }
 
+         function showErrorPopup() {
+            $("#success-popup").fadeIn();
+            setTimeout(function() {
+                $("#success-popup").fadeOut();
+            }, 3000); // Hide after 3 seconds
+        }
         // Call the function to show the popup (you can trigger this as needed)
         showSuccessPopup();
+        showErrorPopup()
     });
 </script>
