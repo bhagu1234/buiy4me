@@ -12,6 +12,7 @@ use App\Models\Shop;
 use App\Models\Tax;
 use Auth;
 use Goutte\Client;
+use App\Models\TravellerOffer;
 use Illuminate\Support\Str;
 class OrderController extends Controller
 {
@@ -31,7 +32,12 @@ class OrderController extends Controller
                 ->select('order_details.*','coun1.name as fromCountry','coun2.name as toCountry','states1.city_name as fromCity','states2.city_name as toCIty')
                 ->first(); 
         $from="from_order";
-        return view('frontend.user.order_details',compact('data','from'));  
+        $TravellerOffer=TravellerOffer::where('traveller_offers.order_id',$id)
+                        ->join('trips','trips.id','traveller_offers.trip_id')
+                        ->leftJoin('users','users.id','trips.user_id')
+                        ->select('trips.id as trip_id','traveller_offers.*','users.first_name','users.last_name','users.id as user_id')->get();
+                        // dd($TravellerOffer);
+        return view('frontend.user.order_details',compact('data','from','TravellerOffer'));  
     }
     public function order_product(Request $request)
     {	
@@ -270,7 +276,6 @@ class OrderController extends Controller
         // //     'price' => $price,
         // // ];
         $all_tax=Tax::first();
-        // dd($url);
         return view('frontend.user.create_product',compact('all_tax','price','title','discription','url'));  
     }
     public function orders(Request $request)

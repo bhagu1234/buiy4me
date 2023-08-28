@@ -92,7 +92,8 @@ class TripController extends Controller
     public function matched_trip(Request $request)
     {
         $id=$request->id;
-        $data=MatchedTripOrder::where('matched_trip_orders.trip_id',$id)->leftJoin('trips','trips.id','matched_trip_orders.trip_id')->leftJoin('order_details','order_details.id','matched_trip_orders.order_id')
+        $data=MatchedTripOrder::where('matched_trip_orders.trip_id',$id)
+        ->where('matched_trip_orders.trip_user',Auth::user()->id)->leftJoin('trips','trips.id','matched_trip_orders.trip_id')->leftJoin('order_details','order_details.id','matched_trip_orders.order_id')
         ->leftJoin('countries as coun1','coun1.id','order_details.deliver_from_country')
         ->leftJoin('countries as coun2','coun2.id','order_details.deliver_to_country')
         ->leftJoin('states as states1','states1.id','order_details.deliver_from_state')

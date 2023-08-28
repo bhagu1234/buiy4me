@@ -58,7 +58,7 @@ $travel_tax=$all_tax->travel_tax;
 								<div id="test-l-1" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="stepper1trigger1" bis_skin_checked="1">
 									<div class="row g-3" bis_skin_checked="1">
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
-											<label for="FisrtName" class="form-label">Product Link <span style="color:red">*</span></label>
+											<label for="FisrtName" class="form-label">Product Link </label>
 											<input type="text" class="form-control" id="order_product_link" name="product_link"  placeholder="Enter Product Link" onkeyup="summery_vali('product_link',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" value="{{$url}}" >
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
@@ -76,6 +76,14 @@ $travel_tax=$all_tax->travel_tax;
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputCountry" class="form-label">QTY<span style="color:red">*</span></label>
 											<input name="product_qty"  class="form-control" type="number" onkeyup="summery_vali('product_qty',{{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="order_product_qty" value='1'>
+										</div>
+										<div class="col-12 col-lg-6" bis_skin_checked="1">
+										<label for="InputEmail" class="form-label">Currency </label>
+										<input type="hidden" id="changed_currency_status" value="1">
+											<select  name="currency" onchange="updateCurrency({{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="change_currency">
+												<option value='1' selected>INR</option>
+												<option value='2'>USD</option>
+											</select>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputLanguage" class="form-label">With Box</label><br>
@@ -126,7 +134,7 @@ $travel_tax=$all_tax->travel_tax;
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
 											<label for="InputConfirmPassword" class="form-label">Select<span style="color:red">*</span></label>
-											<select class="form-select single-select-field" data-placeholder="City" name="devliver_to_city" id="deliver_to_ordCity" >
+											<select class="form-select single-select-field" data-placeholder="City" name="devliver_to_city" id="deliver_to_ordCity" onchange="deliver_state_change()">
 											</select>
 										</div>
 										<div class="col-12 col-lg-6" bis_skin_checked="1">
@@ -164,24 +172,18 @@ $travel_tax=$all_tax->travel_tax;
 											<span>Deliver from </span> :- <span id="summery_Deliverfrom"></span>
 										</div>
 										<div class="">
-											<span>Deliver to </span> :- <span id="summery_Deliverto"></span>
+											<span>Deliver to </span> :- <span id="summery_Deliverto"></span>,<span id="summery_Deliverto_city"></span>
 										</div>
 										<div class="">
 											<span>Deliver before </span> :- <span id="summery_Deliverbefore"> Up to 1 Month</span>
 										</div>
 										<div class="">
-											<span>Quantity</span> :- <span id="summery_Quantity">0</span>
+											<span>Quantity</span> :- <span id="summery_Quantity">1</span>
 										</div>
 										<div class="">
 											<span>Packaging </span> :- <span id="summery_Packaging">Without Box</span>
 										</div>
-										<div class="">
-											<span>Currency </span> :- 
-											<select  name="currency" onchange="updateCurrency({{$buy4meFee}},{{$paymentPro}},{{$travel_tax}})" id="change_currency">
-												<option value='1' selected>INR</option>
-												<option value='2'>USD</option>
-											</select>
-										</div>
+										
 										<p id="sum_pro_description"></p>
 									</div>
 									<div class="col-12 col-lg-6" bis_skin_checked="1">

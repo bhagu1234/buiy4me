@@ -54,11 +54,11 @@ class StateController extends Controller
      public function fatch_state(Request $request)
      {
           $countryId=$request->id;
-          $data=State::where('country_id',$countryId)->where('status','1')->get();
+          $data=State::where('country_id',$countryId)->orderBy('city_name','ASC')->where('status','1')->get();
           $opt="<option selected disabled>City</option>";
           foreach($data as $row)
           {
-               $opt.="<option value=".$row->id.">".$row->city_name."</option>";
+               $opt.="<option data-name='".$row->city_name."' value='".$row->id."' >".$row->city_name."</option>";
           }
           echo $opt;
      }

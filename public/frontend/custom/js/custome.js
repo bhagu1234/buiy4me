@@ -208,58 +208,72 @@ function updateCurrency(buy4meFee,paymentPro,travel_tax)
     var inrValue=$("#change_currency").val();
     if(inrValue=='1')
     {
-        var exchangeRate = 82.67;
-        // var qty=parseFloat($("#order_product_qty").val());
-        // if(qty<=0)
-        // {
-        //     qty=1;
-        // }
-       var e=$("#summery_pro_price").val();
+        $("#changed_currency_status").val('1');
+        let INRDollar = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+        });
+        var exchangeRate = 82.61;
+        var e=$("#order_product_price").val();
         var res = e.replace('$', "");
         var price=parseFloat(res);
+        var qty=parseFloat($("#order_product_qty").val());
+        if(qty<=0)
+        {
+            qty=1;
+        }
         var usdValue = (price * exchangeRate).toFixed(2);
-        $("#summery_pro_price").val("rs."+usdValue);
-        var travller_re=usdValue*Number(travel_tax)/Number(100);
+        $("#order_product_price").val("₹"+usdValue);
+        var travller_re=usdValue*qty*Number(travel_tax)/Number(100);
         if(travller_re<10)
         {
             travller_re=Number(10);
         }
-        var buy4mefee=usdValue*Number(buy4meFee)/Number(100);
-        var paymentproccessing=usdValue*Number(paymentPro)/Number(100);
-        var total= usdValue+travller_re+buy4mefee+paymentproccessing;
-        document.getElementById("summery_estimated_total").value ="rs. "+total;
-        document.getElementById("summery_traveler_reward").value ="rs. "+travller_re;
-        document.getElementById("summery_buy4me_fee").value ="rs. "+buy4mefee;
-        // document.getElementById("summery_salesTax").value ="rs. "+salseTax;
-        document.getElementById("summery_payment_processing").value ="rs. "+paymentproccessing;
+        
+        var price_to=usdValue*qty;
+        var buy4mefee=price_to*Number(buy4meFee)/Number(100);
+        var paymentproccessing=price_to*Number(paymentPro)/Number(100);
+        var total= price_to+travller_re+buy4mefee+paymentproccessing;      
+        $("#summery_pro_price").val(INRDollar.format(price_to)); 
+        document.getElementById("summery_estimated_total").value =INRDollar.format(total);
+        document.getElementById("summery_traveler_reward").value =INRDollar.format(travller_re);
+        document.getElementById("summery_buy4me_fee").value =INRDollar.format(buy4mefee);
+        // document.getElementById("summery_salesTax").value ="₹"+salseTax;
+        document.getElementById("summery_payment_processing").value =INRDollar.format(paymentproccessing);
     }
     else
     {
+        $("#changed_currency_status").val("2");
+        let USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
         var exchangeRate = 0.012;
         var qty=parseFloat($("#order_product_qty").val());
         if(qty<=0)
         {
             qty=1;
         }
-        var price=parseFloat($("#order_product_price").val())*qty;
+        var e=$("#order_product_price").val();
+        var res = e.replace('₹', "");
+        var price=parseFloat(res);
         var usdValue = (price * exchangeRate).toFixed(2);
-        $("#summery_pro_price").val("$"+usdValue);
-        var travller_re=usdValue*Number(travel_tax)/Number(100);
+        $("#order_product_price").val(USDollar.format(usdValue));
+        var price_to=usdValue*qty;
+        var travller_re=price_to*Number(qty)*Number(travel_tax)/Number(100);
         if(travller_re<10)
         {
             travller_re=Number(10);
         }
-        var buy4mefee=usdValue*Number(buy4meFee)/Number(100);
-        var paymentproccessing=usdValue*Number(paymentPro)/Number(100);
-        var total= usdValue+travller_re+buy4mefee+paymentproccessing;
-        document.getElementById("summery_estimated_total").value ="$"+total;
-        document.getElementById("summery_traveler_reward").value ="$"+travller_re;
-        document.getElementById("summery_buy4me_fee").value ="$"+buy4mefee;
-        // document.getElementById("summery_salesTax").value ="$"+salseTax;
-        document.getElementById("summery_payment_processing").value ="$"+paymentproccessing;
+        var buy4mefee=price_to*Number(buy4meFee)/Number(100);
+        var paymentproccessing=price_to*Number(paymentPro)/Number(100);
+        var total= price_to+travller_re+buy4mefee+paymentproccessing;
+        $("#summery_pro_price").val(USDollar.format(price_to)); 
+        document.getElementById("summery_estimated_total").value =USDollar.format(total);
+        document.getElementById("summery_traveler_reward").value =USDollar.format(travller_re);
+        document.getElementById("summery_buy4me_fee").value =USDollar.format(buy4mefee);
+        // document.getElementById("summery_salesTax").value =salseTax;
+        document.getElementById("summery_payment_processing").value =USDollar.format(paymentproccessing);
     }
-    // var usdValue = (inrValue * exchangeRate).toFixed(2);
-    // alert(usdValue);
-    // $("#usdAmount").text(usdValue);
 }
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\AmazonController;
+use App\Http\Controllers\TravellerOfferController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,7 +103,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('edit_order/{id}',[OrderController::class,'edit_order'])->name('user.edit_order');
     Route::post('update_order',[OrderController::class,'update_order'])->name('user.update_order');
 
-    // VerificationController
+    // TravellerOfferController
+    Route::post('traveller-offcer/{id}',[TravellerOfferController::class,'create_offer'])->name('traveller.create_offer');
     
    
 

@@ -13,7 +13,7 @@
             <div class="container searchdiv pt-50">
                 <div class="row">
                     <div class="col-md-10">  
-                        <input type="url" placeholder="Paste the URL of the Product"  class="form-control searchclass" name="url" id="fromduct_from_url" required> 
+                        <input type="url" placeholder="Paste the URL of the Product"  class="form-control searchclass" name="url" id="fromduct_from_url"> 
                     </div>      
                     <div class="col-md-2" style="text-align: left;">  
                         <button class="menu-btn1 btn-hover" type="submit">Create Order</button>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="menu-btn-area text-center mt-40">
-                        <a class="menu-btn btn-hover" href="menu-list.html">Buy Product</a>
+                        <a class="menu-btn btn-hover" href="#">Buy Product</a>
                     </div>
                 </div>
             </div>

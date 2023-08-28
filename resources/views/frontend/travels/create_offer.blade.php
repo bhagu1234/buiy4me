@@ -29,68 +29,66 @@
                             
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body">
-                                <h4 class="card-title">{{$data->product_name}}</h4>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Quantity</dt>
-                                    <dd class="col-sm-9">{{$data->product_qty}}</dd>
-                                
-                                    <dt class="col-sm-3">Packaging</dt>
-                                    <dd class="col-sm-9">@if($data->box=='1') With Box @else Without box @endif</dd>
-                                
+                                <form method="post" action="{{route('traveller.create_offer',['id'=>$data->id])}}">
+                                    @csrf
+                                    <div class="card-body">
+                                    <h4 class="card-title">{{$data->product_name}}</h4>
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Quantity</dt>
+                                        <dd class="col-sm-9">{{$data->product_qty}}</dd>
                                     
-                                </dl>
-                                <p class="card-text fs-6">{{$data->product_details}}</p>
-                                <input type="hidden" id="pro_ch_price" value="{{$data->product_price}}">
-                                <input type="hidden" id="qty_ch_price" value="{{$data->product_qty}}">
-                                <input type="hidden" id="traveller_re_ch_price" value="{{$data->traveller_reward}}">
-                                
+                                        <dt class="col-sm-3">Packaging</dt>
+                                        <dd class="col-sm-9">@if($data->box=='1') With Box @else Without box @endif</dd>
+                                    
+                                        
+                                    </dl>
+                                    <p class="card-text fs-6">{{$data->product_details}}</p>
+                                    <input type="hidden" id="pro_ch_price" value="{{$data->product_price}}" name="pro_ch_price">
+                                    <input type="hidden" id="qty_ch_price" value="{{$data->product_qty}}" name="qty_ch_price">
+                                    <input type="hidden" id="traveller_re_ch_price" value="{{$data->traveller_reward}}" name="traveller_re_ch_price">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">From</dt>
+                                        <dd class="col-sm-9">{{$data->fromCountry}}</dd>
+                                        <dt class="col-sm-3">To</dt>
+                                        <dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
+                                    
+                                        <dt class="col-sm-3">Before</dt>
+                                        <dd class="col-sm-9">{{$data->during_time}} </dd>
+                                    </dl>
+                                    <dl class="row">
+                                    <dt class="col-sm-3">Product Price</dt>
+                                        <dd class="col-sm-9" >
+                                            <span id="changed_pro_price_tr">${{$data->product_price}}</span>
+                                            <input type="number" placeholder="Offer" onkeyup="chnagePriceTraveller('product_price_change','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" class="form-group" id="change_product_price_fee" name="change_product_price_fee">
+                                        </dd>
+                                        <dt class="col-sm-3">Reward</dt>
+                                        <dd class="col-sm-9" >
+                                            <span id="changed_traveller_re_tr">{{$data->traveller_reward}}</span> 
+                                            <input type="number" placeholder="Offer" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee" name="change_travel_fee">
+                                        </dd>
+                                    
+                                        <dt class="col-sm-3">Buy4me Fee</dt>
+                                        <dd class="col-sm-9" id="changed_buy4me_fee_tr">{{$data->buy4me_fee}} </dd>
 
-                                
-                                <dl class="row">
-                                    <dt class="col-sm-3">From</dt>
-                                    <dd class="col-sm-9">{{$data->fromCountry}}</dd>
-                                    <dt class="col-sm-3">To</dt>
-                                    <dd class="col-sm-9">{{$data->toCountry}},{{$data->toCIty}}</dd>
-                                
-                                    <dt class="col-sm-3">Before</dt>
-                                    <dd class="col-sm-9">{{$data->during_time}} </dd>
-                                </dl>
-                                <dl class="row">
-                                <dt class="col-sm-3">Product Price</dt>
-                                    <dd class="col-sm-9" >
-                                        <span id="changed_pro_price_tr">${{$data->product_price}}</span>
-                                        <input type="number" placeholder="Offer" onkeyup="chnagePriceTraveller('product_price_change','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" class="form-group" id="change_product_price_fee">
-                                    </dd>
-                                    <dt class="col-sm-3">Reward</dt>
-                                    <dd class="col-sm-9" >
-                                        <span id="changed_traveller_re_tr">{{$data->traveller_reward}}</span> 
-                                        <input type="number" placeholder="Offer" class="form-group" onkeyup="chnagePriceTraveller('traveller_fee','{{$data->buy4me_fee}}','{{$data->payment}}','{{$data->traveller_reward}}')" id="change_travel_fee">
-                                    </dd>
-                                
-                                    <dt class="col-sm-3">Buy4me Fee</dt>
-                                    <dd class="col-sm-9" id="changed_buy4me_fee_tr">{{$data->buy4me_fee}} </dd>
-
-                                    <dt class="col-sm-3">Payment Processing</dt>
-                                    <dd class="col-sm-9" id="changed_payment_fee_tr">{{$data->payment}} </dd>
-                                </dl>
-                                <div class="details-price">
-                                    <span>Total Payout </span>:-<span id="changed_totalPrice_tr">{{$data->estimated_total}}</span>
-                                    <input type="hidden" id="pro_total_price_changed" value="{{$data->estimated_total}}">
-                                    <input type="hidden" id="pro_traveller_price_changed" value="{{$data->traveller_reward}}">
-                                    <input type="hidden" id="pro_p_price_changed" value="{{$data->estimated_total}}">
-                                    <input type="hidden" id="or_id" value="{{$data->id}}">
-                                </div>
-                                <h5>Delivery Details</h5>
-                                <hr>
-                                <!-- <button >Add trip</button> -->
-                                <p><input type="checkbox"> By making a Delivery offer or starting a delivery, I agree to Buy4Me's Terms and Conditions and acknowledge that I am familiar with and agree to abide by the customs rules and regulations of my destination country. I also acknowledge that I am responsible for paying customs duties and covering any extra charges that the customs at my destination country may impose.</p>
-                                <div class="d-flex gap-3 mt-3">
-                                    <!-- <a href="{{route('stripeIdentity.index')}}" class="btn btn-primary">Make delivery offer</a> -->
-                                    <!-- <a href="#" id="make_delivery_offer" class="btn btn-primary">Make delivery offer</a> -->
-                                    <button><a href="{{route('user.send_tripRequest',['id'=>request()->matched_id,'from'=>'trip','status'=>'requested','url'=>url()->previous()])}}">Request</button>
-                                    <button><a href="{{route('stripeIdentity.index')}}">Confirm </a></button>
-                                </div>
+                                        <dt class="col-sm-3">Payment Processing</dt>
+                                        <dd class="col-sm-9" id="changed_payment_fee_tr">{{$data->payment}} </dd>
+                                    </dl>
+                                    <div class="details-price">
+                                        <span>Total Payout </span>:-<span id="changed_totalPrice_tr">{{$data->estimated_total}}</span>
+                                        <input type="hidden" id="pro_total_price_changed" value="{{$data->estimated_total}}">
+                                        <input type="hidden" id="pro_traveller_price_changed" value="{{$data->traveller_reward}}">
+                                        <input type="hidden" id="pro_p_price_changed" value="{{$data->estimated_total}}">
+                                        <input type="hidden" id="or_id" value="{{$data->id}}">
+                                    </div>
+                                    <h5>Delivery Details</h5>
+                                    <hr>
+                                    <!-- <button >Add trip</button> -->
+                                    <p><input type="checkbox"> By making a Delivery offer or starting a delivery, I agree to Buy4Me's Terms and Conditions and acknowledge that I am familiar with and agree to abide by the customs rules and regulations of my destination country. I also acknowledge that I am responsible for paying customs duties and covering any extra charges that the customs at my destination country may impose.</p>
+                                    <div class="d-flex gap-3 mt-3">
+                                        <button type="submit">Request</button>
+                                        <button><a href="{{route('stripeIdentity.index')}}">Confirm </a></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -100,10 +100,5 @@
   @include('frontend.includes.footer_script')
 </body>
 </html>
-
-    <!-- menu area end -->
-    @include('frontend.includes.footer');
-    <!-- all js here -->
-    @include('frontend.includes.footer_script');
 </body>
 </html>

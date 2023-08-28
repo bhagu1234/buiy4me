@@ -34,11 +34,11 @@ class CountryController extends Controller
     {
         // $value=$request->value;
         // $data=Country::where('name','LIKE', '%'.$value.'%')->get();
-        $data=Country::where('status','1')->get();
+        $data=Country::where('status','1')->orderBy('name','ASC')->get();
         $opt="<option selected disabled>Country</option>";
         foreach($data as $row)
         {
-            $opt.="<option data-name=".$row->name." value=".$row->id." >".$row->name."</option>";
+            $opt.="<option data-name='".$row->name."' value=".$row->id." >".$row->name."</option>";
             // echo $opt;
             // dd($opt);
            

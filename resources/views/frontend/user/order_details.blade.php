@@ -1,5 +1,6 @@
 @include('frontend.includes.header')
   <body>
+	<?php setlocale(LC_MONETARY, "en_US"); ?>
     @include('frontend.includes.nav')
     <!-- header end -->
     <div class="best-product-area pb-15">
@@ -148,6 +149,15 @@
 										</div>
 									</a>
 								</li>
+								<li class="nav-item" role="presentation">
+									<a class="nav-link" data-bs-toggle="tab" href="#traveller_offer_list" role="tab" aria-selected="false">
+										<div class="d-flex align-items-center">
+											<div class="tab-icon"><i class='bx bx-star font-18 me-1'></i>
+											</div>
+											<div class="tab-title">Traveller's offer</div>
+										</div>
+									</a>
+								</li>
 							</ul>
 							<div class="tab-content pt-3">
 								<div class="tab-pane fade show active" id="primaryhome" role="tabpanel">
@@ -159,6 +169,11 @@
 								</div>
 								<div class="tab-pane fade" id="primarycontact" role="tabpanel">
 									<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+								</div>
+								<div class="tab-pane fade" id="traveller_offer_list" role="tabpanel">
+									@foreach($TravellerOffer as $row)
+										<p>Traveler <b><a href="{{route('user.check_trOffer',['id'=>$row->order_id])}}">{{$row->first_name}} {{$row->last_name}}</a></b> send you Offer for this Product He/She can deliver this product to you for <b>${{number_format($row->product_price, 2, '.', ',') }}</b> and Traveler Rewards for <b>${{number_format($row->travel_reward, 2, '.', ',') }}</b></p>
+									@endforeach
 								</div>
 							</div>
 						</div>

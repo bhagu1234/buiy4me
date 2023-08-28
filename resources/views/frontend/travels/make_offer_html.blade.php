@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div >
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                <h4><a href="#">{{$row->product_name}}</a></h4>
                                                 <span>{{$row->fromCountry}} 
                                                     <i class="ti-arrow-right"></i> {{$row->toCountry}} {{$row->toCIty}} , by  &nbsp; &nbsp; {{date('F d, y',strtotime($row->during_time)); }}</span>
                                                 @if($row->box==0)
@@ -53,6 +53,7 @@
                                                 </div>
                                                 <div class="details-price">
                                                     <span>Product Price</span> :-<span >${{$row->product_price}}</span>
+                                                  
                                                 </div>
                                                 <a class="btn btn-outline-secondary px-4" href="{{route('travel.create_offer',['id'=>$row->id])}}">Make Delivery Offer</a>
                                             </div>

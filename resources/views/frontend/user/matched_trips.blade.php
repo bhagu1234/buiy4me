@@ -205,7 +205,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-content-2 text-center">
-                                                <h4><a href="product-details.html">{{$row->product_name}}</a></h4>
+                                                <h4><a href="#">{{$row->product_name}}</a></h4>
                                                 <span>{{$row->fromCountry}} ,{{$row->fromcity}}:- {{$row->toCountry}},{{$row->toCity}} , by &nbsp; &nbsp;  {{ date("M d , Y", strtotime($row->during_time))}}</span>
                                                 @if($row->box==0)
                                                     <p> Without Box</p>

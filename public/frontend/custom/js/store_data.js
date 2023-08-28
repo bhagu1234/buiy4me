@@ -97,18 +97,11 @@ $(function()
         imagesPreview(this, 'div.gallery');
     });
 });
-// $("#deliver_to_ord").change(function(){
-//     var s=$(this).attr('data-name');
-//     // alert(s);
-//     var lblValue = document.getElementById("summery_Deliverto");
-//     lblValue.innerText =  s;
-// });
-// $("#delivery_from_ord").change(function(){
-//     var s=$(this).attr('data-name');
-//     // alert(s);
-//     var lblValue = document.getElementById("summery_Deliverfrom");
-//     lblValue.innerText =  s;
-// });
+function deliver_state_change()
+{
+    var abc = $('option:selected',"#deliver_to_ordCity").data("name");
+    document.getElementById("summery_Deliverto_city").innerText =  abc;
+}
 function summery_vali(res,buy4meFee,paymentPro,travel_tax)
 {
     if(res=='product_name')
@@ -118,33 +111,74 @@ function summery_vali(res,buy4meFee,paymentPro,travel_tax)
         var lblValue = document.getElementById("summ_productName");
         lblValue.innerText =  s;
     }
-        var edValue = document.getElementById("order_product_price");
-        var qty = document.getElementById("order_product_qty").value;
-        if(qty=="0" ||Number(qty)<=0)
+    if($("#changed_currency_status").val()=='1')
+    {
+        let INRDollar = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+        });
+        var e=$("#order_product_price").val();
+        var res = e.replace('$', "");
+        var price=parseFloat(res);
+        var qty=parseFloat($("#order_product_qty").val());
+        if(qty<=0)
         {
             qty=1;
         }
-        var productPric= Number(edValue.value)*Number(qty);
-        var travller_re=productPric*Number(travel_tax)/Number(100);
+        var price_to=price*qty;
+        var travller_re=price_to*Number(travel_tax)/Number(100);
         if(travller_re<10)
         {
             travller_re=Number(10);
         }
-        var buy4mefee=productPric*Number(buy4meFee)/Number(100);
-        var paymentproccessing=productPric*Number(paymentPro)/Number(100);
-        var total= productPric+travller_re+buy4mefee+paymentproccessing;
-        var lblValue = $("#summery_pro_price").val("rs. "+productPric) 
-        document.getElementById("summery_estimated_total").value ="rs. "+total;
-        document.getElementById("summery_traveler_reward").value ="rs. "+travller_re;
-        document.getElementById("summery_buy4me_fee").value ="rs. "+buy4mefee;
-        // document.getElementById("summery_salesTax").value ="rs. "+salseTax;
-        document.getElementById("summery_payment_processing").value ="rs. "+paymentproccessing;
-   
+        
+        
+        var buy4mefee=price_to*Number(buy4meFee)/Number(100);
+        var paymentproccessing=price_to*Number(paymentPro)/Number(100);
+        var total= price_to+travller_re+buy4mefee+paymentproccessing;      
+        $("#summery_pro_price").val(INRDollar.format(price_to)); 
+        document.getElementById("summery_estimated_total").value =INRDollar.format(total);
+        document.getElementById("summery_traveler_reward").value =INRDollar.format(travller_re);
+        document.getElementById("summery_buy4me_fee").value =INRDollar.format(buy4mefee);
+        document.getElementById("summery_payment_processing").value =INRDollar.format(paymentproccessing);;
+    }
+    else
+    {
+        let USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        // var exchangeRate = 0.012;
+        var qty=parseFloat($("#order_product_qty").val());
+        if(qty<=0)
+        {
+            qty=1;
+        }
+        var e=$("#order_product_price").val();
+        var res = e.replace('₹', "");
+        var price=parseFloat(res);
+        // var usdValue = (price * exchangeRate).toFixed(2);
+        var price_to=price*qty;
+        var travller_re=price_to*Number(qty)*Number(travel_tax)/Number(100);
+        if(travller_re<10)
+        {
+            travller_re=Number(10);
+        }
+        var buy4mefee=price_to*Number(buy4meFee)/Number(100);
+        var paymentproccessing=price_to*Number(paymentPro)/Number(100);
+        var total= price_to+travller_re+buy4mefee+paymentproccessing;
+        $("#summery_pro_price").val(USDollar.format(price_to)); 
+        document.getElementById("summery_estimated_total").value =USDollar.format(total);
+        document.getElementById("summery_traveler_reward").value =USDollar.format(travller_re);
+        document.getElementById("summery_buy4me_fee").value =USDollar.format(buy4mefee);
+        // document.getElementById("summery_salesTax").value =salseTax;
+        document.getElementById("summery_payment_processing").value =USDollar.format(paymentproccessing);
+    }
     if(res=='product_qty')
     {
         var edValue = document.getElementById("order_product_qty");
         var s = edValue.value;
-        if(Number(s) <=0)
+        if(s <=0)
         {
             s=1;
         }
@@ -179,11 +213,11 @@ $("#store_orderwith_details").click(function(){
     // var summery_salesTax = $("#summery_salesTax").val();
     var summery_payment_processing = $("#summery_payment_processing").val();
     var summery_estimated_total = $("#summery_estimated_total").val();
-    if(product_link =="")
-    {
-        Swal.fire('Please Enter Product Link');
-        return false
-    }
+    // if(product_link =="")
+    // {
+    //     Swal.fire('Please Enter Product Link');
+    //     return false
+    // }
     if(product_name =="")
     {
         Swal.fire('Please Enter Product Name');
