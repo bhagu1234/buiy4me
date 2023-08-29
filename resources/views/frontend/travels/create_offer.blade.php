@@ -1,4 +1,5 @@
 @include('frontend.includes.header')
+<?php setlocale(LC_MONETARY,"en_US"); ?>
 <body>
     @include('frontend.includes.nav')
     <!-- header end -->
@@ -74,7 +75,8 @@
                                         <dd class="col-sm-9" id="changed_payment_fee_tr">{{$data->payment}} </dd>
                                     </dl>
                                     <div class="details-price">
-                                        <span>Total Payout </span>:-<span id="changed_totalPrice_tr">{{$data->estimated_total}}</span>
+                                        <span>Total Payout </span>:-<span id="changed_totalPrice_tr">
+                                        {{$data->estimated_total}}   </span>
                                         <input type="hidden" id="pro_total_price_changed" value="{{$data->estimated_total}}">
                                         <input type="hidden" id="pro_traveller_price_changed" value="{{$data->traveller_reward}}">
                                         <input type="hidden" id="pro_p_price_changed" value="{{$data->estimated_total}}">

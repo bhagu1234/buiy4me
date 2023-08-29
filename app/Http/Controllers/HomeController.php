@@ -50,4 +50,5 @@ class HomeController extends Controller
    {
       return view("frontend.includes.nav");
    }
+   
 }
